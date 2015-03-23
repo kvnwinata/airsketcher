@@ -1,0 +1,11 @@
+computer move this
+computer place
+computer cancel
+computer color this red
+computer color this blue
+computer color this green
+computer color this yellow
+computer color this orange
+computer color this purple
+computer color this white
+computer color this black

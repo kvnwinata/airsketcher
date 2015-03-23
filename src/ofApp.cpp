@@ -1,0 +1,103 @@
+#include "ofApp.h"
+
+#include "Logger.h"
+
+//--------------------------------------------------------------
+void ofApp::setup(){
+    ofSetFrameRate(30);
+    ofBackground(40, 40, 40);
+    
+    // Main components setup
+    AirSphere * sphere = new AirSphere();
+    sphere->setup(ofPoint(0,0,400), 100, ofColor(128,64,64));
+    objectManager.addObject(sphere);
+    
+    // OF setup
+    cam.setupPerspective();
+    cam.setPosition(0, 700, 400);
+    cam.lookAt(ofVec3f(0,0,300));
+    plane.set(500, 500, 50, 50);
+    
+    pointLight.setPosition(0, 2000, 1000);
+    pointLight.lookAt(ofVec3f(0,0,500));
+    pointLight.setDirectional();
+    pointLight.setDiffuseColor(ofColor(255,255,255));
+}
+
+//--------------------------------------------------------------
+void ofApp::update(){
+    
+    handProcessor.update();
+    controller.update(handProcessor, speechProcessor, objectManager);
+    
+    Logger::getInstance()->log(ofToString(ofGetFrameRate()));
+}
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+    
+    ofEnableAlphaBlending();
+    ofEnableDepthTest();
+    //ofEnableLighting();
+    
+    cam.begin();
+    //pointLight.enable();
+
+    ofSetColor(255,255,255);
+    //ofDrawSphere(0, 0, 0, 200);
+    
+    ofSetColor(255,0,0); ofLine(ofPoint(0,0,0), ofPoint(200,0,0));
+    ofSetColor(0,255,0); ofLine(ofPoint(0,0,0), ofPoint(0,200,0));
+    ofSetColor(0,0,255); ofLine(ofPoint(0,0,0), ofPoint(0,0,200));
+    
+    ofSetColor(255, 255, 255);
+    
+    handProcessor.drawHands();
+    objectManager.drawObjects();
+    
+    ofTranslate(0,0,-10);
+    plane.drawVertices();
+    ofTranslate(0,0, 10);
+    
+    //pointLight.disable();
+    cam.end();
+
+    //ofDisableLighting();
+    ofDisableDepthTest();
+    
+    // messages
+    ofPushMatrix();
+    ofDrawBitmapString(handProcessor.getStatusMessage(), 10, 20);
+    ofDrawBitmapString(speechProcessor.getStatusMessage(), 10, 35);
+    ofDrawBitmapString(controller.getStatusMessage(), 10, 50);
+    
+    ofTranslate(10,ofGetWindowHeight()/2);
+    Logger::getInstance()->print();
+    ofPopMatrix();
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y ){}
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button){}
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button){}
+//--------------------------------------------------------------
+void ofApp::mouseReleased(int x, int y, int button){}
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h){}
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg){}
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo){}

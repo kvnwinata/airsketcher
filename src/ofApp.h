@@ -37,8 +37,5 @@ private:
     ofCamera            cam;
     ofEasyCam           ecam;
     
-    
-    ofPlanePrimitive    plane;
-    
     ofLight             pointLight;
 };

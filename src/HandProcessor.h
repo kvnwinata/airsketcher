@@ -36,6 +36,8 @@ private:
     vector<LeapHand>    hands;
     
     ofImage             leapImage;
+    ofPlanePrimitive    plane;
+
 
 };
 

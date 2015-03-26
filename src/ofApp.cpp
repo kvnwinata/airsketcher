@@ -16,7 +16,6 @@ void ofApp::setup(){
     cam.setupPerspective();
     cam.setPosition(0, 700, 400);
     cam.lookAt(ofVec3f(0,0,300));
-    plane.set(500, 500, 50, 50);
     
     pointLight.setPosition(0, 2000, 1000);
     pointLight.lookAt(ofVec3f(0,0,500));
@@ -54,11 +53,7 @@ void ofApp::draw(){
     
     handProcessor.drawHands();
     objectManager.drawObjects();
-    
-    ofTranslate(0,0,-10);
-    plane.drawVertices();
-    ofTranslate(0,0, 10);
-    
+        
     //pointLight.disable();
     cam.end();
 

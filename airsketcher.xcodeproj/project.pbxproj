@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */; };
+		0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */; };
+		0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */; };
+		0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -79,6 +83,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyingMode.cpp; sourceTree = "<group>"; };
+		0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyingMode.h; sourceTree = "<group>"; };
+		0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ErasingMode.cpp; sourceTree = "<group>"; };
+		0B7BFC761ACAF01100A83042 /* ErasingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErasingMode.h; sourceTree = "<group>"; };
+		0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CylinderCreatingMode.cpp; sourceTree = "<group>"; };
+		0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylinderCreatingMode.h; sourceTree = "<group>"; };
+		0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereCreatingMode.cpp; sourceTree = "<group>"; };
+		0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereCreatingMode.h; sourceTree = "<group>"; };
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
@@ -277,6 +289,14 @@
 				CB8405101ABFB46500EB202C /* MovingMode.h */,
 				CBD709841AC0B48900EF0DC2 /* ColoringMode.h */,
 				CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */,
+				0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */,
+				0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */,
+				0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */,
+				0B7BFC761ACAF01100A83042 /* ErasingMode.h */,
+				0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */,
+				0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */,
+				0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */,
+				0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -492,6 +512,7 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */,
 				CB84050E1ABFB43200EB202C /* AirControlMode.cpp in Sources */,
+				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,
@@ -501,8 +522,11 @@
 				CB8405111ABFB46500EB202C /* MovingMode.cpp in Sources */,
 				22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */,
 				CB7997CD1ABB7DBE00253491 /* LeapUtilGL.cpp in Sources */,
+				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
+				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
 				CB60714D1ABCA83E001E03EF /* SpeechProcessor.cpp in Sources */,
+				0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */,
 				CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,6 +3,7 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/19/15.
+//  Last update by Patricia Suriana on 3/31/15.
 //
 //
 
@@ -50,11 +51,23 @@ void AirSphere::drawHighlight() const
     ofPopMatrix();
     
     ofSetColor(255,255,255);
-
+    
     ofFill();
+}
+
+AirObject* AirSphere::getCopy() const
+{
+    AirSphere* newSphere = new AirSphere();
+    newSphere->radius = radius;
+    this->copyData(newSphere);
+    return newSphere;
 }
 
 std::string AirSphere::getDescription() const
 {
+    std::stringstream msg;
+    msg << "Sphere ";
+    msg << id;
     
+    return msg.str();
 }

@@ -25,7 +25,9 @@ public:
     void draw()             const override;
     void drawHighlight()    const override;
     
-    std::string getDescription() const;
+    AirObject* getCopy() const override;
+    
+    std::string getDescription() const override;
     
 private:
     

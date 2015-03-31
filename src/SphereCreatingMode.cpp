@@ -1,31 +1,30 @@
 //
-//  MovingMode.cpp
+//  SphereCreatingMode.cpp
 //  airsketcher
 //
-//  Created by Kevin Wong on 3/22/15.
-//  Last update by Patricia Suriana on 3/31/15.
+//  Created by Patricia Suriana on 3/31/15.
 //
 //
 
-#include "MovingMode.h"
+#include "SphereCreatingMode.h"
 #include "Logger.h"
 
-MovingMode::MovingMode() : AirControlMode()
+SphereCreatingMode::SphereCreatingMode() : AirControlMode()
 {
     
 }
 
-MovingMode::~MovingMode()
+SphereCreatingMode::~SphereCreatingMode()
 {
     
 }
 
-void MovingMode::drawMode() const
+void SphereCreatingMode::drawMode() const
 {
     
 }
 
-bool MovingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool SphereCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "move this")
     {
@@ -50,7 +49,7 @@ bool MovingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastC
     return false;
 }
 
-void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     
@@ -77,23 +76,9 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
             hasCompleted = true;
         }
     }
-    if (hasCompleted) {
-        movingObject = NULL;
-    }
 }
 
-std::string MovingMode::getStatusMessage()
+std::string SphereCreatingMode::getStatusMessage()
 {
-    if (NULL != movingObject) {
-        std::stringstream msg;
-        msg << "MOVING ";
-        msg << movingObject->getDescription();
-        msg << " FROM ";
-        msg << originalPosition;
-        msg << " TO ";
-        msg << movingObject->getPosition();
-        
-        return msg.str();
-    }
-    return "MOVING xxx FROM xxx TO xxx";
+    return "MOVING xxxx FROM xxx TO xxx";
 }

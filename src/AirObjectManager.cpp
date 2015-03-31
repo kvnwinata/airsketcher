@@ -3,8 +3,11 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/20/15.
+//  Last update by Patricia Suriana on 3/31/15.
 //
 //
+
+#include <assert.h>
 
 #include "AirObjectManager.h"
 
@@ -15,12 +18,26 @@ AirObjectManager::AirObjectManager()
 
 AirObjectManager::~AirObjectManager()
 {
-    
+    for (AirObject* object : objects) {
+        delete object;
+    }
+    objects.clear();
 }
 
-void AirObjectManager::addObject(AirObject * object)
+void AirObjectManager::addObject(AirObject* object)
 {
     objects.push_back(object);
+}
+
+void AirObjectManager::deleteObject(AirObject* object)
+{
+    for (auto it = objects.begin(); it != objects.end(); ++it) {
+        if((*it) == object) {
+            delete *it;
+            objects.erase(it);
+            return;
+        }
+    }
 }
 
 void AirObjectManager::drawObjects()

@@ -20,7 +20,7 @@ class AirControlMode
 public:
     
     AirControlMode();
-    ~AirControlMode();
+    virtual ~AirControlMode();
     
     virtual bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) = 0;
     virtual void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) = 0;

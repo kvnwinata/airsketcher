@@ -17,7 +17,7 @@ class AirObject
 public:
     
     AirObject(){id = assignId();};
-    ~AirObject(){};
+    virtual ~AirObject(){};
     
     virtual bool isInside(ofPoint location) const = 0; // true if location is inside object
     

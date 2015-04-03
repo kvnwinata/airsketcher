@@ -31,7 +31,7 @@ MovingMode::~MovingMode()
     
 }
 
-void MovingMode::drawMode() const
+void MovingMode::drawMode()
 {
     
 }

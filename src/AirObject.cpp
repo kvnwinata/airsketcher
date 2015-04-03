@@ -24,7 +24,17 @@ bool AirObject::isInside(ofPoint location) const
 {
     ofPoint normalizedLocation;
     
-    normalizedLocation = location - position; // translation
+    // normalize translation
+    normalizedLocation = location - position;
+    
+    // normalize rotation
+    float rotationAngle;
+    ofVec3f rotationAxis;
+    orientation.getRotate(rotationAngle, rotationAxis);
+    normalizedLocation.rotate(-rotationAngle, rotationAxis);
+    
+    // normalize scaling
+    normalizedLocation /= scale;
     
     return isInsideNormalized(normalizedLocation);
 }

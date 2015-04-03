@@ -25,7 +25,7 @@ CylinderCreatingMode::~CylinderCreatingMode()
     
 }
 
-void CylinderCreatingMode::drawMode() const
+void CylinderCreatingMode::drawMode()
 {
     
 }

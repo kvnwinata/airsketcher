@@ -24,7 +24,7 @@ public:
     
     virtual bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) = 0;
     virtual void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) = 0;
-    virtual void drawMode() const = 0;
+    virtual void drawMode() = 0;
     virtual std::vector<std::string> getCommands() = 0;
     
     bool getHasCompleted() const;

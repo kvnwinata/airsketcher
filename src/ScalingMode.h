@@ -1,36 +1,43 @@
 //
-//  CylinderCreatingMode.h
+//  ScalingMode.h
 //  airsketcher
 //
-//  Created by Patricia Suriana on 3/31/15.
+//  Created by Kevin Wong on 4/3/15.
 //
 //
 
-#ifndef __airsketcher__CylinderCreatingMode__
-#define __airsketcher__CylinderCreatingMode__
+#ifndef __airsketcher__ScalingMode__
+#define __airsketcher__ScalingMode__
 
 #include "AirControlMode.h"
 
-class CylinderCreatingMode : public AirControlMode
+class ScalingMode : public AirControlMode
 {
 public:
     
-    CylinderCreatingMode();
-    ~CylinderCreatingMode();
+    ScalingMode();
+    ~ScalingMode();
     
     bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
+    
     std::vector<std::string> getCommands();
-
+    
     std::string getStatusMessage() override;
     
 private:
     
-    AirObject * movingObject;
+    AirObject * scalingObject;
     
-    ofPoint relativePosition;
+    
+    ofPoint originalCenterOfScaling;
     ofPoint originalPosition;
+    ofPoint relativePosition;
+        
+    float originalScale;
+    
+    const float scalingParameter = 50.f;
 };
 
-#endif /* defined(__airsketcher__CylinderCreatingMode__) */
+#endif /* defined(__airsketcher__ScalingMode__) */

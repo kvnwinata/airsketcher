@@ -25,6 +25,12 @@ public:
     virtual void setPosition(ofPoint pos){position = pos;};
     virtual ofPoint getPosition() const {return position;};
     
+    virtual void setOrientation(ofQuaternion orientation_){orientation = orientation_;};
+    virtual ofQuaternion getOrientation() const {return orientation;};
+
+    virtual void setScale(float scale_){scale = scale_;};
+    virtual float getScale() const {return scale;};
+    
     virtual void setColor(ofColor col){color = col;};
     virtual ofColor getColor() const {return color;};
     

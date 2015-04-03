@@ -31,7 +31,7 @@ CopyingMode::~CopyingMode()
     
 }
 
-void CopyingMode::drawMode() const
+void CopyingMode::drawMode()
 {
     
 }

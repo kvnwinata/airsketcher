@@ -36,7 +36,7 @@ ColoringMode::~ColoringMode()
     
 }
 
-void ColoringMode::drawMode() const
+void ColoringMode::drawMode()
 {
     
 }

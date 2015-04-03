@@ -20,7 +20,7 @@ public:
     
     bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
-    void drawMode() const override;
+    void drawMode() override;
     std::vector<std::string> getCommands();
 
     std::string getStatusMessage() override;

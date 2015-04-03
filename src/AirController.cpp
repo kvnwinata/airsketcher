@@ -15,6 +15,7 @@
 #include "ErasingMode.h"
 #include "MovingMode.h"
 #include "SphereCreatingMode.h"
+#include "ScalingMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -24,6 +25,7 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new ErasingMode());
     modes.push_back(new MovingMode());
     modes.push_back(new SphereCreatingMode());
+    modes.push_back(new ScalingMode());
 }
 
 AirController::~AirController()
@@ -108,4 +110,12 @@ std::vector<std::string> AirController::getCommands()
     }
     
     return commands;
+}
+
+void AirController::draw()
+{
+    if (currentMode)
+    {
+        currentMode->drawMode();
+    }
 }

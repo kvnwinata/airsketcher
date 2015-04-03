@@ -29,7 +29,7 @@ ErasingMode::~ErasingMode()
     
 }
 
-void ErasingMode::drawMode() const
+void ErasingMode::drawMode()
 {
     
 }

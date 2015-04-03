@@ -25,7 +25,7 @@ SphereCreatingMode::~SphereCreatingMode()
     
 }
 
-void SphereCreatingMode::drawMode() const
+void SphereCreatingMode::drawMode()
 {
     
 }

@@ -11,17 +11,21 @@
 SpeechProcessor::SpeechProcessor()
 : lastCommand(""), displayCommand(" - - - "), time(ofGetElapsedTimef())
 {
-    speechRecognizer.initRecognizer();
-    speechRecognizer.loadDictionaryFromFile("dictionary.txt");
-    
-    ofAddListener(speechRecognizer.speechRecognizedEvent, this, &SpeechProcessor::onSpeechRecognized);
-    
-    speechRecognizer.startListening();
 }
 
 SpeechProcessor::~SpeechProcessor()
 {
     speechRecognizer.stopListening();
+}
+
+void SpeechProcessor::setup(const vector<string> &commands)
+{
+    speechRecognizer.initRecognizer();
+    speechRecognizer.loadDictionary(commands);
+    
+    ofAddListener(speechRecognizer.speechRecognizedEvent, this, &SpeechProcessor::onSpeechRecognized);
+    
+    speechRecognizer.startListening();
 }
 
 std::string SpeechProcessor::getStatusMessage()

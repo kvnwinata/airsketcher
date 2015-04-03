@@ -9,6 +9,18 @@
 #include "CopyingMode.h"
 #include "Logger.h"
 
+std::vector<std::string> CopyingMode::getCommands()
+{
+    std::vector<std::string> commands;
+    
+    commands.push_back("computer copy this");
+    commands.push_back("computer place");
+    commands.push_back("computer cancel");
+    
+    return commands;
+}
+
+
 CopyingMode::CopyingMode() : AirControlMode()
 {
     

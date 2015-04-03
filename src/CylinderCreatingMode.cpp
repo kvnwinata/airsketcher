@@ -9,6 +9,12 @@
 #include "CylinderCreatingMode.h"
 #include "Logger.h"
 
+std::vector<std::string> CylinderCreatingMode::getCommands()
+{
+    std::vector<std::string> commands;
+    return commands;
+}
+
 CylinderCreatingMode::CylinderCreatingMode() : AirControlMode()
 {
     

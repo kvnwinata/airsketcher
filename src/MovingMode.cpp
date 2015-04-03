@@ -10,6 +10,17 @@
 #include "MovingMode.h"
 #include "Logger.h"
 
+std::vector<std::string> MovingMode::getCommands()
+{
+    std::vector<std::string> commands;
+    
+    commands.push_back("computer move this");
+    commands.push_back("computer place");
+    commands.push_back("computer cancel");
+    
+    return commands;
+}
+
 MovingMode::MovingMode() : AirControlMode()
 {
     

@@ -86,3 +86,26 @@ std::string AirController::getStatusMessage()
     
     return msg.str();
 }
+
+std::vector<std::string> AirController::getCommands()
+{
+    std::set<std::string> commandSet; // use set to remove duplicates
+    
+    for (AirControlMode* mode : modes)
+    {
+        std::vector<std::string> modeCommands = mode->getCommands();
+        for (std::string command : modeCommands)
+        {
+            commandSet.insert(command);
+        }
+    }
+    
+    // convert set back to vectors:
+    std::vector<std::string> commands;
+    for (std::string command : commandSet)
+    {
+        commands.push_back(command);
+    }
+    
+    return commands;
+}

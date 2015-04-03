@@ -22,6 +22,8 @@ public:
     void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() const override;
     
+    std::vector<std::string> getCommands();
+
     std::string getStatusMessage() override;
     
 private:

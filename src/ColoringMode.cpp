@@ -9,6 +9,23 @@
 #include "ColoringMode.h"
 #include "Logger.h"
 
+
+std::vector<std::string> ColoringMode::getCommands()
+{
+    std::vector<std::string> commands;
+    
+    commands.push_back("computer color this red");
+    commands.push_back("computer color this blue");
+    commands.push_back("computer color this green");
+    commands.push_back("computer color this yellow");
+    commands.push_back("computer color this orange");
+    commands.push_back("computer color this purple");
+    commands.push_back("computer color this white");
+    commands.push_back("computer color this black");
+    
+    return commands;
+}
+
 ColoringMode::ColoringMode() : AirControlMode()
 {
     

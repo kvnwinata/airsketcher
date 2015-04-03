@@ -9,6 +9,16 @@
 #include "ErasingMode.h"
 #include "Logger.h"
 
+std::vector<std::string> ErasingMode::getCommands()
+{
+    std::vector<std::string> commands;
+    
+    commands.push_back("computer erase this");
+    
+    return commands;
+}
+
+
 ErasingMode::ErasingMode() : AirControlMode()
 {
     

@@ -18,6 +18,8 @@ public:
     SpeechProcessor();
     ~SpeechProcessor();
     
+    void setup(const vector<string> &commands);
+    
     std::string getLastCommand();
     std::string getStatusMessage();
     

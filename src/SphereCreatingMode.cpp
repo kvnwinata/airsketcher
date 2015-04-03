@@ -9,6 +9,12 @@
 #include "SphereCreatingMode.h"
 #include "Logger.h"
 
+std::vector<std::string> SphereCreatingMode::getCommands()
+{
+    std::vector<std::string> commands;
+    return commands;
+}
+
 SphereCreatingMode::SphereCreatingMode() : AirControlMode()
 {
     

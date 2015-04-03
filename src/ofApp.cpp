@@ -12,6 +12,9 @@ void ofApp::setup(){
     sphere->setup(ofPoint(0,0,400), 100, ofColor(128,64,64));
     objectManager.addObject(sphere);
     
+    // add words to dictionary
+    speechProcessor.setup(controller.getCommands());
+    
     // OF setup
     cam.setupPerspective();
     cam.setPosition(0, 700, 400);

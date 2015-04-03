@@ -33,6 +33,11 @@ public:
     void updateHighlight(ofPoint location);
     AirObject* getHighlightedObject();
     
+    // Force switching the highlight to passed object.
+    // Will only switch if object is inside hand (return TRUE)
+    // otherwise, do nothing and return FALSE
+    bool switchHighlightedObject(AirObject* objectToHighlight, ofPoint location);
+    
     void drawObjects();
     
     std::string getStatusMessage();

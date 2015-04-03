@@ -72,6 +72,22 @@ void AirObjectManager::updateHighlight(ofPoint location)
     }
 }
 
+bool AirObjectManager::switchHighlightedObject(AirObject* objectToHighlight, ofPoint location)
+{
+    if (objectToHighlight == NULL) return false;
+    
+    if (objectToHighlight->isInside(location))
+    {
+        highlightedObject = objectToHighlight;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
 AirObject * AirObjectManager::getHighlightedObject()
 {
     return highlightedObject;

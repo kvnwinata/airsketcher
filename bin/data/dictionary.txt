@@ -1,6 +1,8 @@
 computer move this
+computer copy this
 computer place
 computer cancel
+computer erase this
 computer color this red
 computer color this blue
 computer color this green

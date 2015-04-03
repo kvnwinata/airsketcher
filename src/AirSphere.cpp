@@ -19,9 +19,9 @@ AirSphere::~AirSphere()
     
 }
 
-bool AirSphere::isInside(ofPoint location) const
+bool AirSphere::isInsideNormalized(ofPoint location) const
 {
-    return (location-position).lengthSquared() < (radius * radius);
+    return (location).lengthSquared() < (radius * radius);
 }
 
 void AirSphere::setup(ofPoint centerPosition, float r, ofColor c)
@@ -31,27 +31,20 @@ void AirSphere::setup(ofPoint centerPosition, float r, ofColor c)
     color = c;
 }
 
-void AirSphere::draw() const
+void AirSphere::drawNormalized() const
 {
     ofSetColor(color);
-    ofDrawSphere(position, radius);
-    
+    ofDrawSphere(ofPoint(0,0,0), radius);
     ofSetColor(255, 255, 255);
 }
 
-void AirSphere::drawHighlight() const
+void AirSphere::drawHighlightNormalized() const
 {
     ofSetColor(color);
     ofNoFill();
-    
-    ofPushMatrix();
-    ofTranslate(position);
     ofRotate(90, 1, 0, 0);
     ofDrawSphere(0,0,0, radius);
-    ofPopMatrix();
-    
     ofSetColor(255,255,255);
-    
     ofFill();
 }
 

@@ -16,10 +16,11 @@ class AirObject
 {
 public:
     
-    AirObject(){id = assignId();};
+    AirObject();
     virtual ~AirObject(){};
     
-    virtual bool isInside(ofPoint location) const = 0; // true if location is inside object
+    bool isInside(ofPoint location) const;
+    virtual bool isInsideNormalized(ofPoint location) const = 0; // true if location is inside object
     
     virtual void setPosition(ofPoint pos){position = pos;};
     virtual ofPoint getPosition() const {return position;};
@@ -27,8 +28,12 @@ public:
     virtual void setColor(ofColor col){color = col;};
     virtual ofColor getColor() const {return color;};
     
-    virtual void draw()             const = 0; // draw object, center at (0,0,0)
-    virtual void drawHighlight()    const = 0; // draw highlight (e.g. bounding box), centered at (0,0,0)
+    void draw()             const; // draw object
+    void drawHighlight()    const; // draw highlight (e.g. bounding box)
+    
+    // center at (0,0,0), normalized w.r.t rotation and translation
+    virtual void drawNormalized()             const = 0; // draw object
+    virtual void drawHighlightNormalized()    const = 0; // draw highlight (e.g. bounding box)
     
     virtual AirObject* getCopy() const = 0; // return copy of this object; transfer ownership to the caller
     
@@ -38,7 +43,7 @@ protected:
     
     ofQuaternion    orientation;
     ofPoint         position;
-    
+    float           scale;
     ofColor         color;
     int             id;
     

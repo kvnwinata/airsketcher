@@ -10,3 +10,66 @@
 #include "AirObject.h"
 
 int AirObject::nextAvalaibleId = 0;
+
+AirObject::AirObject()
+: position(0.f, 0.f, 0.f)
+, scale(1.f)
+, orientation(0.f, 0.f, 0.f, 1.f)
+{
+    id = assignId();
+};
+
+
+bool AirObject::isInside(ofPoint location) const
+{
+    ofPoint normalizedLocation;
+    
+    normalizedLocation = location - position; // translation
+    
+    return isInsideNormalized(normalizedLocation);
+}
+
+
+void AirObject::draw() const
+{
+    ofPushMatrix();
+    
+    // apply translation
+    ofTranslate(position);
+    
+    // apply rotation
+    float rotationAngle;
+    ofVec3f rotationAxis;
+    orientation.getRotate(rotationAngle, rotationAxis);
+    ofRotate(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+    
+    // apply scaling
+    ofScale(scale, scale, scale);
+    
+    // draw
+    drawNormalized();
+    
+    ofPopMatrix();
+}
+
+void AirObject::drawHighlight() const
+{
+    ofPushMatrix();
+    
+    // apply translation
+    ofTranslate(position);
+    
+    // apply rotation
+    float rotationAngle;
+    ofVec3f rotationAxis;
+    orientation.getRotate(rotationAngle, rotationAxis);
+    ofRotate(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+    
+    // apply scaling
+    ofScale(scale, scale, scale);
+    
+    // draw
+    drawHighlightNormalized();
+    
+    ofPopMatrix();
+}

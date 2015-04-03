@@ -12,6 +12,11 @@ void ofApp::setup(){
     sphere->setup(ofPoint(0,0,400), 100, ofColor(128,64,64));
     objectManager.addObject(sphere);
     
+    AirBox * box = new AirBox();
+    box->setup(ofPoint (-200, 0, 400), ofVec3f(100, 200, 300), ofColor(50,50,255));
+    objectManager.addObject(box);
+               
+               
     // add words to dictionary
     speechProcessor.setup(controller.getCommands());
     

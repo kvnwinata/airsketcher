@@ -1,26 +1,26 @@
 //
-//  AirSphere.h
+//  AirBox.h
 //  airsketcher
 //
-//  Created by Kevin Wong on 3/19/15.
+//  Created by Kevin Wong on 4/3/15.
 //
 //
 
-#ifndef __airsketcher__AirSphere__
-#define __airsketcher__AirSphere__
+#ifndef __airsketcher__AirBox__
+#define __airsketcher__AirBox__
 
 #include "AirObject.h"
 
-class AirSphere : public AirObject
+class AirBox : public AirObject
 {
 public:
     
-    AirSphere();
-    ~AirSphere();
+    AirBox();
+    ~AirBox();
     
     bool isInsideNormalized(ofPoint location) const override;
     
-    void setup(ofPoint centerPosition, float radius, ofColor color);
+    void setup(ofPoint centerPosition, ofVec3f sizeXYZ, ofColor color);
     
     void drawNormalized()             const override;
     void drawHighlightNormalized()    const override;
@@ -31,7 +31,7 @@ public:
     
 private:
     
-    float   radius;
+    ofVec3f   size;
 };
 
-#endif /* defined(__airsketcher__AirSphere__) */
+#endif /* defined(__airsketcher__AirBox__) */

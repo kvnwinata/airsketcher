@@ -126,7 +126,6 @@
 		CB84050F1ABFB46500EB202C /* MovingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingMode.cpp; sourceTree = "<group>"; };
 		CB8405101ABFB46500EB202C /* MovingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingMode.h; sourceTree = "<group>"; };
 		CBD709811AC0A54800EF0DC2 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		CBD709821AC0A54800EF0DC2 /* dictionary.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
 		CBD709831AC0A54800EF0DC2 /* leap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leap.png; sourceTree = "<group>"; };
 		CBD709841AC0B48900EF0DC2 /* ColoringMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoringMode.h; sourceTree = "<group>"; };
 		CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColoringMode.cpp; sourceTree = "<group>"; };
@@ -350,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				CBD709811AC0A54800EF0DC2 /* .gitkeep */,
-				CBD709821AC0A54800EF0DC2 /* dictionary.txt */,
 				CBD709831AC0A54800EF0DC2 /* leap.png */,
 			);
 			name = data;

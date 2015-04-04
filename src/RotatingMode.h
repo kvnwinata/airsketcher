@@ -1,22 +1,22 @@
 //
-//  ResizingMode.h
+//  RotatingMode.h
 //  airsketcher
 //
 //  Created by Kevin Wong on 4/3/15.
 //
 //
 
-#ifndef __airsketcher__ResizingMode__
-#define __airsketcher__ResizingMode__
+#ifndef __airsketcher__RotatingMode__
+#define __airsketcher__RotatingMode__
 
 #include "AirControlMode.h"
 
-class ResizingMode : public AirControlMode
+class RotatingMode : public AirControlMode
 {
 public:
     
-    ResizingMode();
-    ~ResizingMode();
+    RotatingMode();
+    ~RotatingMode();
     
     bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
@@ -28,14 +28,12 @@ public:
     
 private:
     
-    AirObject * resizingObject;
-
-    ofPoint originalCenterOfResizing;
-    ofPoint originalPosition;
-    ofPoint relativePosition;
-        
-    float originalScale;
-    float originalDistance;
+    AirObject * rotatingObject;
+    
+    ofVec3f      currentVector;
+    ofVec3f      originalVector;
+    ofQuaternion originalOrientation;
 };
 
-#endif /* defined(__airsketcher__ResizingMode__) */
+
+#endif /* defined(__airsketcher__RotatingMode__) */

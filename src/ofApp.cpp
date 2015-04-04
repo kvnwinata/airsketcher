@@ -33,11 +33,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
     handProcessor.update();
     controller.update(handProcessor, speechProcessor, objectManager);
-    
-    Logger::getInstance()->log(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
@@ -75,6 +72,7 @@ void ofApp::draw(){
     ofDrawBitmapString(handProcessor.getStatusMessage(), 10, 20);
     ofDrawBitmapString(speechProcessor.getStatusMessage(), 10, 35);
     ofDrawBitmapString(controller.getStatusMessage(), 10, 50);
+    ofDrawBitmapString("FPS: " + ofToString(round(ofGetFrameRate() * 10) / 10), ofGetWidth() - 90, 20);
     
     ofTranslate(10,ofGetWindowHeight()/2);
     Logger::getInstance()->print();

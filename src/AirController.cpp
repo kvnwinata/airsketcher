@@ -16,6 +16,7 @@
 #include "MovingMode.h"
 #include "SphereCreatingMode.h"
 #include "ResizingMode.h"
+#include "RotatingMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -26,6 +27,7 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new MovingMode());
     modes.push_back(new SphereCreatingMode());
     modes.push_back(new ResizingMode());
+    modes.push_back(new RotatingMode());
 }
 
 AirController::~AirController()

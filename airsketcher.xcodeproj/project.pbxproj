@@ -18,7 +18,7 @@
 		CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */; };
 		CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2F1ACF2B92004FF7D6 /* AirCylinder.cpp */; };
 		CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D321ACF2BA2004FF7D6 /* AirLine.cpp */; };
-		CB2F0D391ACF3E3A004FF7D6 /* ScalingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D371ACF3E3A004FF7D6 /* ScalingMode.cpp */; };
+		CB2F0D391ACF3E3A004FF7D6 /* ResizingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D371ACF3E3A004FF7D6 /* ResizingMode.cpp */; };
 		CB3F6E291ABB88F500811BCF /* AirSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB3F6E271ABB88F500811BCF /* AirSphere.cpp */; };
 		CB3F6E2C1ABB8A4E00811BCF /* AirObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB3F6E2A1ABB8A4E00811BCF /* AirObject.cpp */; };
 		CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB6071421ABCA3F5001E03EF /* AirObjectManager.cpp */; };
@@ -106,8 +106,8 @@
 		CB2F0D301ACF2B92004FF7D6 /* AirCylinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCylinder.h; sourceTree = "<group>"; };
 		CB2F0D321ACF2BA2004FF7D6 /* AirLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirLine.cpp; sourceTree = "<group>"; };
 		CB2F0D331ACF2BA2004FF7D6 /* AirLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirLine.h; sourceTree = "<group>"; };
-		CB2F0D371ACF3E3A004FF7D6 /* ScalingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScalingMode.cpp; sourceTree = "<group>"; };
-		CB2F0D381ACF3E3A004FF7D6 /* ScalingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScalingMode.h; sourceTree = "<group>"; };
+		CB2F0D371ACF3E3A004FF7D6 /* ResizingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResizingMode.cpp; sourceTree = "<group>"; };
+		CB2F0D381ACF3E3A004FF7D6 /* ResizingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizingMode.h; sourceTree = "<group>"; };
 		CB3F6E271ABB88F500811BCF /* AirSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirSphere.cpp; sourceTree = "<group>"; };
 		CB3F6E281ABB88F500811BCF /* AirSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirSphere.h; sourceTree = "<group>"; };
 		CB3F6E2A1ABB8A4E00811BCF /* AirObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirObject.cpp; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 				0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */,
 				0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */,
 				0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */,
-				CB2F0D371ACF3E3A004FF7D6 /* ScalingMode.cpp */,
-				CB2F0D381ACF3E3A004FF7D6 /* ScalingMode.h */,
+				CB2F0D371ACF3E3A004FF7D6 /* ResizingMode.cpp */,
+				CB2F0D381ACF3E3A004FF7D6 /* ResizingMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -546,7 +546,7 @@
 				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
-				CB2F0D391ACF3E3A004FF7D6 /* ScalingMode.cpp in Sources */,
+				CB2F0D391ACF3E3A004FF7D6 /* ResizingMode.cpp in Sources */,
 				CB60714D1ABCA83E001E03EF /* SpeechProcessor.cpp in Sources */,
 				0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */,
 				CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */,

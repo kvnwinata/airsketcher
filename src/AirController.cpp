@@ -15,7 +15,7 @@
 #include "ErasingMode.h"
 #include "MovingMode.h"
 #include "SphereCreatingMode.h"
-#include "ScalingMode.h"
+#include "ResizingMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -25,7 +25,7 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new ErasingMode());
     modes.push_back(new MovingMode());
     modes.push_back(new SphereCreatingMode());
-    modes.push_back(new ScalingMode());
+    modes.push_back(new ResizingMode());
 }
 
 AirController::~AirController()

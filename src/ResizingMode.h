@@ -1,22 +1,22 @@
 //
-//  ScalingMode.h
+//  ResizingMode.h
 //  airsketcher
 //
 //  Created by Kevin Wong on 4/3/15.
 //
 //
 
-#ifndef __airsketcher__ScalingMode__
-#define __airsketcher__ScalingMode__
+#ifndef __airsketcher__ResizingMode__
+#define __airsketcher__ResizingMode__
 
 #include "AirControlMode.h"
 
-class ScalingMode : public AirControlMode
+class ResizingMode : public AirControlMode
 {
 public:
     
-    ScalingMode();
-    ~ScalingMode();
+    ResizingMode();
+    ~ResizingMode();
     
     bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
@@ -28,16 +28,17 @@ public:
     
 private:
     
-    AirObject * scalingObject;
+    AirObject * resizingObject;
     
     
-    ofPoint originalCenterOfScaling;
+    ofPoint originalCenterOfResizing;
     ofPoint originalPosition;
     ofPoint relativePosition;
         
     float originalScale;
+    float originalDistance;
     
-    const float scalingParameter = 50.f;
+    const float resizingParameter = 50.f;
 };
 
-#endif /* defined(__airsketcher__ScalingMode__) */
+#endif /* defined(__airsketcher__ResizingMode__) */

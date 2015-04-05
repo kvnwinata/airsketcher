@@ -44,8 +44,19 @@ public:
     bool getIsActive() const;
     void setInactive();
     
+    float getPinchStrength()    const; // returns 0 if inactive
+    float getGrabStrength()     const; // returns 0 if inactive
+    
+    bool getIsPinching() const;
+    
 private:
     bool isActive;
+    
+    static const int smoothing = 5;
+    std::deque<bool> pinchHistory;
+    bool isPinching; // will be smoothed
+    void updateIsPinching();
+    
     
     float pinchStrength;
     float grabStrength;

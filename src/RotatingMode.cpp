@@ -110,7 +110,7 @@ void RotatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
         
         if (hand->getIsActive())
         {
-            // update scaling params
+            // update rotating params
             currentVector = handProcessor.getHandAtIndex(0)->getTipLocation() - rotatingObject->getPosition();
             
             float rotationAngle;

@@ -17,6 +17,10 @@ LeapHand::LeapHand():isActive(false)
         joints.push_back(origin);
     }
     
+    for (int i = 0; i < smoothing; i++)
+    {
+        pinchHistory.push_back(false);
+    }
 };
 
 void LeapHand::updateHand(const Leap::Hand &handObject)
@@ -37,10 +41,40 @@ void LeapHand::updateHand(const Leap::Hand &handObject)
         joints[j*4+3] = positionToOfPoint(finger.jointPosition(finger.JOINT_TIP));
     }
     
+    // updatePinching
+    updateIsPinching();
 };
 
-void LeapHand::setInactive() {isActive = false;};
+void LeapHand::updateIsPinching()
+{
+    // check current value:
+    bool shouldPinch = (pinchStrength + grabStrength) > 0.8;
+    
+    // update history
+    pinchHistory.pop_front();
+    pinchHistory.push_back(shouldPinch);
+    
+    // see if is pinching
+    int count = 0;
+    for (bool history : pinchHistory)
+    {
+        count += history ? 1 : 0;
+    }
+    
+    isPinching = count > smoothing/2;
+}
+
+void LeapHand::setInactive()
+{
+    isActive = false;
+    isPinching = false;
+}
 bool LeapHand::getIsActive() const {return isActive;}
+
+float LeapHand::getPinchStrength() const {return isActive ? pinchStrength : 0.f; }
+float LeapHand::getGrabStrength() const {return isActive ? grabStrength : 0.f; }
+
+bool LeapHand::getIsPinching() const {return isPinching;}
 
 ofPoint LeapHand::getTipLocation()
 {
@@ -59,7 +93,7 @@ void LeapHand::draw()
     
     ofPoint tip = joints[INDEX_TIP];
     
-    if (pinchStrength > 0.7)
+    if (isPinching)
     {
         ofSetColor(255,0,255);
     }
@@ -72,7 +106,6 @@ void LeapHand::draw()
     
     ofSetColor(50, 50, 50);
     ofLine(tip, ofPoint(tip.x, tip.y, 0));
-    
 };
 
 ofPoint LeapHand::positionToOfPoint(const Leap::Vector &vector)

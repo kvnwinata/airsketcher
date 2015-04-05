@@ -101,3 +101,9 @@ std::string AirObjectManager::getStatusMessage()
     
     return msg.str();
 }
+
+void AirObjectManager::getObjectsIterator(std::vector<AirObject*>::iterator &begin, std::vector<AirObject*>::iterator &end)
+{
+    begin = objects.begin();
+    end = objects.end();
+}

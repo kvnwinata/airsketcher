@@ -44,6 +44,8 @@ public:
     
     std::string getStatusMessage();
     
+    // use this to iterate over all object
+    void getObjectsIterator(std::vector<AirObject*>::iterator &begin, std::vector<AirObject*>::iterator &end);
     
 private:
     

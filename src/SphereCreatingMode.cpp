@@ -11,9 +11,6 @@
 #include "AirSphere.h"
 #include "Logger.h"
 
-#define DISTANCE_SQUARED_THRESHOLD  15
-
-
 std::vector<std::string> SphereCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
@@ -23,7 +20,7 @@ std::vector<std::string> SphereCreatingMode::getCommands()
 
 SphereCreatingMode::SphereCreatingMode()
     : AirControlMode()
-    , drawCircleCompleted(false)
+    , drawCircleMode(NONE)
 {
     
 }
@@ -64,25 +61,31 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
         
     if (hand->getIsActive())
     {
-        if (!drawCircleCompleted)
+        if (hand->getIsPinching())
         {
-            traces.push_back(hand->getTipLocation());
-            /*float distanceSq = (traces.front()-traces.back()).lengthSquared();
-            if (distanceSq < DISTANCE_SQUARED_THRESHOLD)
-            {
-                // The last trace is near to the starting point of the circle
-                drawCircleCompleted = true;
-                hasCompleted = true;
-            }*/
+            switch (drawCircleMode) {
+            case DRAW:
+                traces.push_back(hand->getTipLocation());
+                break;
+            case NONE:
+                drawCircleMode = DRAW;
+                break;
+            default:
+                break;
+            }
+        }
+        else if (drawCircleMode == DRAW)
+        {
+            drawCircleMode = DONE;
+            hasCompleted = true;
         }
     }
     else
     {
         // hand is lost
-        drawCircleCompleted = true;
         hasCompleted = true;
     }
-    if (drawCircleCompleted) {
+    if (drawCircleMode == DONE) {
         if (!createSphere(objectManager))
         {
             std::stringstream msg;
@@ -90,7 +93,7 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
             msg << traces.size();
             Logger::getInstance()->temporaryLog(msg.str());
         }
-        drawCircleCompleted = false;
+        drawCircleMode = NONE;
         traces.clear();
     }
 }

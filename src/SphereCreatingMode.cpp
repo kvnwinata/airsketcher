@@ -40,7 +40,8 @@ void SphereCreatingMode::drawMode()
     {
         const ofPoint& p1 = *it;
         it++;
-        if (it != traces.end()) {
+        if (it != traces.end())
+        {
             const ofPoint& p2 = *it;
             ofLine(p1, p2);
         }
@@ -66,24 +67,25 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
         if (!drawCircleCompleted)
         {
             traces.push_back(hand->getTipLocation());
-            float distanceSq = (traces.front()-traces.back()).lengthSquared();
+            /*float distanceSq = (traces.front()-traces.back()).lengthSquared();
             if (distanceSq < DISTANCE_SQUARED_THRESHOLD)
             {
                 // The last trace is near to the starting point of the circle
                 drawCircleCompleted = true;
                 hasCompleted = true;
-            }
+            }*/
         }
     }
     else
     {
         // hand is lost
+        drawCircleCompleted = true;
         hasCompleted = true;
     }
     if (drawCircleCompleted) {
         if (!createSphere(objectManager))
         {
-            Logger::getInstance()->temporaryLog("FAILED to create new SPHERE");
+            Logger::getInstance()->temporaryLog("FAILED to create new SPHERE; trace size " + traces.size() + "");
         }
         drawCircleCompleted = false;
         traces.clear();

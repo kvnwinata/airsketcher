@@ -34,8 +34,8 @@ void AirObjectManager::deleteObject(AirObject* object)
 {
     for (auto it = objects.begin(); it != objects.end(); ++it)
     {
-        if((*it) == object) {
-            
+        if((*it) == object)
+        {
             if (highlightedObject == object)
             {
                 highlightedObject = NULL;

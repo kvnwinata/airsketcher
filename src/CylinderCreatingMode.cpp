@@ -31,9 +31,7 @@ CylinderCreatingMode::CylinderCreatingMode()
 
 CylinderCreatingMode::~CylinderCreatingMode()
 {
-    for (const ofPoint& point : circleTraces) {
-        
-    }
+    
 }
 
 void CylinderCreatingMode::drawMode()

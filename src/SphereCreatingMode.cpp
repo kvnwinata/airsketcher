@@ -11,7 +11,7 @@
 #include "AirSphere.h"
 #include "Logger.h"
 
-#define DISTANCE_SQUARED_THRESHOLD  5
+#define DISTANCE_SQUARED_THRESHOLD  15
 
 
 std::vector<std::string> SphereCreatingMode::getCommands()
@@ -36,8 +36,14 @@ SphereCreatingMode::~SphereCreatingMode()
 void SphereCreatingMode::drawMode()
 {
     //TODO: draw the traces
-    for (const ofPoint& point : traces) {
-        
+    for (auto it = traces.begin(); it != traces.end(); )
+    {
+        const ofPoint& p1 = *it;
+        it++;
+        if (it != traces.end()) {
+            const ofPoint& p2 = *it;
+            ofLine(p1, p2);
+        }
     }
 }
 

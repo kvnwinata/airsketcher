@@ -85,7 +85,10 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
     if (drawCircleCompleted) {
         if (!createSphere(objectManager))
         {
-            Logger::getInstance()->temporaryLog("FAILED to create new SPHERE; trace size " + traces.size() + "");
+            std::stringstream msg;
+            msg << "FAILED to create new SPHERE; trace size ";
+            msg << traces.size();
+            Logger::getInstance()->temporaryLog(msg.str());
         }
         drawCircleCompleted = false;
         traces.clear();

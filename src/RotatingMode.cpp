@@ -51,6 +51,14 @@ void RotatingMode::drawMode()
     rotatingObject->getOrientation().getRotate(rotationAngle, rotationAxis);
     
     ofRotate(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+    
+    // coordinate axis
+    ofSetLineWidth(5.f);
+    ofSetColor(255, 0, 0); ofLine(ofPoint(0,0,0), ofPoint(200,0,0));
+    ofSetColor(0, 255, 0); ofLine(ofPoint(0,0,0), ofPoint(0,200,0));
+    ofSetColor(0, 0, 255); ofLine(ofPoint(0,0,0), ofPoint(0,0,200));
+    ofSetLineWidth(1.f);
+    
     float radius = currentVector.length();
     ofSetColor(255,255,0);
     ofCircle(0,0, radius);

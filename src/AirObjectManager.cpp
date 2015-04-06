@@ -18,7 +18,8 @@ AirObjectManager::AirObjectManager()
 
 AirObjectManager::~AirObjectManager()
 {
-    for (AirObject* object : objects) {
+    for (AirObject* object : objects)
+    {
         delete object;
     }
     objects.clear();
@@ -31,7 +32,8 @@ void AirObjectManager::addObject(AirObject* object)
 
 void AirObjectManager::deleteObject(AirObject* object)
 {
-    for (auto it = objects.begin(); it != objects.end(); ++it) {
+    for (auto it = objects.begin(); it != objects.end(); ++it)
+    {
         if((*it) == object) {
             
             if (highlightedObject == object)

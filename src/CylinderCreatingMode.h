@@ -9,6 +9,8 @@
 #ifndef __airsketcher__CylinderCreatingMode__
 #define __airsketcher__CylinderCreatingMode__
 
+#include <math.h>
+
 #include "AirControlMode.h"
 
 class CylinderCreatingMode : public AirControlMode
@@ -27,10 +29,39 @@ public:
     
 private:
     
-    AirObject * movingObject;
+    bool drawBaseCircleCompleted;
+    bool drawCylinderCompleted;
+    bool createCylinder(AirObjectManager &objectManager);
     
-    ofPoint relativePosition;
-    ofPoint originalPosition;
+    std::vector<ofPoint> circleTraces;
+    std::vector<ofPoint> heightTraces;
+    
+    inline ofPoint computeBaseCircleTraceCentroid()
+    {
+        ofPoint centroid(0.0, 0.0, 0.0);
+        for (const ofPoint& point : circleTraces) {
+            centroid += point;
+        }
+        centroid /= circleTraces.size();
+        return centroid;
+    }
+    
+    inline float computeBaseCircleTraceRadius(const ofPoint& centroid)
+    {
+        float radius = 0.0;
+        for (const ofPoint& point : circleTraces) {
+            float distance = sqrt((circleTraces.front()-circleTraces.back()).lengthSquared());
+            radius += distance;
+        }
+        radius /= circleTraces.size();
+        return radius;
+    }
+    
+    inline float computeCylinderHeight()
+    {
+        float height = sqrt((heightTraces.front()-heightTraces.back()).lengthSquared());
+        return height;
+    }
 };
 
 #endif /* defined(__airsketcher__CylinderCreatingMode__) */

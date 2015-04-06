@@ -47,7 +47,15 @@ bool CopyingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
         {
             copiedObject = highlightedObject;
             objectCopy = highlightedObject->getCopy();
-            
+            if (NULL == objectCopy)
+            {
+                Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
+                hasCompleted = true;
+                return false;
+            }
+            objectManager.addObject(objectCopy);
+            objectManager.switchHighlightedObject(objectCopy, objectCopy->getPosition());
+
             hasCompleted = false;
             return true;
         }
@@ -90,8 +98,8 @@ void CopyingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPr
         }
     }
     if (hasCompleted) {
-        if (!isCancelled) {
-            objectManager.addObject(objectCopy);
+        if (isCancelled) {
+            objectManager.deleteObject(objectCopy);
         }
         copiedObject = NULL;
         objectCopy = NULL;
@@ -100,7 +108,8 @@ void CopyingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPr
 
 std::string CopyingMode::getStatusMessage()
 {
-    if (NULL != copiedObject) {
+    if ((NULL != copiedObject) && (objectCopy != NULL))
+    {
         std::stringstream msg;
         msg << "COPYING ";
         msg << copiedObject->getDescription();

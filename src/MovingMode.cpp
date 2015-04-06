@@ -88,14 +88,16 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
             hasCompleted = true;
         }
     }
-    if (hasCompleted) {
+    if (hasCompleted)
+    {
         movingObject = NULL;
     }
 }
 
 std::string MovingMode::getStatusMessage()
 {
-    if (NULL != movingObject) {
+    if (NULL != movingObject)
+    {
         std::stringstream msg;
         msg << "MOVING ";
         msg << movingObject->getDescription();

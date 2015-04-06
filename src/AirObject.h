@@ -62,7 +62,8 @@ protected:
 private:
     static int nextAvalaibleId;
     
-    int assignId() {
+    inline int assignId()
+    {
         int id = nextAvalaibleId;
         nextAvalaibleId++;
         return id;

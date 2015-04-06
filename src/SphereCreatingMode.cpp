@@ -32,15 +32,17 @@ SphereCreatingMode::~SphereCreatingMode()
 
 void SphereCreatingMode::drawMode()
 {
-    //TODO: draw the traces
-    for (auto it = traces.begin(); it != traces.end(); )
+    if (drawCircleMode == DRAW)
     {
-        const ofPoint& p1 = *it;
-        it++;
-        if (it != traces.end())
+        for (auto it = traces.begin(); it != traces.end(); )
         {
-            const ofPoint& p2 = *it;
-            ofLine(p1, p2);
+            const ofPoint& p1 = *it;
+            it++;
+            if (it != traces.end())
+            {
+                const ofPoint& p2 = *it;
+                ofLine(p1, p2);
+            }
         }
     }
 }
@@ -64,14 +66,14 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
         if (hand->getIsPinching())
         {
             switch (drawCircleMode) {
-            case DRAW:
-                traces.push_back(hand->getTipLocation());
-                break;
-            case NONE:
-                drawCircleMode = DRAW;
-                break;
-            default:
-                break;
+                case DRAW:
+                    traces.push_back(hand->getTipLocation());
+                    break;
+                case NONE:
+                    drawCircleMode = DRAW;
+                    break;
+                default:
+                    break;
             }
         }
         else if (drawCircleMode == DRAW)
@@ -85,6 +87,7 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
         // hand is lost
         hasCompleted = true;
     }
+    
     if (drawCircleMode == DONE) {
         if (!createSphere(objectManager))
         {
@@ -93,6 +96,9 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
             msg << traces.size();
             Logger::getInstance()->temporaryLog(msg.str());
         }
+    }
+    if (hasCompleted)
+    {
         drawCircleMode = NONE;
         traces.clear();
     }

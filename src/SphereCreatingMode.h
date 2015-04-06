@@ -29,9 +29,15 @@ public:
     
 private:
     
+    enum DRAWING_MODE {
+        DRAW = 0,
+        DONE,
+        NONE
+    };
+    
     std::vector<ofPoint> traces;
     
-    bool drawCircleCompleted;
+    DRAWING_MODE drawCircleMode;
     bool createSphere(AirObjectManager &objectManager);
     
     inline ofPoint computeTraceCentroid()

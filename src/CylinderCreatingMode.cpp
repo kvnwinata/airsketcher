@@ -23,8 +23,7 @@ std::vector<std::string> CylinderCreatingMode::getCommands()
 
 CylinderCreatingMode::CylinderCreatingMode()
     : AirControlMode()
-    , drawBaseCircleCompleted(false)
-    , drawCylinderCompleted(false)
+    , drawCylinderMode(NONE_CIRCLE)
 {
     
 }
@@ -36,7 +35,21 @@ CylinderCreatingMode::~CylinderCreatingMode()
 
 void CylinderCreatingMode::drawMode()
 {
-    
+    if ((drawCylinderMode != NONE_CIRCLE) && (drawCylinderMode != DONE)) {
+        for (auto it = circleTraces.begin(); it != circleTraces.end(); )
+        {
+            const ofPoint& p1 = *it;
+            it++;
+            if (it != circleTraces.end())
+            {
+                const ofPoint& p2 = *it;
+                ofLine(p1, p2);
+            }
+        }
+    }
+    if (drawCylinderMode == DRAW_HEIGHT) {
+        ofLine(startHeight, endHeight);
+    }
 }
 
 bool CylinderCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
@@ -55,22 +68,38 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
     
     if (hand->getIsActive())
     {
-        if (!drawBaseCircleCompleted)
+        if (hand->getIsPinching())
         {
-            circleTraces.push_back(hand->getTipLocation());
-            float distanceSq = (circleTraces.front()-circleTraces.back()).lengthSquared();
-            if (distanceSq < DISTANCE_SQUARED_THRESHOLD)
-            {
-                // The last trace is near to the starting point of the circle
-                drawBaseCircleCompleted = true;
+            switch (drawCylinderMode) {
+                case DRAW_CIRCLE:
+                    circleTraces.push_back(hand->getTipLocation());
+                    break;
+                case DRAW_HEIGHT:
+                    endHeight = hand->getTipLocation();
+                    break;
+                case NONE_CIRCLE:
+                    drawCylinderMode = DRAW_CIRCLE;
+                    break;
+                case NONE_HEIGHT:
+                    startHeight = hand->getTipLocation();
+                    drawCylinderMode = DRAW_HEIGHT;
+                    break;
+                default:
+                    break;
             }
         }
-        else // Draw the cyclider height
+        else if (drawCylinderMode == DRAW_CIRCLE)
         {
-            if (!drawCylinderCompleted)
-            {
-                //TODO
-                hasCompleted = true;
+            switch (drawCylinderMode) {
+                case DRAW_CIRCLE:
+                    drawCylinderMode = NONE_HEIGHT;
+                    break;
+                case DRAW_HEIGHT:
+                    drawCylinderMode = DONE;
+                    hasCompleted = true;
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -79,15 +108,19 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
         // hand is lost
         hasCompleted = true;
     }
-    if (drawCylinderCompleted) {
+    
+    if (drawCylinderMode == DONE) {
         if (!createCylinder(objectManager))
         {
             Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
         }
-        drawBaseCircleCompleted = false;
-        drawCylinderCompleted = false;
+    }
+    if (hasCompleted)
+    {
+        drawCylinderMode = NONE_CIRCLE;
         circleTraces.clear();
-        heightTraces.clear();
+        startHeight = ofPoint();
+        endHeight = ofPoint();
     }
 }
 
@@ -100,8 +133,14 @@ bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
     {
         //TODO: create cylinder
         //AirCylinder* cylinder = new AirCylinder();
-        //cylinder->setup(centroid, radius, ofColor::gray); // Default color: gray
+        //cylinder->setup(centroid, height, ofColor::gray); // Default color: gray
         //objectManager.addObject(cylinder);
+        std::stringstream msg;
+        msg << "Create CYLINDER with RADIUS ";
+        msg << radius;
+        msg << " and HEIGHT ";
+        msg << height;
+        Logger::getInstance()->temporaryLog(msg.str());
         return true;
     }
     return false;

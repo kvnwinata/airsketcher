@@ -29,12 +29,20 @@ public:
     
 private:
     
-    bool drawBaseCircleCompleted;
-    bool drawCylinderCompleted;
+    enum DRAWING_MODE {
+        NONE_CIRCLE = 0,
+        DRAW_CIRCLE,
+        NONE_HEIGHT,
+        DRAW_HEIGHT,
+        DONE
+    };
+    
+    DRAWING_MODE drawCylinderMode;
     bool createCylinder(AirObjectManager &objectManager);
     
     std::vector<ofPoint> circleTraces;
-    std::vector<ofPoint> heightTraces;
+    ofPoint startHeight;
+    ofPoint endHeight;
     
     inline ofPoint computeBaseCircleTraceCentroid()
     {
@@ -59,7 +67,7 @@ private:
     
     inline float computeCylinderHeight()
     {
-        float height = sqrt((heightTraces.front()-heightTraces.back()).lengthSquared());
+        float height = sqrt((endHeight-startHeight).lengthSquared());
         return height;
     }
 };

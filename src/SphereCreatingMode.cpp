@@ -15,6 +15,7 @@ std::vector<std::string> SphereCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
     commands.push_back("computer draw sphere");
+    commands.push_back("computer cancel");
     return commands;
 }
 
@@ -59,44 +60,53 @@ bool SphereCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::stri
 
 void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
-    LeapHand* hand = handProcessor.getHandAtIndex(0);
-        
-    if (hand->getIsActive())
+    std::string command = speechProcessor.getLastCommand();
+    if (command == "cancel")
     {
-        if (hand->getIsPinching())
+        hasCompleted = true;
+    } 
+    else 
+    {
+        LeapHand* hand = handProcessor.getHandAtIndex(0);
+        
+        if (hand->getIsActive())
         {
-            switch (drawCircleMode) {
-                case DRAW:
-                    traces.push_back(hand->getTipLocation());
-                    break;
-                case NONE:
-                    drawCircleMode = DRAW;
-                    break;
-                default:
-                    break;
+            if (hand->getIsPinching())
+            {
+                switch (drawCircleMode) {
+                    case DRAW:
+                        traces.push_back(hand->getTipLocation());
+                        break;
+                    case NONE:
+                        drawCircleMode = DRAW;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (drawCircleMode == DRAW)
+            {
+                drawCircleMode = DONE;
+                hasCompleted = true;
             }
         }
-        else if (drawCircleMode == DRAW)
+        else
         {
-            drawCircleMode = DONE;
+            // hand is lost
             hasCompleted = true;
         }
-    }
-    else
-    {
-        // hand is lost
-        hasCompleted = true;
-    }
-    
-    if (drawCircleMode == DONE) {
-        if (!createSphere(objectManager))
-        {
-            std::stringstream msg;
-            msg << "FAILED to create new SPHERE; trace size ";
-            msg << traces.size();
-            Logger::getInstance()->temporaryLog(msg.str());
+        
+        if (drawCircleMode == DONE) {
+            if (!createSphere(objectManager))
+            {
+                std::stringstream msg;
+                msg << "FAILED to create new SPHERE; trace size ";
+                msg << traces.size();
+                Logger::getInstance()->temporaryLog(msg.str());
+            }
         }
     }
+
     if (hasCompleted)
     {
         drawCircleMode = NONE;

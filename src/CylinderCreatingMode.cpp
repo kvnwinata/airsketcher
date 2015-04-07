@@ -18,6 +18,7 @@ std::vector<std::string> CylinderCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
     commands.push_back("computer draw cylinder");
+    commands.push_back("computer cancel");
     return commands;
 }
 
@@ -64,57 +65,66 @@ bool CylinderCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::st
 
 void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
-    LeapHand* hand = handProcessor.getHandAtIndex(0);
-    
-    if (hand->getIsActive())
+    std::string command = speechProcessor.getLastCommand();
+    if (command == "cancel")
     {
-        if (hand->getIsPinching())
-        {
-            switch (drawCylinderMode) {
-                case DRAW_CIRCLE:
-                    circleTraces.push_back(hand->getTipLocation());
-                    break;
-                case DRAW_HEIGHT:
-                    endHeight = hand->getTipLocation();
-                    break;
-                case NONE_CIRCLE:
-                    drawCylinderMode = DRAW_CIRCLE;
-                    break;
-                case NONE_HEIGHT:
-                    startHeight = hand->getTipLocation();
-                    drawCylinderMode = DRAW_HEIGHT;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if (drawCylinderMode == DRAW_CIRCLE)
-        {
-            switch (drawCylinderMode) {
-                case DRAW_CIRCLE:
-                    drawCylinderMode = NONE_HEIGHT;
-                    break;
-                case DRAW_HEIGHT:
-                    drawCylinderMode = DONE;
-                    hasCompleted = true;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-    else
-    {
-        // hand is lost
         hasCompleted = true;
-    }
-    
-    if (drawCylinderMode == DONE) {
-        if (!createCylinder(objectManager))
+    } 
+    else 
+    {
+        LeapHand* hand = handProcessor.getHandAtIndex(0);
+        
+        if (hand->getIsActive())
         {
-            Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
+            if (hand->getIsPinching())
+            {
+                switch (drawCylinderMode) {
+                    case DRAW_CIRCLE:
+                        circleTraces.push_back(hand->getTipLocation());
+                        break;
+                    case DRAW_HEIGHT:
+                        endHeight = hand->getTipLocation();
+                        break;
+                    case NONE_CIRCLE:
+                        drawCylinderMode = DRAW_CIRCLE;
+                        break;
+                    case NONE_HEIGHT:
+                        startHeight = hand->getTipLocation();
+                        drawCylinderMode = DRAW_HEIGHT;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (drawCylinderMode == DRAW_CIRCLE)
+            {
+                switch (drawCylinderMode) {
+                    case DRAW_CIRCLE:
+                        drawCylinderMode = NONE_HEIGHT;
+                        break;
+                    case DRAW_HEIGHT:
+                        drawCylinderMode = DONE;
+                        hasCompleted = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        else
+        {
+            // hand is lost
+            hasCompleted = true;
+        }
+        
+        if (drawCylinderMode == DONE) {
+            if (!createCylinder(objectManager))
+            {
+                Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
+            }
         }
     }
+
     if (hasCompleted)
     {
         drawCylinderMode = NONE_CIRCLE;

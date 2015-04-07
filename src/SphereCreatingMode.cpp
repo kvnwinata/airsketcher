@@ -129,5 +129,17 @@ bool SphereCreatingMode::createSphere(AirObjectManager &objectManager)
 
 std::string SphereCreatingMode::getStatusMessage()
 {
-    return "DRAWING SPHERE";
+    switch (drawCircleMode) {
+        case DRAW:
+        {
+            std::stringstream msg;
+            msg << "DRAWING SPHERE: current trace size ";
+            msg << traces.size();
+            return msg.str();
+        }
+        case DONE:
+            return "DRAWING SPHERE: DONE";
+        default:
+            return "DRAWING SPHERE: do nothing";
+    }
 }

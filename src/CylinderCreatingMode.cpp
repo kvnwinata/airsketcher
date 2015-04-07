@@ -96,7 +96,7 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
                         break;
                 }
             }
-            else if (drawCylinderMode == DRAW_CIRCLE)
+            else
             {
                 switch (drawCylinderMode) {
                     case DRAW_CIRCLE:
@@ -158,5 +158,21 @@ bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
 
 std::string CylinderCreatingMode::getStatusMessage()
 {
-    return "DRAWING CYLINDER";
+    switch (drawCylinderMode) {
+        case DRAW_CIRCLE:
+        {
+            std::stringstream msg;
+            msg << "DRAWING CYLINDER: current trace size ";
+            msg << circleTraces.size();
+            return msg.str();
+        }
+        case NONE_HEIGHT:
+            return "DRAWING CYLINDER: done drawing base circle";
+        case DRAW_HEIGHT:
+            return "DRAWING CYLINDER: drawing height";
+        case DONE:
+            return "DRAWING CYLINDER: DONE";
+        default:
+            return "DRAWING CYLINDER: do nothing";
+    }
 }

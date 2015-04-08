@@ -14,6 +14,7 @@ std::vector<std::string> ErasingMode::getCommands()
     std::vector<std::string> commands;
     
     commands.push_back("computer erase this");
+    commands.push_back("computer delete this");
     
     return commands;
 }
@@ -36,8 +37,7 @@ void ErasingMode::drawMode()
 
 bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
-    std::string commandString = lastCommand.substr(0,10);
-    if (commandString == "erase this")
+    if ((lastCommand == "erase this") || (lastCommand == "delete this"))
     {
         // try activate
         AirObject * highlightedObject = objectManager.getHighlightedObject();

@@ -11,7 +11,7 @@
 #include "AirCylinder.h"
 #include "Logger.h"
 
-#define DISTANCE_SQUARED_THRESHOLD  5
+#define DEFAULT_HEIGHT  5
 
 
 std::vector<std::string> CylinderCreatingMode::getCommands()
@@ -25,6 +25,7 @@ std::vector<std::string> CylinderCreatingMode::getCommands()
 CylinderCreatingMode::CylinderCreatingMode()
     : AirControlMode()
     , drawCylinderMode(NONE_CIRCLE)
+    , newCylinder(NULL)
 {
     
 }
@@ -36,7 +37,7 @@ CylinderCreatingMode::~CylinderCreatingMode()
 
 void CylinderCreatingMode::drawMode()
 {
-    if ((drawCylinderMode != NONE_CIRCLE) && (drawCylinderMode != DONE)) {
+    if (drawCylinderMode == DRAW_CIRCLE) {
         for (auto it = circleTraces.begin(); it != circleTraces.end(); )
         {
             const ofPoint& p1 = *it;
@@ -66,8 +67,11 @@ bool CylinderCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::st
 void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
+    bool isCancelled = false;
+    
     if (command == "cancel")
     {
+        isCancelled = true;
         hasCompleted = true;
     } 
     else 
@@ -83,8 +87,12 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
                         circleTraces.push_back(hand->getTipLocation());
                         break;
                     case DRAW_HEIGHT:
+                    {
                         endHeight = hand->getTipLocation();
+                        float height =  DEFAULT_HEIGHT + computeCylinderHeight();
+                        newCylinder->setHeight(height);
                         break;
+                    }
                     case NONE_CIRCLE:
                         drawCylinderMode = DRAW_CIRCLE;
                         break;
@@ -100,11 +108,15 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
             {
                 switch (drawCylinderMode) {
                     case DRAW_CIRCLE:
+                        if (!createCylinder(objectManager))
+                        {
+                            Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
+                            hasCompleted = true;
+                        }
                         drawCylinderMode = NONE_HEIGHT;
                         break;
                     case DRAW_HEIGHT:
                         drawCylinderMode = DONE;
-                        hasCompleted = true;
                         break;
                     default:
                         break;
@@ -118,15 +130,22 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
         }
         
         if (drawCylinderMode == DONE) {
-            if (!createCylinder(objectManager))
-            {
-                Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
-            }
+            std::stringstream msg;
+            msg << "Create CYLINDER (FINAL) with RADIUS ";
+            msg << newCylinder->getRadius();
+            msg << " and HEIGHT ";
+            msg << newCylinder->getHeight();
+            Logger::getInstance()->temporaryLog(msg.str());
+            hasCompleted = true;
         }
     }
 
     if (hasCompleted)
     {
+        if (isCancelled && (NULL != newCylinder)) {
+            objectManager.deleteObject(newCylinder);
+        }
+        newCylinder = NULL;
         drawCylinderMode = NONE_CIRCLE;
         circleTraces.clear();
         startHeight = ofPoint();
@@ -138,15 +157,18 @@ bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
 {
     ofPoint centroid = computeBaseCircleTraceCentroid();
     float radius = computeBaseCircleTraceRadius(centroid);
-    float height = computeCylinderHeight();
-    if ((radius > 0) && (height > 0))
+    float height =  DEFAULT_HEIGHT;
+    if (radius > 0)
     {
-        //TODO: create cylinder
-        //AirCylinder* cylinder = new AirCylinder();
-        //cylinder->setup(centroid, height, ofColor::gray); // Default color: gray
-        //objectManager.addObject(cylinder);
+        newCylinder = new AirCylinder();
+        if (NULL == newCylinder)
+        {
+            return false;
+        }
+        newCylinder->setup(centroid, radius, height, ofColor::gray); // Default color: gray
+        objectManager.addObject(newCylinder);
         std::stringstream msg;
-        msg << "Create CYLINDER with RADIUS ";
+        msg << "Create CYLINDER (INITIAL) with RADIUS ";
         msg << radius;
         msg << " and HEIGHT ";
         msg << height;

@@ -87,7 +87,6 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
             else if (drawCircleMode == DRAW)
             {
                 drawCircleMode = DONE;
-                hasCompleted = true;
             }
         }
         else
@@ -104,6 +103,7 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
                 msg << traces.size();
                 Logger::getInstance()->temporaryLog(msg.str());
             }
+            hasCompleted = true;
         }
     }
 
@@ -118,8 +118,13 @@ bool SphereCreatingMode::createSphere(AirObjectManager &objectManager)
 {
     ofPoint centroid = computeTraceCentroid();
     float radius = computeTraceRadius(centroid);
-    if (radius > 0.0) {
+    if (radius > 0.0)
+    {
         AirSphere* sphere = new AirSphere();
+        if (NULL == sphere)
+        {
+            return false;
+        }
         sphere->setup(centroid, radius, ofColor::gray); // Default color: gray
         objectManager.addObject(sphere);
         return true;

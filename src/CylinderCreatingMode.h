@@ -12,6 +12,7 @@
 #include <math.h>
 
 #include "AirControlMode.h"
+#include "AirCylinder.h"
 
 class CylinderCreatingMode : public AirControlMode
 {
@@ -43,6 +44,7 @@ private:
     std::vector<ofPoint> circleTraces;
     ofPoint startHeight;
     ofPoint endHeight;
+    AirCylinder* newCylinder;
     
     inline ofPoint computeBaseCircleTraceCentroid()
     {

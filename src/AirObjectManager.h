@@ -17,6 +17,7 @@
 #include "AirSphere.h"
 #include "AirBox.h"
 #include "AirCylinder.h"
+#include "AirLine.h"
 
 class AirObjectManager
 {

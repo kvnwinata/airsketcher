@@ -18,6 +18,8 @@
 #include "ResizingMode.h"
 #include "RotatingMode.h"
 #include "SpaceRotatingMode.h"
+#include "LineCreatingMode.h"
+#include "BoxCreatingMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -30,6 +32,8 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new ResizingMode());
     modes.push_back(new RotatingMode());
     modes.push_back(new SpaceRotatingMode());
+    modes.push_back(new LineCreatingMode());
+    modes.push_back(new BoxCreatingMode());
 }
 
 AirController::~AirController()

@@ -60,8 +60,6 @@ private:
         return endPoint;
     }
     
-    ofPoint startPosition; //start of line
-    ofPoint endPosition; //end of line
 };
 
 

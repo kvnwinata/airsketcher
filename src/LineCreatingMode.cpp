@@ -30,16 +30,7 @@ void LineCreatingMode::drawMode()
 {
     if (drawLineMode == DRAW)
     {
-        for (auto it = traces.begin(); it != traces.end(); )
-        {
-            const ofPoint& p1 = *it;
-            it++;
-            if (it != traces.end())
-            {
-                const ofPoint& p2 = *it;
-                ofLine(p1, p2);
-            }
-        }
+        ofLine(getStartPoint(), getEndPoint());
     }
 }
 
@@ -97,7 +88,7 @@ void LineCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &spe
             if (!createLine(objectManager))
             {
                 std::stringstream msg;
-                msg << "FAILED to create new SPHERE; trace size ";
+                msg << "FAILED to create new Line; trace size ";
                 msg << traces.size();
                 Logger::getInstance()->temporaryLog(msg.str());
             }

@@ -119,5 +119,7 @@ std::string ColoringMode::getStatusMessage()
 
 std::string ColoringMode::getHelpMessage()
 {
-    return "not implemented";
+    std::string msg = "1. Point at the object you'd like the color to change. \n"
+    "2. And then say 'computer erase [COLOR]'.";
+    return msg;
 }

@@ -151,5 +151,10 @@ std::string SphereCreatingMode::getStatusMessage()
 
 std::string SphereCreatingMode::getHelpMessage()
 {
-    return "not implemented";
+    std::string msg = "1. Say 'computer draw sphere'. \n"
+    "2. Make a pinch gesture and draw a circle while still in the pinch mode. \n"
+    "3. When you're done, release your pinch. \n"
+    "4. The system will then render the sphere on the screen. \n"
+    "5. To cancel midway (before finish drawing the sphere), say 'computer cancel'. \n";
+    return msg;
 }

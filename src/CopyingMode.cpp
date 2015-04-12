@@ -122,3 +122,8 @@ std::string CopyingMode::getStatusMessage()
     }
     return "COPYING xxx";
 }
+
+std::string CopyingMode::getHelpMessage()
+{
+    return "not implemented";
+}

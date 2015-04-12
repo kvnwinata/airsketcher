@@ -127,3 +127,8 @@ std::string ResizingMode::getStatusMessage()
     }
     return "Resizing xxx FROM xxx TO xxx";
 }
+
+std::string ResizingMode::getHelpMessage()
+{
+    return "not implemented";
+}

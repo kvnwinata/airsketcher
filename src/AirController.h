@@ -26,6 +26,7 @@ public:
     std::vector<std::string> getCommands();
     
     std::string getStatusMessage();
+    std::string getHelpMessage();
     
 private:
     

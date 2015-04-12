@@ -198,3 +198,8 @@ std::string CylinderCreatingMode::getStatusMessage()
             return "DRAWING CYLINDER: do nothing";
     }
 }
+
+std::string CylinderCreatingMode::getHelpMessage()
+{
+    return "not implemented";
+}

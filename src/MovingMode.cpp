@@ -110,3 +110,8 @@ std::string MovingMode::getStatusMessage()
     }
     return "MOVING xxx FROM xxx TO xxx";
 }
+
+std::string MovingMode::getHelpMessage()
+{
+    return "not implemented";
+}

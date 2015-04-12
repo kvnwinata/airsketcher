@@ -127,3 +127,17 @@ void AirController::draw()
         currentMode->drawMode();
     }
 }
+
+std::string AirController::getHelpMessage()
+{
+    if (currentMode)
+    {
+        return currentMode->getHelpMessage();
+    }
+    
+    std::stringstream msg;
+    
+    msg << "Idle help message not implemented!";
+    
+    return msg.str();
+}

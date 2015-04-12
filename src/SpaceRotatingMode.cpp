@@ -158,3 +158,8 @@ std::string SpaceRotatingMode::getStatusMessage()
      */
     return "Rotating the SPACE xxx FROM xxx TO xxx";
 }
+
+std::string SpaceRotatingMode::getHelpMessage()
+{
+    return "not implemented";
+}

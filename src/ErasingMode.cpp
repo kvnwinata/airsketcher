@@ -70,3 +70,9 @@ std::string ErasingMode::getStatusMessage()
 {
     return "ERASING xxx";
 }
+
+std::string ErasingMode::getHelpMessage()
+{
+    return "not implemented";
+}
+

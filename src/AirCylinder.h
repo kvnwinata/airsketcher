@@ -24,9 +24,9 @@ public:
     
     float getHeight() const;
     float getRadius() const;
-    void setHeight(float height);
-    void setRadius(float radius);
-    
+    void setHeight(float h);
+    void setRadius(float r);
+
     void drawNormalized()             const override;
     void drawHighlightNormalized()    const override;
     

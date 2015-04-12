@@ -13,6 +13,8 @@
 		0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
+		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
+		B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB0193931AC091FE0012001C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0193921AC091FE0012001C /* Carbon.framework */; };
 		CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */; };
@@ -100,6 +102,10 @@
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
+		B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCreatingMode.cpp; sourceTree = "<group>"; };
+		B71019811AD269C400FD53F7 /* BoxCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxCreatingMode.h; sourceTree = "<group>"; };
+		B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineCreatingMode.cpp; sourceTree = "<group>"; };
+		B71019841AD269DE00FD53F7 /* LineCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCreatingMode.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CB0193921AC091FE0012001C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirBox.cpp; sourceTree = "<group>"; };
@@ -320,6 +326,10 @@
 				CB2F0D381ACF3E3A004FF7D6 /* ResizingMode.h */,
 				CB2F0D3F1ACF684E004FF7D6 /* RotatingMode.cpp */,
 				CB2F0D401ACF684E004FF7D6 /* RotatingMode.h */,
+				B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */,
+				B71019811AD269C400FD53F7 /* BoxCreatingMode.h */,
+				B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */,
+				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -539,9 +549,11 @@
 				CB3F6E2C1ABB8A4E00811BCF /* AirObject.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */,
+				B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */,
 				CB84050E1ABFB43200EB202C /* AirControlMode.cpp in Sources */,
 				CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */,
 				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
+				B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */,
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,

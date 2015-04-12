@@ -116,3 +116,8 @@ std::string ColoringMode::getStatusMessage()
 {
     return "COLORING";
 }
+
+std::string ColoringMode::getHelpMessage()
+{
+    return "not implemented";
+}

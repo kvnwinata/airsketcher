@@ -148,3 +148,8 @@ std::string SphereCreatingMode::getStatusMessage()
             return "DRAWING SPHERE: do nothing";
     }
 }
+
+std::string SphereCreatingMode::getHelpMessage()
+{
+    return "not implemented";
+}

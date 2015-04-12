@@ -27,7 +27,8 @@ public:
     std::vector<std::string> getCommands();
 
     std::string getStatusMessage() override;
-    
+    std::string getHelpMessage() override;
+
 private:
     
     enum DRAWING_MODE {

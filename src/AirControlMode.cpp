@@ -23,3 +23,8 @@ bool AirControlMode::getHasCompleted() const
 {
     return hasCompleted;
 }
+
+std::string AirControlMode::getHelpMessage()
+{
+    return "Help message not implemented for this mode!";
+}

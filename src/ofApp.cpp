@@ -86,6 +86,8 @@ void ofApp::draw(){
     ofDrawBitmapString(controller.getStatusMessage(), 10, 50);
     ofDrawBitmapString("FPS: " + ofToString(round(ofGetFrameRate() * 10) / 10), ofGetWidth() - 90, 20);
     
+    ofDrawBitmapString(controller.getHelpMessage(), ofPoint(ofGetWidth()*.33, ofGetHeight()*0.25));
+    
     ofTranslate(10,ofGetWindowHeight()/2);
     Logger::getInstance()->print();
     ofPopMatrix();

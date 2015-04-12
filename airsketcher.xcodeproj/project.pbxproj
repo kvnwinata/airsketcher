@@ -304,16 +304,16 @@
 		CB8405071ABFB38300EB202C /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				CB2F0D441AD1E825004FF7D6 /* SpaceRotatingMode.cpp */,
-				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
 				CB6071481ABCA7D9001E03EF /* AirController.cpp */,
 				CB6071491ABCA7D9001E03EF /* AirController.h */,
 				CB84050C1ABFB43200EB202C /* AirControlMode.cpp */,
 				CB84050D1ABFB43200EB202C /* AirControlMode.h */,
+				CB2F0D441AD1E825004FF7D6 /* SpaceRotatingMode.cpp */,
+				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
 				CB84050F1ABFB46500EB202C /* MovingMode.cpp */,
 				CB8405101ABFB46500EB202C /* MovingMode.h */,
-				CBD709841AC0B48900EF0DC2 /* ColoringMode.h */,
 				CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */,
+				CBD709841AC0B48900EF0DC2 /* ColoringMode.h */,
 				0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */,
 				0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */,
 				0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */,

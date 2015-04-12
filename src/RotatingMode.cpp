@@ -156,3 +156,8 @@ std::string RotatingMode::getStatusMessage()
     }
     return "Rotating xxx FROM xxx TO xxx";
 }
+
+std::string RotatingMode::getHelpMessage()
+{
+    return "not implemented";
+}

@@ -24,6 +24,8 @@ public:
     std::vector<std::string> getCommands();
 
     std::string getStatusMessage() override;
+    std::string getHelpMessage() override;
+
 };
 
 #endif /* defined(__airsketcher__ErasingMode__) */

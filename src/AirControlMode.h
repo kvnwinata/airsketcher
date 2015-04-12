@@ -30,7 +30,7 @@ public:
     bool getHasCompleted() const;
     
     virtual std::string getStatusMessage() = 0;
-
+    virtual std::string getHelpMessage();
     
 protected:
     bool hasCompleted;

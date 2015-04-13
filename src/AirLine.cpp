@@ -72,7 +72,7 @@ void AirLine::drawNormalized() const
     ofSetColor(255,255,255);
     ofSetColor(color);
     ofRotate(90, 1, 0, 0);
-    ofDrawCylinder(ofPoint(0,0,0), lineWidth, length);
+    ofDrawCylinder(ofPoint(0,0,0), lineWidth/scale, length);
 
     ofSetColor(255, 255, 255);
 }
@@ -81,9 +81,9 @@ void AirLine::drawHighlightNormalized() const
 {
     ofRotate(90, 1, 0, 0);
     ofSetColor(color);
-    ofDrawCylinder(ofPoint(0,0,0), lineWidth, length);
+    ofDrawCylinder(ofPoint(0,0,0), lineWidth/scale, length);
     ofNoFill();
-    ofDrawCylinder(ofPoint(0,0,0), interactionRadius, length);
+    ofDrawCylinder(ofPoint(0,0,0), interactionRadius/scale, length);
     ofSetColor(255,255,255);
     ofFill();
 }

@@ -31,9 +31,9 @@ public:
 private:
     
     enum DRAWING_MODE {
-        DRAW = 0,
-        DONE,
-        NONE
+        NONE = 0,
+        DRAW,
+        DONE        
     };
     
     std::vector<ofPoint> traces;

@@ -201,14 +201,23 @@ std::string CylinderCreatingMode::getStatusMessage()
 
 std::string CylinderCreatingMode::getHelpMessage()
 {
-    std::string msg =
-    
-    "1. Say 'computer draw cylinder'. \n"
-    "2. Make a pinch gesture and draw the base circle circle while still in the pinch mode. \n"
-    "3. When you're done, release your pinch. \n"
-    "4. The system will then render a flat cylinder on the screen. \n"
-    "5. Again, make a pinch gesture and move your hand upwards to increase the cylinder's height. \n"
-    "6. When you're done, release your pinch. \n"
-    "7. To cancel midway (before finish drawing the sphere), say 'computer cancel'. \n";
+    std::string msg;
+    switch (drawLineMode){
+        case NONE_CIRCLE:
+            msg = "Pinch your fingers and draw a circle. \n";
+            break;
+        case DRAW_CIRCLE:
+            msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";
+            break;
+        case NONE_HEIGHT:
+            msg = "Pinch your fingers and move around to adjust the height. \n"
+            break;    
+        case DRAW_HEIGHT:
+            msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";
+            break;
+        case DONE:
+            msg = "You're done!";
+            break;
+    }
     return msg;
 }

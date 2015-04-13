@@ -151,11 +151,17 @@ std::string SphereCreatingMode::getStatusMessage()
 
 std::string SphereCreatingMode::getHelpMessage()
 {
-    std::string msg =
-    //"1. Say 'computer draw sphere'. \n"
-    "Pinch and draw a circle while pinching, release when done \n"
-    //"3. When you're done, release your pinch. \n"
-    //"4. The system will then render the sphere on the screen. \n"
-    "\nOR to cancel midway (before finish drawing the sphere), say 'computer cancel'.\n";
+    std::string msg;
+    switch (drawLineMode){
+        case NONE:
+            msg = "Pinch your fingers and draw a circle. \n";
+            break;
+        case DRAW:
+            msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";
+            break;
+        case DONE:
+            msg = "You're done!";
+            break;
+    }
     return msg;
 }

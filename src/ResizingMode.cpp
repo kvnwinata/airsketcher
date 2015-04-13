@@ -125,10 +125,14 @@ std::string ResizingMode::getStatusMessage()
         
         return msg.str();
     }
-    return "Resizing xxx FROM xxx TO xxx";
+    return "Resizing";
 }
 
 std::string ResizingMode::getHelpMessage()
 {
-    return "not implemented";
+    std::string msg =
+    "Adjust the size by moving your hand, then say 'computer done'\n"
+    "OR say 'computer cancel' if you change your mind"
+    ;
+    return msg;
 }

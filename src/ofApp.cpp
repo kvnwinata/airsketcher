@@ -8,26 +8,7 @@ void ofApp::setup(){
     ofBackground(40, 40, 40);
     
     // Main components setup
-    AirSphere * sphere = new AirSphere();
-    sphere->setup(ofPoint(-200,0,400), 100, ofColor(128,64,64));
-    objectManager.addObject(sphere);
     
-    /*
-    AirBox * box = new AirBox();
-    box->setup(ofPoint (0, 0, 300), ofVec3f(100, 200, 300), ofColor(50,50,255));
-    objectManager.addObject(box);
-    */
-    
-    /*
-    AirCylinder * cylinder = new AirCylinder();
-    cylinder->setup(ofPoint (0, 0, 0), 200, 400, ofColor(50,50,255));
-    objectManager.addObject(cylinder);
-     */
-    
-    AirLine * line = new AirLine();
-    line->setup(ofPoint (0, 0, 0), ofPoint(100,200,300), ofColor(50,50,255));
-    objectManager.addObject(line);
-
     
     // add words to dictionary
     speechProcessor.setup(controller.getCommands());
@@ -39,8 +20,12 @@ void ofApp::setup(){
     
     pointLight.setPosition(0, 2000, 1000);
     pointLight.lookAt(ofVec3f(0,0,500));
-    pointLight.setDirectional();
     pointLight.setDiffuseColor(ofColor(255,255,255));
+    pointLight.setSpecularColor( ofColor(255.f, 255.f, 255.f));
+    
+    //material.setShininess(2.f);
+    material.setAmbientColor(ofColor(255,255,255));
+    material.setDiffuseColor(ofColor(255,255,255));
 }
 
 //--------------------------------------------------------------
@@ -54,10 +39,11 @@ void ofApp::draw(){
     
     ofEnableAlphaBlending();
     ofEnableDepthTest();
-    //ofEnableLighting();
+    ofEnableLighting();
     
     cam.begin();
-    //pointLight.enable();
+    pointLight.enable();
+    material.begin();
 
     ofSetColor(255,255,255);
     //ofDrawSphere(0, 0, 0, 200);
@@ -71,12 +57,14 @@ void ofApp::draw(){
     handProcessor.drawHands();
     objectManager.drawObjects();
     controller.draw();
-        
-    //pointLight.disable();
+    
+    material.end();
+    pointLight.disable();
     cam.end();
 
-    //ofDisableLighting();
+    ofDisableLighting();
     ofDisableDepthTest();
+    ofDisableAlphaBlending();
     
     // messages
     ofPushMatrix();
@@ -86,7 +74,7 @@ void ofApp::draw(){
     ofDrawBitmapString(controller.getStatusMessage(), 10, 50);
     ofDrawBitmapString("FPS: " + ofToString(round(ofGetFrameRate() * 10) / 10), ofGetWidth() - 90, 20);
     
-    ofDrawBitmapString(controller.getHelpMessage(), ofPoint(ofGetWidth()*.33, ofGetHeight()*0.25));
+    ofDrawBitmapString(controller.getHelpMessage(), 10, ofGetHeight()*0.75);
     
     ofTranslate(10,ofGetWindowHeight()/2);
     Logger::getInstance()->print();
@@ -96,6 +84,24 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    if (key == 'c')
+    {
+        AirSphere * sphere = new AirSphere();
+        sphere->setup(ofPoint(-200,0,400), 100, ofColor(128,64,64));
+        objectManager.addObject(sphere);
+        
+        AirBox * box = new AirBox();
+        box->setup(ofPoint (0, 0, 300), ofVec3f(100, 200, 300), ofColor(50,50,255));
+        objectManager.addObject(box);
+        
+        AirCylinder * cylinder = new AirCylinder();
+        cylinder->setup(ofPoint (0, 0, 0), 200, 400, ofColor(50,50,255));
+        objectManager.addObject(cylinder);
+        
+        AirLine * line = new AirLine();
+        line->setup(ofPoint (0, 0, 0), ofPoint(100,200,300), ofColor(50,50,255));
+        objectManager.addObject(line);
+    }
 
 }
 

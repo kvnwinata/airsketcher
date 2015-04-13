@@ -71,9 +71,10 @@ void ofApp::draw(){
     ofSetColor(255,255,255);
     ofDrawBitmapString(handProcessor.getStatusMessage(), 10, 20);
     ofDrawBitmapString(speechProcessor.getStatusMessage(), 10, 35);
-    ofDrawBitmapString(controller.getStatusMessage(), 10, 50);
+    ofDrawBitmapString(controller.getStatusMessage(), ofGetWidth()*0.4, 80);
     ofDrawBitmapString("FPS: " + ofToString(round(ofGetFrameRate() * 10) / 10), ofGetWidth() - 90, 20);
     
+    ofDrawBitmapString("HELP:", 10, ofGetHeight()*0.75-20);
     ofDrawBitmapString(controller.getHelpMessage(), 10, ofGetHeight()*0.75);
     
     ofTranslate(10,ofGetWindowHeight()/2);

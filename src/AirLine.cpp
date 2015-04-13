@@ -94,6 +94,7 @@ AirObject* AirLine::getCopy() const
     newLine->endPoints[0] = endPoints[0];
     newLine->endPoints[1] = endPoints[1];
     newLine->length = length;
+    newLine->lineWidth = lineWidth;
     this->copyData(newLine);
     return newLine;
 }

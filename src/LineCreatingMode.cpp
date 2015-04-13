@@ -129,7 +129,7 @@ bool LineCreatingMode::createLine(AirObjectManager &objectManager)
 
 std::string LineCreatingMode::getStatusMessage()
 {
-    return "Creating a line";
+    return "DRAW A LINE";
 }
 
 

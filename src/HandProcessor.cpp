@@ -38,7 +38,7 @@ void HandProcessor::drawHands()
         //ofRotate(-90, 1, 0, 0);
         leapImage.draw(-leapImage.getWidth()/2, -leapImage.getHeight()/2, 0, leapImage.getWidth(), leapImage.getHeight());
         
-        ofScale(2,2,2);
+        ofScale(3,3,3);
         ofTranslate(0,0,-10);
         plane.drawVertices();
         ofTranslate(0,0, 10);

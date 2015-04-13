@@ -84,14 +84,10 @@ void AirController::update(HandProcessor &handProcessor, SpeechProcessor &speech
 std::string AirController::getStatusMessage()
 {
     std::stringstream msg;
-    msg << "[CONTROL]: ";
     if (currentMode)
     {
+        msg << "[MODE]: ";
         msg << currentMode->getStatusMessage();
-    }
-    else
-    {
-        msg << "NO ACTIVE MODE\n";
     }
     
     return msg.str();

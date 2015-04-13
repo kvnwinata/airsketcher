@@ -135,6 +135,7 @@ std::string LineCreatingMode::getStatusMessage()
 
 std::string LineCreatingMode::getHelpMessage()
 {
+
     std::string msg = "1. Pinch your all fingers together to start drawing. \n"
     "2. When finished, slowly spread your fingers out.";
     return msg;

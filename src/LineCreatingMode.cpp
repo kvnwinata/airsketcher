@@ -135,8 +135,18 @@ std::string LineCreatingMode::getStatusMessage()
 
 std::string LineCreatingMode::getHelpMessage()
 {
-    std::string msg =
-    "Pinch your all fingers together to start then pull your line. \n"
-    "When finished, slowly release your pinch \n";
+    std::string msg ="";
+    switch (drawLineMode){
+        case DRAW:
+            msg ="When finished, slowly release your pinch \n";
+            break;
+        case NONE:
+            msg = "Pinch your all fingers together to start then pull your line. \n";
+            break;
+        case DONE:
+            msg = "You're done!";
+            break;
+    }
+
     return msg;
 }

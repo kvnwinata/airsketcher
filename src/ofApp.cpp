@@ -5,7 +5,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(30);
-    ofBackground(40, 40, 40);
+    ofBackground(60, 60, 60);
     
     // Main components setup
     

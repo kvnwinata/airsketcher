@@ -73,7 +73,7 @@ ofColor ColoringMode::getColorFromString(std::string colorString)
     }
     else if (colorString == "black")
     {
-        return ofColor(5,5,5);
+        return ofColor(40,40,40);
     }
     else
     {

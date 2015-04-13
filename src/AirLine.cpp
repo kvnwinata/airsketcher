@@ -20,7 +20,7 @@ AirLine::~AirLine()
 
 bool AirLine::isInsideNormalized(ofPoint location) const
 {
-    return (ofVec2f(location.x, location.y).length() < interactionRadius) && (abs(location.z) < length/2);
+    return (ofVec2f(location.x, location.y).length() < interactionRadius/scale) && (abs(location.z) < length/2);
 }
 
 void AirLine::setup(ofPoint endPoint1, ofPoint endPoint2, ofColor c, float width)

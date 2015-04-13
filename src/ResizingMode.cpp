@@ -118,9 +118,9 @@ std::string ResizingMode::getStatusMessage()
         std::stringstream msg;
         msg << "RESIZING ";
         msg << resizingObject->getDescription();
-        msg << " FROM ";
+        msg << "\n FROM ";
         msg << originalScale;
-        msg << " TO ";
+        msg << "\n TO ";
         msg << resizingObject->getScale();
         return msg.str();
     }

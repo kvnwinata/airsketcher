@@ -113,9 +113,9 @@ std::string CopyingMode::getStatusMessage()
         std::stringstream msg;
         msg << "COPYING ";
         msg << copiedObject->getDescription();
-        msg << " FROM ";
+        msg << "\n FROM ";
         msg << copiedObject->getPosition();
-        msg << " TO ";
+        msg << "\n TO ";
         msg << objectCopy->getPosition();
         
         return msg.str();

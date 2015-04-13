@@ -130,3 +130,22 @@ std::string BoxCreatingMode::getStatusMessage()
 {
     return "DRAW A BOX";
 }
+
+
+std::string BoxCreatingMode::getHelpMessage()
+{
+    std::string msg ="";
+    switch (drawBoxMode){
+        case DRAW:
+            msg ="When finished, slowly release your pinch \n";
+            break;
+        case NONE:
+            msg = "Pinch your all fingers together to start then pull your diagonal. \n";
+            break;
+        case DONE:
+            msg = "You're done!";
+            break;
+    }
+    
+    return msg;
+}

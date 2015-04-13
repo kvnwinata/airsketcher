@@ -145,11 +145,11 @@ std::string RotatingMode::getStatusMessage()
 {
     if (NULL != rotatingObject) {
         std::stringstream msg;
-        msg << "Rotating ";
+        msg << "ROTATING ";
         msg << rotatingObject->getDescription();
-        msg << " FROM ";
-        msg << "XXX";
-        msg << " TO ";
+//        msg << " FROM ";
+//        msg << "XXX";
+//        msg << " TO ";
         //msg << rotatingObject->getScale();
         
         return msg.str();

@@ -156,7 +156,7 @@ std::string SpaceRotatingMode::getStatusMessage()
         return msg.str();
     }
      */
-    return "Rotating the SPACE";
+    return "CHANGING POINT OF VIEW";
 }
 
 std::string SpaceRotatingMode::getHelpMessage()

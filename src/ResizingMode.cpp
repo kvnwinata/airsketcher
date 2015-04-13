@@ -116,13 +116,12 @@ std::string ResizingMode::getStatusMessage()
 {
     if (NULL != resizingObject) {
         std::stringstream msg;
-        msg << "Resizing ";
+        msg << "RESIZING ";
         msg << resizingObject->getDescription();
         msg << " FROM ";
         msg << originalScale;
         msg << " TO ";
         msg << resizingObject->getScale();
-        
         return msg.str();
     }
     return "Resizing";

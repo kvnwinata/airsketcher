@@ -120,7 +120,7 @@ std::string CopyingMode::getStatusMessage()
         
         return msg.str();
     }
-    return "COPYING xxx";
+    return "";
 }
 
 std::string CopyingMode::getHelpMessage()

@@ -128,5 +128,5 @@ bool BoxCreatingMode::createBox(AirObjectManager &objectManager)
 
 std::string BoxCreatingMode::getStatusMessage()
 {
-    return "Creating a box";
+    return "DRAW A BOX";
 }

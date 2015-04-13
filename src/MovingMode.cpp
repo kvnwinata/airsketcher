@@ -16,6 +16,7 @@ std::vector<std::string> MovingMode::getCommands()
     
     commands.push_back("computer move this");
     commands.push_back("computer place");
+    commands.push_back("computer done");
     commands.push_back("computer cancel");
     
     return commands;
@@ -65,7 +66,7 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
 {
     std::string command = speechProcessor.getLastCommand();
     
-    if (command == "place")
+    if (command == "place" || command == "done")
     {
         hasCompleted = true;
     }
@@ -108,7 +109,7 @@ std::string MovingMode::getStatusMessage()
         
         return msg.str();
     }
-    return "MOVING xxx FROM xxx TO xxx";
+    return "";
 }
 
 std::string MovingMode::getHelpMessage()
@@ -119,8 +120,8 @@ std::string MovingMode::getHelpMessage()
 //    "3. Move your hand to a new position while still pointing at the object. \n"
 //    "4. Then say 'computer place' to place the object. \n"
 //    "4. To cancel midway (before placing the object), say 'computer cancel'. \n";
-    "Move the object to a new position, then say 'computer place' to place the object\n"
-    "\nOR say computer 'cancel' to cancel midway"
+    "Move the object, then say 'computer place'\n"
+    "\nOR say 'computer cancel' to cancel midway"
     ;
     return msg;
 }

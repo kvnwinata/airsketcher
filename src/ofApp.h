@@ -38,4 +38,5 @@ private:
     ofEasyCam           ecam;
     
     ofLight             pointLight;
+    ofMaterial          material;
 };

@@ -137,7 +137,19 @@ std::string AirController::getHelpMessage()
     
     std::stringstream msg;
     
-    msg << "Idle help message not implemented!";
+    msg << "Available global commands:\n";
+    msg << "'computer draw sphere'\n";
+    msg << "'computer draw cylinder'\n";
+    msg << "'computer draw line'\n";
+
+    msg << "\nAvailable commands WHILE HIGHLIGHTING AN OBJECT:\n";
+    msg << "'computer move this'\n";
+    msg << "'computer resize this'\n";
+    msg << "'computer rotate this'\n";
+    msg << "'computer erase this'\n";
+    msg << "'computer color this [red/green/blue/orange/yellow/purple/white/black]'\n";
+    
+    msg << "\nPinch using both hands to change point of view";
     
     return msg.str();
 }

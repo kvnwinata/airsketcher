@@ -125,11 +125,12 @@ std::string CopyingMode::getStatusMessage()
 
 std::string CopyingMode::getHelpMessage()
 {
-    std::string msg = "1. Point at the object you'd like to copy. \n"
-    "2. Say 'computer copy this'. \n"
-    "3. The system will automatically switch highlight focus to the copy. \n"
-    "4. Move your hand to a new position while still pointing at the copy. \n"
-    "5. Then say 'computer place' to place the object. \n"
-    "6. To cancel midway (before placing the object), say 'computer cancel'. \n";
+    std::string msg =
+    //"1. Point at the object you'd like to copy. \n"
+    //"2. Say 'computer copy this'. \n"
+    //"3. The system will automatically switch highlight focus to the copy. \n"
+    "Move the new object to a new position.\n"
+    "Then say 'computer place' to place the new object. \n\n"
+    "OR To cancel midway (before placing the object), say 'computer cancel'. \n";
     return msg;
 }

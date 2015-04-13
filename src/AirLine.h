@@ -20,7 +20,7 @@ public:
     
     bool isInsideNormalized(ofPoint location) const override;
     
-    void setup(ofPoint endPoint1, ofPoint endPoint2, ofColor color);
+    void setup(ofPoint endPoint1, ofPoint endPoint2, ofColor color, float lineWidth = 5.f);
     
     void setOrientation(ofQuaternion orientation) override;
     
@@ -38,6 +38,8 @@ private:
     
     // redundant info: line is basically a thin cylinder
     static const float interactionRadius = 30.f;
+    
+    float lineWidth;
     float length;
     
     // endpoints are stored so can be updated later

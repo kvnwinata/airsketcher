@@ -23,10 +23,11 @@ bool AirLine::isInsideNormalized(ofPoint location) const
     return (ofVec2f(location.x, location.y).length() < interactionRadius) && (abs(location.z) < length/2);
 }
 
-void AirLine::setup(ofPoint endPoint1, ofPoint endPoint2, ofColor c)
+void AirLine::setup(ofPoint endPoint1, ofPoint endPoint2, ofColor c, float width)
 {
     color = c;
     updateEndPoints(endPoint1, endPoint2);
+    lineWidth = width;
 }
 
 void AirLine::updateEndPoints(ofPoint endPoint1, ofPoint endPoint2)
@@ -71,7 +72,7 @@ void AirLine::drawNormalized() const
     ofSetColor(255,255,255);
     ofSetColor(color);
     ofRotate(90, 1, 0, 0);
-    ofDrawCylinder(ofPoint(0,0,0), 5, length);
+    ofDrawCylinder(ofPoint(0,0,0), lineWidth, length);
 
     ofSetColor(255, 255, 255);
 }
@@ -80,7 +81,7 @@ void AirLine::drawHighlightNormalized() const
 {
     ofRotate(90, 1, 0, 0);
     ofSetColor(color);
-    ofDrawCylinder(ofPoint(0,0,0), 5, length);
+    ofDrawCylinder(ofPoint(0,0,0), lineWidth, length);
     ofNoFill();
     ofDrawCylinder(ofPoint(0,0,0), interactionRadius, length);
     ofSetColor(255,255,255);

@@ -73,8 +73,9 @@ std::string ErasingMode::getStatusMessage()
 
 std::string ErasingMode::getHelpMessage()
 {
-    std::string msg = "1. Point at the object you'd like to delete. \n"
-    "2. And then say 'computer erase this'.";
+    std::string msg = "";
+    //"1. Point at the object you'd like to delete. \n"
+    //"2. And then say 'computer erase this'.";
     return msg;
 }
 

@@ -201,7 +201,9 @@ std::string CylinderCreatingMode::getStatusMessage()
 
 std::string CylinderCreatingMode::getHelpMessage()
 {
-    std::string msg = "1. Say 'computer draw cylinder'. \n"
+    std::string msg =
+    
+    "1. Say 'computer draw cylinder'. \n"
     "2. Make a pinch gesture and draw the base circle circle while still in the pinch mode. \n"
     "3. When you're done, release your pinch. \n"
     "4. The system will then render a flat cylinder on the screen. \n"

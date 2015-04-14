@@ -202,7 +202,7 @@ std::string CylinderCreatingMode::getStatusMessage()
 std::string CylinderCreatingMode::getHelpMessage()
 {
     std::string msg;
-    switch (drawLineMode){
+    switch (drawCylinderMode) {
         case NONE_CIRCLE:
             msg = "Pinch your fingers and draw a circle. \n";
             break;
@@ -210,7 +210,7 @@ std::string CylinderCreatingMode::getHelpMessage()
             msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";
             break;
         case NONE_HEIGHT:
-            msg = "Pinch your fingers and move around to adjust the height. \n"
+            msg = "Pinch your fingers and move around to adjust the height. \n";
             break;    
         case DRAW_HEIGHT:
             msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";

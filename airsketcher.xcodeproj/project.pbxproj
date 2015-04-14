@@ -13,6 +13,7 @@
 		0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */; };
 		0BD974631ADD1DC4000D3D1A /* UndoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974611ADD1DC4000D3D1A /* UndoMode.cpp */; };
 		0BD974661ADD1DE5000D3D1A /* RedoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */; };
+		0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
 		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
@@ -105,6 +106,8 @@
 		0BD974621ADD1DC4000D3D1A /* UndoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndoMode.h; sourceTree = "<group>"; };
 		0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RedoMode.cpp; sourceTree = "<group>"; };
 		0BD974651ADD1DE5000D3D1A /* RedoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedoMode.h; sourceTree = "<group>"; };
+		0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UndoRedoMode.cpp; sourceTree = "<group>"; };
+		0BD974681ADDA474000D3D1A /* UndoRedoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndoRedoMode.h; sourceTree = "<group>"; };
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
@@ -340,6 +343,8 @@
 				0BD974621ADD1DC4000D3D1A /* UndoMode.h */,
 				0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */,
 				0BD974651ADD1DE5000D3D1A /* RedoMode.h */,
+				0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */,
+				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
 				CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,
+				0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */,
 				677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */,
 				CB7997CB1ABB7DBE00253491 /* LeapScene.cpp in Sources */,
 				CB6071501ABCA84E001E03EF /* HandProcessor.cpp in Sources */,

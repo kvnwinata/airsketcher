@@ -102,9 +102,9 @@ std::string MovingMode::getStatusMessage()
         std::stringstream msg;
         msg << "MOVING ";
         msg << movingObject->getDescription();
-        msg << " FROM ";
+        msg << "\n FROM ";
         msg << originalPosition;
-        msg << " TO ";
+        msg << "\n TO ";
         msg << movingObject->getPosition();
         
         return msg.str();

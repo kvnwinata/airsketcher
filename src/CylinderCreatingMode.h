@@ -39,12 +39,13 @@ private:
         DONE
     };
     
-    DRAWING_MODE drawCylinderMode;
     bool createCylinder(AirObjectManager &objectManager);
     
+    DRAWING_MODE drawCylinderMode;
     std::vector<ofPoint> circleTraces;
     ofPoint startHeight;
     ofPoint endHeight;
+    ofPoint cylinderBaseLoc;
     AirCylinder* newCylinder;
     
     inline ofPoint computeBaseCircleTraceCentroid()
@@ -72,6 +73,14 @@ private:
     {
         float height = sqrt((endHeight-startHeight).lengthSquared());
         return height;
+    }
+    
+    /* If height is negative, the cylinder's centroid should be shifted downwards */
+    inline ofPoint computeCylinderCentroid(float height)
+    {
+        ofPoint centroid(cylinderBaseLoc);
+        centroid[2] += height/2.0;
+        return centroid;
     }
 };
 

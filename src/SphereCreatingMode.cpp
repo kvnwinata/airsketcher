@@ -152,7 +152,7 @@ std::string SphereCreatingMode::getStatusMessage()
 std::string SphereCreatingMode::getHelpMessage()
 {
     std::string msg;
-    switch (drawLineMode){
+    switch (drawCircleMode){
         case NONE:
             msg = "Pinch your fingers and draw a circle. \n";
             break;

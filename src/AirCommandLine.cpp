@@ -17,6 +17,11 @@ AirCommandLine::AirCommandLine(AirObjectManager& objectManager, ofPoint startPoi
 {
 }
 
+AirCommandLine::~AirCommandLine()
+{
+    
+}
+
 bool AirCommandLine::execute()
 {
     AirLine* line = new AirLine();

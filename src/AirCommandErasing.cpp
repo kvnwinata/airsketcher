@@ -15,6 +15,11 @@ AirCommandErasing::AirCommandErasing(AirObjectManager& objectManager, AirObject*
 {
 }
 
+AirCommandErasing::~AirCommandErasing()
+{
+    
+}
+
 bool AirCommandErasing::execute()
 {
     AirObject* copy = _object->getCopy();

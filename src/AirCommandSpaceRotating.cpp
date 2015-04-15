@@ -16,6 +16,11 @@ AirCommandSpaceRotating::AirCommandSpaceRotating(AirObject* object, float prevSc
 {
 }
 
+AirCommandSpaceRotating::~AirCommandSpaceRotating()
+{
+    
+}
+
 bool AirCommandSpaceRotating::execute()
 {
     _object->setScale(_newScale);

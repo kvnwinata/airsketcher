@@ -17,6 +17,11 @@ AirCommandSphere::AirCommandSphere(AirObjectManager& objectManager, ofPoint cent
 {
 }
 
+AirCommandSphere::~AirCommandSphere()
+{
+    
+}
+
 bool AirCommandSphere::execute()
 {
     AirSphere* sphere = new AirSphere();

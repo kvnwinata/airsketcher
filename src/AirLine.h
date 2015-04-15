@@ -37,7 +37,7 @@ public:
 private:
     
     // redundant info: line is basically a thin cylinder
-    static const float interactionRadius = 30.f;
+    static const float interactionRadius;
     
     float lineWidth;
     float length;

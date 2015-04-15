@@ -16,6 +16,11 @@ AirCommandColoring::AirCommandColoring(AirObject* object, ofColor prevColor, ofC
 {
 }
 
+AirCommandColoring::~AirCommandColoring()
+{
+    
+}
+
 bool AirCommandColoring::execute()
 {
     _object->setColor(_newColor);

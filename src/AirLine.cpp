@@ -8,6 +8,8 @@
 
 #include "AirLine.h"
 
+const float AirLine::interactionRadius = 30.f;
+
 AirLine::AirLine()
 : AirObject()
 {

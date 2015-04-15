@@ -17,6 +17,11 @@ AirCommandBox::AirCommandBox(AirObjectManager& objectManager, ofPoint centroid, 
 {
 }
 
+AirCommandBox::~AirCommandBox()
+{
+    
+}
+
 bool AirCommandBox::execute()
 {
     AirBox* box = new AirBox();

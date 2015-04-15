@@ -44,22 +44,10 @@ protected:
 
     // Push the command on the top of the undoCommands stack and call execute
     // This method takes ownership of cmd
-    inline bool pushCommand(AirCommand* cmd) {
-        if (!cmd->execute()) {
-            return false;
-        }
-        undoCommands.push_back(cmd);
-        redoCommands.clear();
-        return true;
-    };
+    bool pushCommand(AirCommand* cmd);
 
     // Pop the command on the top of the undoCommands stack and call unexecute
-    inline void popCommand() {
-        AirCommand* cmd = undoCommands.back();
-        cmd->unexecute();
-        delete cmd;
-        undoCommands.pop_back();
-    };
+    void popCommand();
 };
 
 #endif /* defined(__airsketcher__AirControlMode__) */

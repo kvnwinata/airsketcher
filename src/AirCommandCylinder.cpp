@@ -18,6 +18,11 @@ AirCommandCylinder::AirCommandCylinder(AirObjectManager& objectManager, ofPoint 
 {
 }
 
+AirCommandCylinder::~AirCommandCylinder()
+{
+    
+}
+
 bool AirCommandCylinder::execute()
 {
     AirCylinder* cylinder = new AirCylinder();

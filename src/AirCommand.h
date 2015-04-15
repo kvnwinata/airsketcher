@@ -15,7 +15,7 @@ class AirCommand
 {
 public:
     AirCommand() {}
-    ~AirCommand() {}
+    virtual ~AirCommand() {}
     
     virtual bool execute() = 0;
     virtual void unexecute() = 0;

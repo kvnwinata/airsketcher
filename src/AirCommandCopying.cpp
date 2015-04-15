@@ -16,6 +16,11 @@ AirCommandCopying::AirCommandCopying(AirObjectManager& objectManager, AirObject*
 {
 }
 
+AirCommandCopying::~AirCommandCopying()
+{
+    
+}
+
 bool AirCommandCopying::execute()
 {
     _objectCopy = _copiedObject->getCopy();

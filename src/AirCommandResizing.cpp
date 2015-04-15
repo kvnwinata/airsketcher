@@ -16,6 +16,11 @@ AirCommandResizing::AirCommandResizing(AirObject* object, float prevScale, float
 {
 }
 
+AirCommandResizing::~AirCommandResizing()
+{
+    
+}
+
 bool AirCommandResizing::execute()
 {
     _object->setScale(_newScale);

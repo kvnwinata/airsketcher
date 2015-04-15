@@ -16,6 +16,11 @@ AirCommandRotating::AirCommandRotating(AirObject* object, ofQuaternion prevOrien
 {
 }
 
+AirCommandRotating::~AirCommandRotating()
+{
+    
+}
+
 bool AirCommandRotating::execute()
 {
     _object->setOrientation(_newOrientation);

@@ -16,6 +16,11 @@ AirCommandMoving::AirCommandMoving(AirObject* object, ofPoint prevPosition, ofPo
 {
 }
 
+AirCommandMoving::~AirCommandMoving()
+{
+    
+}
+
 bool AirCommandMoving::execute()
 {
     _object->setPosition(_newPosition);

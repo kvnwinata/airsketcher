@@ -9,7 +9,7 @@
 
 #include "BoxCreatingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandBox.h"
 #include "logger.h"
 
 std::vector<std::string> BoxCreatingMode::getCommands()

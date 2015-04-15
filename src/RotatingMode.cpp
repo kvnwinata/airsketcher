@@ -9,7 +9,7 @@
 
 #include "RotatingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandRotating.h"
 #include "Logger.h"
 
 std::vector<std::string> RotatingMode::getCommands()

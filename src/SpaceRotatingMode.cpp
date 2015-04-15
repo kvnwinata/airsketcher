@@ -9,6 +9,7 @@
 
 #include "SpaceRotatingMode.h"
 
+#include "AirCommandSpaceRotating.h"
 #include "AirCommand.h"
 #include "Logger.h"
 

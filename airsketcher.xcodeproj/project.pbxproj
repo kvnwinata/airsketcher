@@ -21,6 +21,9 @@
 		0BD974821ADE1449000D3D1A /* AirCommandMoving.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974801ADE1449000D3D1A /* AirCommandMoving.cpp */; };
 		0BD974851ADE1464000D3D1A /* AirCommandResizing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974831ADE1464000D3D1A /* AirCommandResizing.cpp */; };
 		0BD9748D1ADE152C000D3D1A /* AirCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9748A1ADE152C000D3D1A /* AirCommand.cpp */; };
+		0BD974921ADE1F7A000D3D1A /* AirCommandRotating.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974901ADE1F7A000D3D1A /* AirCommandRotating.cpp */; };
+		0BD974951ADE1FA8000D3D1A /* AirCommandBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974931ADE1FA8000D3D1A /* AirCommandBox.cpp */; };
+		0BD974981ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974961ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
 		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
@@ -129,6 +132,12 @@
 		0BD974841ADE1464000D3D1A /* AirCommandResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandResizing.h; sourceTree = "<group>"; };
 		0BD974871ADE152C000D3D1A /* AirCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommand.h; sourceTree = "<group>"; };
 		0BD9748A1ADE152C000D3D1A /* AirCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommand.cpp; sourceTree = "<group>"; };
+		0BD974901ADE1F7A000D3D1A /* AirCommandRotating.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandRotating.cpp; sourceTree = "<group>"; };
+		0BD974911ADE1F7A000D3D1A /* AirCommandRotating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandRotating.h; sourceTree = "<group>"; };
+		0BD974931ADE1FA8000D3D1A /* AirCommandBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandBox.cpp; sourceTree = "<group>"; };
+		0BD974941ADE1FA8000D3D1A /* AirCommandBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandBox.h; sourceTree = "<group>"; };
+		0BD974961ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandSpaceRotating.cpp; sourceTree = "<group>"; };
+		0BD974971ADE1FB9000D3D1A /* AirCommandSpaceRotating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandSpaceRotating.h; sourceTree = "<group>"; };
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
@@ -261,6 +270,12 @@
 				0BD974811ADE1449000D3D1A /* AirCommandMoving.h */,
 				0BD974831ADE1464000D3D1A /* AirCommandResizing.cpp */,
 				0BD974841ADE1464000D3D1A /* AirCommandResizing.h */,
+				0BD974901ADE1F7A000D3D1A /* AirCommandRotating.cpp */,
+				0BD974911ADE1F7A000D3D1A /* AirCommandRotating.h */,
+				0BD974931ADE1FA8000D3D1A /* AirCommandBox.cpp */,
+				0BD974941ADE1FA8000D3D1A /* AirCommandBox.h */,
+				0BD974961ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp */,
+				0BD974971ADE1FB9000D3D1A /* AirCommandSpaceRotating.h */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -619,18 +634,21 @@
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
+				0BD974921ADE1F7A000D3D1A /* AirCommandRotating.cpp in Sources */,
 				CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,
 				0BD974731ADE140C000D3D1A /* AirCommandErasing.cpp in Sources */,
 				0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */,
 				677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */,
 				CB7997CB1ABB7DBE00253491 /* LeapScene.cpp in Sources */,
+				0BD974951ADE1FA8000D3D1A /* AirCommandBox.cpp in Sources */,
 				CB6071501ABCA84E001E03EF /* HandProcessor.cpp in Sources */,
 				CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */,
 				0BD9747F1ADE143E000D3D1A /* AirCommandCopying.cpp in Sources */,
 				CB8405111ABFB46500EB202C /* MovingMode.cpp in Sources */,
 				22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */,
 				CB7997CD1ABB7DBE00253491 /* LeapUtilGL.cpp in Sources */,
+				0BD974981ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp in Sources */,
 				0BD974701ADE13EE000D3D1A /* AirCommandColoring.cpp in Sources */,
 				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,

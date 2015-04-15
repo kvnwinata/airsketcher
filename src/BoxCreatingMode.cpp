@@ -3,10 +3,13 @@
 //  airsketcher
 //
 //  Created by Pramod Kandel on 4/6/15.
+//  Last update by Patricia Suriana on 4/14/15.
 //
 //
 
 #include "BoxCreatingMode.h"
+
+#include "AirCommand.h"
 #include "logger.h"
 
 std::vector<std::string> BoxCreatingMode::getCommands()

@@ -94,10 +94,10 @@ void UndoRedoMode::undo(int levels)
 	{
 		if (undoCommands.size() != 0)
 		{
-			AirCommand cmd = undoCommands.top();
-            undoCommands.pop();
-            cmd.unexecute();
-            redoCommands.push(cmd);
+			AirCommand* cmd = undoCommands.back();
+            undoCommands.pop_back();
+            cmd->unexecute();
+            redoCommands.push_back(cmd);
 		}
 	}
 }
@@ -108,10 +108,10 @@ void UndoRedoMode::redo(int levels)
 	{
 		if (redoCommands.size() != 0)
 		{
-			AirCommand cmd = redoCommands.top();
-			redoCommands.pop();
-        	cmd.execute();
-        	undoCommands.push(cmd);
+			AirCommand* cmd = redoCommands.back();
+			redoCommands.pop_back();
+        	cmd->execute();
+        	undoCommands.push_back(cmd);
 		}
 	}
 }

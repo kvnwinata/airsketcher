@@ -9,7 +9,7 @@
 
 #include "LineCreatingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandLine.h"
 #include "logger.h"
 
 std::vector<std::string> LineCreatingMode::getCommands()
@@ -117,13 +117,11 @@ bool LineCreatingMode::createLine(AirObjectManager &objectManager)
     
     if (dist != 0.0)
     {
-        AirCommandLine cmd(objectManager, startPoint, endPoint);
-        cmd.execute();        
-        if (NULL == cmd.getLine())
+        AirCommandLine* cmd = new AirCommandLine(objectManager, startPoint, endPoint);
+        if (pushCommand(cmd))
         {
             return false;
         }
-        pushCommand(cmd);
         return true;
     }
 

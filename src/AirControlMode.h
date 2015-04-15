@@ -10,10 +10,12 @@
 #ifndef __airsketcher__AirControlMode__
 #define __airsketcher__AirControlMode__
 
+#include <vector>
+
 #include "HandProcessor.h"
 #include "SpeechProcessor.h"
+#include "AirCommand.h"
 #include "AirObjectManager.h"
-
 
 class AirControlMode
 {
@@ -37,19 +39,26 @@ protected:
     bool hasCompleted;
 
     // For undo-redo
-    std::stack<AirCommand> undoCommands;
-    std::stack<AirCommand> redoCommands;
+    std::vector<AirCommand*> undoCommands;
+    std::vector<AirCommand*> redoCommands;
 
-    inline void pushCommand(AirCommand cmd) { 
-        undoCommands.push(cmd);
-        redoCommands = std::stack<AirCommand>();
+    // Push the command on the top of the undoCommands stack and call execute
+    // This method takes ownership of cmd
+    inline bool pushCommand(AirCommand* cmd) {
+        if (!cmd->execute()) {
+            return false;
+        }
+        undoCommands.push_back(cmd);
+        redoCommands.clear();
+        return true;
     };
 
-    /* Pop the command on the top of the undoCommands stack */
-    inline AirCommand deleteCommand(AirCommand cmd) { 
-        AirCommand cmd = undoCommands.top();
-        undoCommands.pop();
-        return cmd;
+    // Pop the command on the top of the undoCommands stack and call unexecute
+    inline void popCommand() {
+        AirCommand* cmd = undoCommands.back();
+        cmd->unexecute();
+        delete cmd;
+        undoCommands.pop_back();
     };
 };
 

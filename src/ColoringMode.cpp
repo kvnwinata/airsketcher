@@ -9,7 +9,7 @@
 
 #include "ColoringMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandColoring.h"
 #include "Logger.h"
 
 std::vector<std::string> ColoringMode::getCommands()
@@ -95,10 +95,9 @@ bool ColoringMode::tryActivateMode(HandProcessor &handProcessor, std::string las
         {
             std::string colorString = lastCommand.substr(11);
 
-            std::string newColor = getColorFromString(colorString);
-            std::string prevColor = highlightedObject->getColor();            
-            AirCommandColoring cmd(highlightedObject, prevColor, newColor);
-            cmd.execute();
+            ofColor newColor = getColorFromString(colorString);
+            ofColor prevColor = highlightedObject->getColor();            
+            AirCommandColoring* cmd = new AirCommandColoring(highlightedObject, prevColor, newColor);
             pushCommand(cmd);
 
             Logger::getInstance()->temporaryLog("COLORED TO: " + colorString);

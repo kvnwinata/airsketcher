@@ -8,7 +8,7 @@
 
 #include "CylinderCreatingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandCylinder.h"
 #include "AirCylinder.h"
 #include "Logger.h"
 
@@ -155,8 +155,7 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
     if (hasCompleted)
     {
         if (isCancelled && (NULL != newCylinder)) {
-            AirCommand cmd = popCommand();
-            cmd.unexecute();
+            popCommand();
         }
         newCylinder = NULL;
         drawCylinderMode = NONE_CIRCLE;
@@ -175,14 +174,12 @@ bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
         float height =  DEFAULT_HEIGHT;
         ofPoint centroid = computeCylinderCentroid(height);
         
-        AirCommandCylinder cmd(objectManager, centroid, radius, height);
-        cmd.execute();
-        newCylinder = cmd.getCylinder();
-        if (NULL == newCylinder)
+        AirCommandCylinder* cmd = new AirCommandCylinder(objectManager, centroid, radius, height);
+        if (!pushCommand(cmd))
         {
             return false;
         }
-        pushCommand(cmd);
+        newCylinder = dynamic_cast<AirCylinder*>(cmd->getObject());
 
         std::stringstream msg;
         msg << "Create CYLINDER (INITIAL) with RADIUS ";

@@ -9,7 +9,7 @@
 
 #include "ResizingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandResizing.h"
 #include "Logger.h"
 
 std::vector<std::string> ResizingMode::getCommands()
@@ -103,8 +103,7 @@ void ResizingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
             float currentDistance = ofPoint(relativePosition.x, relativePosition.z).length();
             float newScale = currentDistance/originalDistance * originalScale;
 
-            AirCommandResizing cmd(resizingObject, originalScale, newScale);
-            cmd.execute();
+            AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, newScale);
             pushCommand(cmd);
         }
         else

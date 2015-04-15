@@ -11,9 +11,16 @@
 		0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */; };
 		0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */; };
 		0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */; };
-		0BD974631ADD1DC4000D3D1A /* UndoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974611ADD1DC4000D3D1A /* UndoMode.cpp */; };
-		0BD974661ADD1DE5000D3D1A /* RedoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */; };
 		0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */; };
+		0BD974701ADE13EE000D3D1A /* AirCommandColoring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9746E1ADE13EE000D3D1A /* AirCommandColoring.cpp */; };
+		0BD974731ADE140C000D3D1A /* AirCommandErasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974711ADE140C000D3D1A /* AirCommandErasing.cpp */; };
+		0BD974761ADE1419000D3D1A /* AirCommandSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974741ADE1419000D3D1A /* AirCommandSphere.cpp */; };
+		0BD974791ADE1425000D3D1A /* AirCommandCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974771ADE1425000D3D1A /* AirCommandCylinder.cpp */; };
+		0BD9747C1ADE1431000D3D1A /* AirCommandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9747A1ADE1431000D3D1A /* AirCommandLine.cpp */; };
+		0BD9747F1ADE143E000D3D1A /* AirCommandCopying.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9747D1ADE143E000D3D1A /* AirCommandCopying.cpp */; };
+		0BD974821ADE1449000D3D1A /* AirCommandMoving.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974801ADE1449000D3D1A /* AirCommandMoving.cpp */; };
+		0BD974851ADE1464000D3D1A /* AirCommandResizing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974831ADE1464000D3D1A /* AirCommandResizing.cpp */; };
+		0BD9748D1ADE152C000D3D1A /* AirCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9748A1ADE152C000D3D1A /* AirCommand.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
 		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
@@ -102,12 +109,26 @@
 		0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylinderCreatingMode.h; sourceTree = "<group>"; };
 		0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereCreatingMode.cpp; sourceTree = "<group>"; };
 		0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereCreatingMode.h; sourceTree = "<group>"; };
-		0BD974611ADD1DC4000D3D1A /* UndoMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UndoMode.cpp; sourceTree = "<group>"; };
-		0BD974621ADD1DC4000D3D1A /* UndoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndoMode.h; sourceTree = "<group>"; };
-		0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RedoMode.cpp; sourceTree = "<group>"; };
-		0BD974651ADD1DE5000D3D1A /* RedoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedoMode.h; sourceTree = "<group>"; };
 		0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UndoRedoMode.cpp; sourceTree = "<group>"; };
 		0BD974681ADDA474000D3D1A /* UndoRedoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndoRedoMode.h; sourceTree = "<group>"; };
+		0BD9746E1ADE13EE000D3D1A /* AirCommandColoring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandColoring.cpp; sourceTree = "<group>"; };
+		0BD9746F1ADE13EE000D3D1A /* AirCommandColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandColoring.h; sourceTree = "<group>"; };
+		0BD974711ADE140C000D3D1A /* AirCommandErasing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandErasing.cpp; sourceTree = "<group>"; };
+		0BD974721ADE140C000D3D1A /* AirCommandErasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandErasing.h; sourceTree = "<group>"; };
+		0BD974741ADE1419000D3D1A /* AirCommandSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandSphere.cpp; sourceTree = "<group>"; };
+		0BD974751ADE1419000D3D1A /* AirCommandSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandSphere.h; sourceTree = "<group>"; };
+		0BD974771ADE1425000D3D1A /* AirCommandCylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandCylinder.cpp; sourceTree = "<group>"; };
+		0BD974781ADE1425000D3D1A /* AirCommandCylinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandCylinder.h; sourceTree = "<group>"; };
+		0BD9747A1ADE1431000D3D1A /* AirCommandLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandLine.cpp; sourceTree = "<group>"; };
+		0BD9747B1ADE1431000D3D1A /* AirCommandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandLine.h; sourceTree = "<group>"; };
+		0BD9747D1ADE143E000D3D1A /* AirCommandCopying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandCopying.cpp; sourceTree = "<group>"; };
+		0BD9747E1ADE143E000D3D1A /* AirCommandCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandCopying.h; sourceTree = "<group>"; };
+		0BD974801ADE1449000D3D1A /* AirCommandMoving.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandMoving.cpp; sourceTree = "<group>"; };
+		0BD974811ADE1449000D3D1A /* AirCommandMoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandMoving.h; sourceTree = "<group>"; };
+		0BD974831ADE1464000D3D1A /* AirCommandResizing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandResizing.cpp; sourceTree = "<group>"; };
+		0BD974841ADE1464000D3D1A /* AirCommandResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandResizing.h; sourceTree = "<group>"; };
+		0BD974871ADE152C000D3D1A /* AirCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommand.h; sourceTree = "<group>"; };
+		0BD9748A1ADE152C000D3D1A /* AirCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommand.cpp; sourceTree = "<group>"; };
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
@@ -219,6 +240,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD9746D1ADE13D3000D3D1A /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				0BD974871ADE152C000D3D1A /* AirCommand.h */,
+				0BD9748A1ADE152C000D3D1A /* AirCommand.cpp */,
+				0BD9746E1ADE13EE000D3D1A /* AirCommandColoring.cpp */,
+				0BD9746F1ADE13EE000D3D1A /* AirCommandColoring.h */,
+				0BD974711ADE140C000D3D1A /* AirCommandErasing.cpp */,
+				0BD974721ADE140C000D3D1A /* AirCommandErasing.h */,
+				0BD974741ADE1419000D3D1A /* AirCommandSphere.cpp */,
+				0BD974751ADE1419000D3D1A /* AirCommandSphere.h */,
+				0BD974771ADE1425000D3D1A /* AirCommandCylinder.cpp */,
+				0BD974781ADE1425000D3D1A /* AirCommandCylinder.h */,
+				0BD9747A1ADE1431000D3D1A /* AirCommandLine.cpp */,
+				0BD9747B1ADE1431000D3D1A /* AirCommandLine.h */,
+				0BD9747D1ADE143E000D3D1A /* AirCommandCopying.cpp */,
+				0BD9747E1ADE143E000D3D1A /* AirCommandCopying.h */,
+				0BD974801ADE1449000D3D1A /* AirCommandMoving.cpp */,
+				0BD974811ADE1449000D3D1A /* AirCommandMoving.h */,
+				0BD974831ADE1464000D3D1A /* AirCommandResizing.cpp */,
+				0BD974841ADE1464000D3D1A /* AirCommandResizing.h */,
+			);
+			name = Command;
+			sourceTree = "<group>";
+		};
 		84A9660D09B0D05131888773 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,10 +385,6 @@
 				B71019811AD269C400FD53F7 /* BoxCreatingMode.h */,
 				B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */,
 				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
-				0BD974611ADD1DC4000D3D1A /* UndoMode.cpp */,
-				0BD974621ADD1DC4000D3D1A /* UndoMode.h */,
-				0BD974641ADD1DE5000D3D1A /* RedoMode.cpp */,
-				0BD974651ADD1DE5000D3D1A /* RedoMode.h */,
 				0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */,
 				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
 			);
@@ -454,6 +496,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				0BD9746D1ADE13D3000D3D1A /* Command */,
 				CB84050A1ABFB3B200EB202C /* Main */,
 				CB8405091ABFB39D00EB202C /* Input */,
 				CB8405081ABFB39000EB202C /* Objects */,
@@ -561,29 +604,34 @@
 			files = (
 				CB3F6E291ABB88F500811BCF /* AirSphere.cpp in Sources */,
 				CB6071531ABCA8A2001E03EF /* Logger.cpp in Sources */,
+				0BD9748D1ADE152C000D3D1A /* AirCommand.cpp in Sources */,
 				CB3F6E2C1ABB8A4E00811BCF /* AirObject.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				0BD974631ADD1DC4000D3D1A /* UndoMode.cpp in Sources */,
+				0BD974791ADE1425000D3D1A /* AirCommandCylinder.cpp in Sources */,
+				0BD974851ADE1464000D3D1A /* AirCommandResizing.cpp in Sources */,
 				CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */,
 				B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */,
 				CB84050E1ABFB43200EB202C /* AirControlMode.cpp in Sources */,
 				CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */,
 				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
 				B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */,
+				0BD9747C1ADE1431000D3D1A /* AirCommandLine.cpp in Sources */,
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
-				0BD974661ADD1DE5000D3D1A /* RedoMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
 				CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,
+				0BD974731ADE140C000D3D1A /* AirCommandErasing.cpp in Sources */,
 				0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */,
 				677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */,
 				CB7997CB1ABB7DBE00253491 /* LeapScene.cpp in Sources */,
 				CB6071501ABCA84E001E03EF /* HandProcessor.cpp in Sources */,
 				CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */,
+				0BD9747F1ADE143E000D3D1A /* AirCommandCopying.cpp in Sources */,
 				CB8405111ABFB46500EB202C /* MovingMode.cpp in Sources */,
 				22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */,
 				CB7997CD1ABB7DBE00253491 /* LeapUtilGL.cpp in Sources */,
+				0BD974701ADE13EE000D3D1A /* AirCommandColoring.cpp in Sources */,
 				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
@@ -592,6 +640,8 @@
 				CB60714D1ABCA83E001E03EF /* SpeechProcessor.cpp in Sources */,
 				0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */,
 				CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */,
+				0BD974761ADE1419000D3D1A /* AirCommandSphere.cpp in Sources */,
+				0BD974821ADE1449000D3D1A /* AirCommandMoving.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

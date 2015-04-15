@@ -8,7 +8,7 @@
 
 #include "ErasingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandErasing.h"
 #include "Logger.h"
 
 std::vector<std::string> ErasingMode::getCommands()
@@ -47,9 +47,13 @@ bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
         if (highlightedObject)
         {
             std::string objectDescription = highlightedObject->getDescription();
-            AirCommandColoring cmd(objectManager, highlightedObject);
-            cmd.execute();
-            pushCommand(cmd);
+            AirCommandErasing* cmd = new AirCommandErasing(objectManager, highlightedObject);
+            
+            if (pushCommand(cmd))
+            {
+                Logger::getInstance()->temporaryLog("ERASING object " + objectDescription + "failed; cannot allocate new copy");
+                return false;
+            }
 
             Logger::getInstance()->temporaryLog("ERASE: " + objectDescription);
             hasCompleted = true;

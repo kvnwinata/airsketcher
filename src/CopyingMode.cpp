@@ -8,7 +8,7 @@
 
 #include "CopyingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandCopying.h"
 #include "Logger.h"
 
 std::vector<std::string> CopyingMode::getCommands()
@@ -48,16 +48,15 @@ bool CopyingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
         if (highlightedObject)
         {
             copiedObject = highlightedObject;
-            AirCommandCopying cmd(objectManager, copiedObject);
-            cmd.execute();
-            objectCopy = cmd.getObjectCopy();
-            if (NULL == objectCopy)
+            AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
+            if (!pushCommand(cmd))
             {
                 Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
                 hasCompleted = true;
                 return false;
             }
-            pushCommand(cmd);
+            
+            objectCopy = cmd->getObjectCopy();
             hasCompleted = false;
             return true;
         }
@@ -101,8 +100,7 @@ void CopyingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPr
     }
     if (hasCompleted) {
         if (isCancelled) {
-            AirCommand cmd = popCommand();
-            cmd.unexecute();
+            popCommand();
         }
         copiedObject = NULL;
         objectCopy = NULL;

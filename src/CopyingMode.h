@@ -30,7 +30,7 @@ public:
 private:
     
     AirObject* objectCopy;
-    AirObject const* copiedObject;
+    AirObject* copiedObject;
 };
 
 #endif /* defined(__airsketcher__CopyingMode__) */

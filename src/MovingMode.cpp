@@ -9,7 +9,7 @@
 
 #include "MovingMode.h"
 
-#include "AirCommand.h"
+#include "AirCommandMoving.h"
 #include "Logger.h"
 
 std::vector<std::string> MovingMode::getCommands()
@@ -93,8 +93,7 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
     }
     if (hasCompleted)
     {
-        AirCommandMoving cmd(movingObject, originalPosition, movingObject->getPosition());
-        cmd.execute();
+        AirCommandMoving* cmd = new AirCommandMoving(movingObject, originalPosition, movingObject->getPosition());
         pushCommand(cmd);
         movingObject = NULL;
     }

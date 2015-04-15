@@ -39,7 +39,7 @@ void MovingMode::drawMode()
     
 }
 
-bool MovingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool MovingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "move this")
     {
@@ -64,7 +64,7 @@ bool MovingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastC
     return false;
 }
 
-void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void MovingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     
@@ -94,7 +94,7 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
     if (hasCompleted)
     {
         AirCommandMoving* cmd = new AirCommandMoving(movingObject, originalPosition, movingObject->getPosition());
-        pushCommand(cmd);
+        controller->pushCommand(cmd);
         movingObject = NULL;
     }
 }

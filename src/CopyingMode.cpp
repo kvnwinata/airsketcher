@@ -38,7 +38,7 @@ void CopyingMode::drawMode()
     
 }
 
-bool CopyingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "copy this")
     {
@@ -49,7 +49,7 @@ bool CopyingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
         {
             copiedObject = highlightedObject;
             AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
-            if (!pushCommand(cmd))
+            if (!controller->pushCommand(cmd))
             {
                 Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
                 hasCompleted = true;
@@ -70,7 +70,7 @@ bool CopyingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
     return false;
 }
 
-void CopyingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void CopyingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
@@ -100,7 +100,7 @@ void CopyingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPr
     }
     if (hasCompleted) {
         if (isCancelled) {
-            popCommand();
+            controller->popCommand();
         }
         copiedObject = NULL;
         objectCopy = NULL;

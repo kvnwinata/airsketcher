@@ -55,7 +55,7 @@ void CylinderCreatingMode::drawMode()
     }*/
 }
 
-bool CylinderCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool CylinderCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "draw cylinder")
     {
@@ -65,7 +65,7 @@ bool CylinderCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::st
     return false;
 }
 
-void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void CylinderCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
@@ -120,7 +120,7 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
             {
                 switch (drawCylinderMode) {
                     case DRAW_CIRCLE:
-                        if (!createCylinder(objectManager))
+                        if (!createCylinder(controller, objectManager))
                         {
                             Logger::getInstance()->temporaryLog("FAILED to create new CYLINDER");
                             hasCompleted = true;
@@ -155,7 +155,7 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
     if (hasCompleted)
     {
         if (isCancelled && (NULL != newCylinder)) {
-            popCommand();
+            controller->popCommand();
         }
         newCylinder = NULL;
         drawCylinderMode = NONE_CIRCLE;
@@ -165,7 +165,7 @@ void CylinderCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor 
     }
 }
 
-bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
+bool CylinderCreatingMode::createCylinder(AirController* controller, AirObjectManager &objectManager)
 {
     cylinderBaseLoc = computeBaseCircleTraceCentroid();
     float radius = computeBaseCircleTraceRadius(cylinderBaseLoc);
@@ -175,7 +175,7 @@ bool CylinderCreatingMode::createCylinder(AirObjectManager &objectManager)
         ofPoint centroid = computeCylinderCentroid(height);
         
         AirCommandCylinder* cmd = new AirCommandCylinder(objectManager, centroid, radius, height);
-        if (!pushCommand(cmd))
+        if (!controller->pushCommand(cmd))
         {
             return false;
         }

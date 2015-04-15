@@ -37,7 +37,7 @@ void ErasingMode::drawMode()
     
 }
 
-bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool ErasingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if ((lastCommand == "erase this") || (lastCommand == "delete this"))
     {
@@ -49,7 +49,7 @@ bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
             std::string objectDescription = highlightedObject->getDescription();
             AirCommandErasing* cmd = new AirCommandErasing(objectManager, highlightedObject);
             
-            if (pushCommand(cmd))
+            if (!controller->pushCommand(cmd))
             {
                 Logger::getInstance()->temporaryLog("ERASING object " + objectDescription + "failed; cannot allocate new copy");
                 return false;
@@ -69,7 +69,7 @@ bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
     return false;
 }
 
-void ErasingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void ErasingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     
 }

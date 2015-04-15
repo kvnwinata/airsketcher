@@ -40,13 +40,13 @@ void UndoRedoMode::drawMode()
     
 }
 
-bool UndoRedoMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool UndoRedoMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
 	std::string commandString = lastCommand.substr(0,4);
     if (commandString == "undo")
     {
     	std::string levelsString = lastCommand.substr(5);
-    	undo(getLevelsFromString(levelsString));
+    	undo(controller, getLevelsFromString(levelsString));
         Logger::getInstance()->temporaryLog("UNDO " + levelsString);
         hasCompleted = true;
         return true;
@@ -54,7 +54,7 @@ bool UndoRedoMode::tryActivateMode(HandProcessor &handProcessor, std::string las
     else if (commandString == "redo") 
     {
     	std::string levelsString = lastCommand.substr(5);
-    	redo(getLevelsFromString(levelsString));
+    	redo(controller, getLevelsFromString(levelsString));
     	Logger::getInstance()->temporaryLog("REDO " + levelsString);
         hasCompleted = true;
         return true;
@@ -62,7 +62,7 @@ bool UndoRedoMode::tryActivateMode(HandProcessor &handProcessor, std::string las
     return false;
 }
 
-void UndoRedoMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void UndoRedoMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     
 }
@@ -88,32 +88,14 @@ int UndoRedoMode::getLevelsFromString(std::string stringLevels)
     return 0;
 }
 
-void UndoRedoMode::undo(int levels)
+void UndoRedoMode::undo(AirController* controller, int levels)
 {
-	for (int i = 0; i < levels; ++i) 
-	{
-		if (undoCommands.size() != 0)
-		{
-			AirCommand* cmd = undoCommands.back();
-            undoCommands.pop_back();
-            cmd->unexecute();
-            redoCommands.push_back(cmd);
-		}
-	}
+    controller->undoCommands(levels);
 }
 
-void UndoRedoMode::redo(int levels)
+void UndoRedoMode::redo(AirController* controller, int levels)
 {
-	for (int i = 0; i < levels; ++i) 
-	{
-		if (redoCommands.size() != 0)
-		{
-			AirCommand* cmd = redoCommands.back();
-			redoCommands.pop_back();
-        	cmd->execute();
-        	undoCommands.push_back(cmd);
-		}
-	}
+	controller->redoCommands(levels);
 }
 
 std::string UndoRedoMode::getStatusMessage()

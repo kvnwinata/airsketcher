@@ -9,7 +9,7 @@
 #ifndef __airsketcher__ColoringMode__
 #define __airsketcher__ColoringMode__
 
-#include "AirControlMode.h"
+#include "AirController.h"
 
 class ColoringMode : public AirControlMode
 {
@@ -18,8 +18,8 @@ public:
     ColoringMode();
     ~ColoringMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
 

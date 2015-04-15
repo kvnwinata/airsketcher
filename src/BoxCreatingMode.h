@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#include "AirControlMode.h"
+#include "AirController.h"
 
 class BoxCreatingMode : public AirControlMode
 {
@@ -20,8 +20,8 @@ public:
     BoxCreatingMode();
     ~BoxCreatingMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
     
@@ -41,7 +41,7 @@ private:
     
     DRAWING_MODE drawBoxMode;
     
-    bool createBox(AirObjectManager &objectManager);
+    bool createBox(AirController* controller, AirObjectManager &objectManager);
     
     inline ofPoint getStartPoint()
     {

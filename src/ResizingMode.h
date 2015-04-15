@@ -9,7 +9,7 @@
 #ifndef __airsketcher__ResizingMode__
 #define __airsketcher__ResizingMode__
 
-#include "AirControlMode.h"
+#include "AirController.h"
 
 class ResizingMode : public AirControlMode
 {
@@ -18,8 +18,8 @@ public:
     ResizingMode();
     ~ResizingMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     
     std::vector<std::string> getCommands();

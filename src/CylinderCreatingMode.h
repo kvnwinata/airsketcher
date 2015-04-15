@@ -11,7 +11,7 @@
 
 #include <math.h>
 
-#include "AirControlMode.h"
+#include "AirController.h"
 #include "AirCylinder.h"
 
 class CylinderCreatingMode : public AirControlMode
@@ -21,8 +21,8 @@ public:
     CylinderCreatingMode();
     ~CylinderCreatingMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
 
@@ -39,7 +39,7 @@ private:
         DONE
     };
     
-    bool createCylinder(AirObjectManager &objectManager);
+    bool createCylinder(AirController* controller, AirObjectManager &objectManager);
     
     DRAWING_MODE drawCylinderMode;
     std::vector<ofPoint> circleTraces;

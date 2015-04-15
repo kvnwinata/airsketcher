@@ -11,7 +11,7 @@
 
 #include <functional>
 
-#include "AirControlMode.h"
+#include "AirController.h"
 
 class UndoRedoMode : public AirControlMode
 {
@@ -20,8 +20,8 @@ public:
     UndoRedoMode();
     ~UndoRedoMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
     
@@ -31,8 +31,8 @@ public:
 private:
 	int getLevelsFromString(std::string stringLevels);
 
-	void undo(int levels);
-	void redo(int levels);
+	void undo(AirController* controller, int levels);
+	void redo(AirController* controller, int levels);
 };
 
 #endif /* defined(__airsketcher__UndoRedoMode__) */

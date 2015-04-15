@@ -11,7 +11,7 @@
 
 #include <math.h>
 
-#include "AirControlMode.h"
+#include "AirController.h"
 
 class SphereCreatingMode : public AirControlMode
 {
@@ -20,8 +20,8 @@ public:
     SphereCreatingMode();
     ~SphereCreatingMode();
     
-    bool tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
-    void update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
+    bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
+    void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
 
@@ -39,7 +39,7 @@ private:
     std::vector<ofPoint> traces;
     
     DRAWING_MODE drawCircleMode;
-    bool createSphere(AirObjectManager &objectManager);
+    bool createSphere(AirController* controller, AirObjectManager &objectManager);
     
     inline ofPoint computeTraceCentroid()
     {

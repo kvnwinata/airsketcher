@@ -38,7 +38,7 @@ void LineCreatingMode::drawMode()
 }
 
 
-bool LineCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool LineCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == drawCommand)
     {
@@ -49,7 +49,7 @@ bool LineCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string
 
 }
 
-void LineCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void LineCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
 
     std::string command = speechProcessor.getLastCommand();
@@ -88,7 +88,7 @@ void LineCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &spe
         }
         
         if (drawLineMode == DONE) {
-            if (!createLine(objectManager))
+            if (!createLine(controller, objectManager))
             {
                 std::stringstream msg;
                 msg << "FAILED to create new Line; trace size ";
@@ -108,7 +108,7 @@ void LineCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &spe
 }
 
 
-bool LineCreatingMode::createLine(AirObjectManager &objectManager)
+bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &objectManager)
 {
     ofPoint startPoint = getStartPoint();
     ofPoint endPoint = getEndPoint();
@@ -118,7 +118,7 @@ bool LineCreatingMode::createLine(AirObjectManager &objectManager)
     if (dist != 0.0)
     {
         AirCommandLine* cmd = new AirCommandLine(objectManager, startPoint, endPoint);
-        if (pushCommand(cmd))
+        if (!controller->pushCommand(cmd))
         {
             return false;
         }

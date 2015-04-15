@@ -46,7 +46,7 @@ void ResizingMode::drawMode()
     ofPopMatrix();
 }
 
-bool ResizingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool ResizingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "resize this")
     {
@@ -78,7 +78,7 @@ bool ResizingMode::tryActivateMode(HandProcessor &handProcessor, std::string las
     return false;
 }
 
-void ResizingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void ResizingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     
@@ -104,7 +104,7 @@ void ResizingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
             float newScale = currentDistance/originalDistance * originalScale;
 
             AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, newScale);
-            pushCommand(cmd);
+            controller->pushCommand(cmd);
         }
         else
         {

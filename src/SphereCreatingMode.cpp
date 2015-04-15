@@ -49,7 +49,7 @@ void SphereCreatingMode::drawMode()
     }
 }
 
-bool SphereCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "draw sphere")
     {
@@ -59,7 +59,7 @@ bool SphereCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::stri
     return false;
 }
 
-void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void SphereCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     if (command == "cancel")
@@ -97,7 +97,7 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
         }
         
         if (drawCircleMode == DONE) {
-            if (!createSphere(objectManager))
+            if (!createSphere(controller, objectManager))
             {
                 std::stringstream msg;
                 msg << "FAILED to create new SPHERE; trace size ";
@@ -115,14 +115,14 @@ void SphereCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &s
     }
 }
 
-bool SphereCreatingMode::createSphere(AirObjectManager &objectManager)
+bool SphereCreatingMode::createSphere(AirController* controller, AirObjectManager &objectManager)
 {
     ofPoint centroid = computeTraceCentroid();
     float radius = computeTraceRadius(centroid);
     if (radius > 0.0)
     {
         AirCommandSphere* cmd = new AirCommandSphere(objectManager, centroid, radius);
-        if (!pushCommand(cmd))
+        if (!controller->pushCommand(cmd))
         {
             return false;
         }

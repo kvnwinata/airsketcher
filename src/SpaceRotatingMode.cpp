@@ -68,7 +68,7 @@ void SpaceRotatingMode::drawMode()
      */
 }
 
-bool SpaceRotatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool SpaceRotatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     LeapHand * hand0 = handProcessor.getHandAtIndex(0);
     LeapHand * hand1 = handProcessor.getHandAtIndex(1);
@@ -99,7 +99,7 @@ bool SpaceRotatingMode::tryActivateMode(HandProcessor &handProcessor, std::strin
     return false; // do not enter mode
 }
 
-void SpaceRotatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void SpaceRotatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     

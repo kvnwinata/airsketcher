@@ -3,7 +3,7 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/20/15.
-//  Last update by Patricia Suriana on 3/31/15
+//  Last update by Patricia Suriana on 4/15/15
 //
 //
 
@@ -20,6 +20,7 @@
 #include "SpaceRotatingMode.h"
 #include "LineCreatingMode.h"
 #include "BoxCreatingMode.h"
+#include "UndoRedoMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -34,14 +35,79 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new SpaceRotatingMode());
     modes.push_back(new LineCreatingMode());
     modes.push_back(new BoxCreatingMode());
+    modes.push_back(new UndoRedoMode());
 }
 
 AirController::~AirController()
 {
+    for (AirCommand* cmd : undoStack)
+    {
+        delete cmd;
+    }
+    undoStack.clear();
+    
+    for (AirCommand* cmd : redoStack)
+    {
+        delete cmd;
+    }
+    redoStack.clear();
+    
     for (AirControlMode* mode : modes) {
         delete mode;
     }
     modes.clear();
+}
+
+
+bool AirController::pushCommand(AirCommand* cmd) {
+    if (!cmd->execute()) {
+        return false;
+    }
+    undoStack.push_back(cmd);
+    
+    for (AirCommand* redoCmd : redoStack)
+    {
+        delete redoCmd;
+    }
+    redoStack.clear();
+    return true;
+}
+
+// Pop the command on the top of the undoStack stack and call unexecute
+void AirController::popCommand() {
+    AirCommand* cmd = undoStack.back();
+    cmd->unexecute();
+    delete cmd;
+    undoStack.pop_back();
+}
+
+void AirController::undoCommands(int levels)
+{
+    for (int i = 0; i < levels; ++i)
+    {
+        if (undoStack.size() == 0) {
+            return;
+        }
+        AirCommand* cmd = undoStack.back();
+        undoStack.pop_back();
+        cmd->unexecute();
+        redoStack.push_back(cmd);
+    }
+}
+
+void AirController::redoCommands(int levels)
+{
+    for (int i = 0; i < levels; ++i)
+    {
+        if (redoStack.size() == 0)
+        {
+            return;
+        }
+        AirCommand* cmd = redoStack.back();
+        redoStack.pop_back();
+        cmd->execute();
+        undoStack.push_back(cmd);
+    }
 }
 
 void AirController::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
@@ -54,7 +120,7 @@ void AirController::update(HandProcessor &handProcessor, SpeechProcessor &speech
         }
         else
         {
-            currentMode->update(handProcessor, speechProcessor, objectManager);
+            currentMode->update(this, handProcessor, speechProcessor, objectManager);
         }
         return;
     }
@@ -73,7 +139,7 @@ void AirController::update(HandProcessor &handProcessor, SpeechProcessor &speech
     std::string command = speechProcessor.getLastCommand();
     for (AirControlMode * mode : modes)
     {
-        if (mode->tryActivateMode(handProcessor, command, objectManager))
+        if (mode->tryActivateMode(this, handProcessor, command, objectManager))
         {
             currentMode = mode;
             break;

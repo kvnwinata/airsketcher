@@ -40,7 +40,7 @@ void BoxCreatingMode::drawMode()
     
 }
 
-bool BoxCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool BoxCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == drawCommand)
     {
@@ -50,7 +50,7 @@ bool BoxCreatingMode::tryActivateMode(HandProcessor &handProcessor, std::string 
     return false;
 }
 
-void BoxCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void BoxCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     if (command == "cancel")
@@ -88,7 +88,7 @@ void BoxCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &spee
         }
         
         if (drawBoxMode == DONE) {
-            if (!createBox(objectManager))
+            if (!createBox(controller, objectManager))
             {
                 std::stringstream msg;
                 msg << "FAILED to create new box; trace size ";
@@ -107,7 +107,7 @@ void BoxCreatingMode::update(HandProcessor &handProcessor, SpeechProcessor &spee
 }
 
 
-bool BoxCreatingMode::createBox(AirObjectManager &objectManager)
+bool BoxCreatingMode::createBox(AirController* controller, AirObjectManager &objectManager)
 {
 
     ofVec3f size_xyz = getSize();
@@ -117,7 +117,7 @@ bool BoxCreatingMode::createBox(AirObjectManager &objectManager)
     if (dist != 0.0)
     {
         AirCommandBox* cmd = new AirCommandBox(objectManager, center, size_xyz);
-        if (!pushCommand(cmd))
+        if (!controller->pushCommand(cmd))
         {
             return false;
         }

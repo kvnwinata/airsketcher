@@ -83,7 +83,7 @@ ofColor ColoringMode::getColorFromString(std::string colorString)
     }
 }
 
-bool ColoringMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     std::string commandString = lastCommand.substr(0,10);
     if (commandString == "color this")
@@ -98,7 +98,7 @@ bool ColoringMode::tryActivateMode(HandProcessor &handProcessor, std::string las
             ofColor newColor = getColorFromString(colorString);
             ofColor prevColor = highlightedObject->getColor();            
             AirCommandColoring* cmd = new AirCommandColoring(highlightedObject, prevColor, newColor);
-            pushCommand(cmd);
+            controller->pushCommand(cmd);
 
             Logger::getInstance()->temporaryLog("COLORED TO: " + colorString);
             hasCompleted = true;
@@ -114,7 +114,7 @@ bool ColoringMode::tryActivateMode(HandProcessor &handProcessor, std::string las
     return false;
 }
 
-void ColoringMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void ColoringMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     
 }

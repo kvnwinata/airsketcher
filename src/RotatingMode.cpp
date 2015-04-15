@@ -72,7 +72,7 @@ void RotatingMode::drawMode()
     ofPopMatrix();
 }
 
-bool RotatingMode::tryActivateMode(HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool RotatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "rotate this")
     {
@@ -101,7 +101,7 @@ bool RotatingMode::tryActivateMode(HandProcessor &handProcessor, std::string las
     return false;
 }
 
-void RotatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void RotatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     
@@ -140,7 +140,7 @@ void RotatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
     }
     if (hasCompleted) {
         AirCommandRotating* cmd = new AirCommandRotating(rotatingObject, originalOrientation, rotatingObject->getOrientation());
-        pushCommand(cmd);
+        controller->pushCommand(cmd);
         rotatingObject = NULL;
     }
 }

@@ -116,12 +116,11 @@ bool BoxCreatingMode::createBox(AirObjectManager &objectManager)
     
     if (dist != 0.0)
     {
-        AirBox* box = new AirBox();
-        if (NULL == box){
+        AirCommandBox* cmd = new AirCommandBox(objectManager, center, size_xyz);
+        if (!pushCommand(cmd))
+        {
             return false;
         }
-        box->setup(center, size_xyz, ofColor::gray);
-        objectManager.addObject(box);
         return true;
     }
     

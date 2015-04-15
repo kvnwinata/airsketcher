@@ -9,6 +9,25 @@
 #ifndef __airsketcher__AirCommandBox__
 #define __airsketcher__AirCommandBox__
 
-#include <stdio.h>
+#include "AirCommand.h"
+#include "AirObjectManager.h"
+
+class AirCommandBox : public AirCommand
+{
+public:
+    AirCommandBox(AirObjectManager& objectManager, ofPoint centroid, ofVec3f sizeXYZ);
+    ~AirCommandBox();
+    
+    bool execute() override;
+    void unexecute() override;
+    
+    AirObject* getObject() { return _object; }
+    
+private:
+    AirObjectManager& _objectManager;
+    const ofPoint _centroid;
+    const ofPoint _sizeXYZ;
+    AirObject* _object;
+};
 
 #endif /* defined(__airsketcher__AirCommandBox__) */

@@ -139,6 +139,8 @@ void RotatingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
         }
     }
     if (hasCompleted) {
+        AirCommandRotating* cmd = new AirCommandRotating(rotatingObject, originalOrientation, rotatingObject->getOrientation());
+        pushCommand(cmd);
         rotatingObject = NULL;
     }
 }

@@ -3,10 +3,13 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 4/3/15.
+//  Last update by Patricia Suriana on 4/14/15
 //
 //
 
 #include "ResizingMode.h"
+
+#include "AirCommand.h"
 #include "Logger.h"
 
 std::vector<std::string> ResizingMode::getCommands()
@@ -98,8 +101,11 @@ void ResizingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechP
             relativePosition = handProcessor.getHandAtIndex(0)->getTipLocation() - originalCenterOfResizing;
             
             float currentDistance = ofPoint(relativePosition.x, relativePosition.z).length();
-            
-            resizingObject->setScale(currentDistance/originalDistance * originalScale);
+            float newScale = currentDistance/originalDistance * originalScale;
+
+            AirCommandResizing cmd(resizingObject, originalScale, newScale);
+            cmd.execute();
+            pushCommand(cmd);
         }
         else
         {

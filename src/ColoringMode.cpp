@@ -3,12 +3,14 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/22/15.
+//  Last update by Patricia Suriana on 4/14/15
 //
 //
 
 #include "ColoringMode.h"
-#include "Logger.h"
 
+#include "AirCommand.h"
+#include "Logger.h"
 
 std::vector<std::string> ColoringMode::getCommands()
 {
@@ -92,7 +94,13 @@ bool ColoringMode::tryActivateMode(HandProcessor &handProcessor, std::string las
         if (highlightedObject)
         {
             std::string colorString = lastCommand.substr(11);
-            highlightedObject->setColor(getColorFromString(colorString));
+
+            std::string newColor = getColorFromString(colorString);
+            std::string prevColor = highlightedObject->getColor();            
+            AirCommandColoring cmd(highlightedObject, prevColor, newColor);
+            cmd.execute();
+            pushCommand(cmd);
+
             Logger::getInstance()->temporaryLog("COLORED TO: " + colorString);
             hasCompleted = true;
             return true;

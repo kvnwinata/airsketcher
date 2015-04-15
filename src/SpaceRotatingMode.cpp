@@ -3,10 +3,13 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 4/5/15.
+//  Last update by Patricia Suriana on 4/14/15.
 //
 //
 
 #include "SpaceRotatingMode.h"
+
+#include "AirCommand.h"
 #include "Logger.h"
 
 std::vector<std::string> SpaceRotatingMode::getCommands()

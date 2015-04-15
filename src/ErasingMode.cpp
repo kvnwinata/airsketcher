@@ -7,6 +7,8 @@
 //
 
 #include "ErasingMode.h"
+
+#include "AirCommand.h"
 #include "Logger.h"
 
 std::vector<std::string> ErasingMode::getCommands()
@@ -45,9 +47,11 @@ bool ErasingMode::tryActivateMode(HandProcessor &handProcessor, std::string last
         if (highlightedObject)
         {
             std::string objectDescription = highlightedObject->getDescription();
-            objectManager.deleteObject(highlightedObject);
+            AirCommandColoring cmd(objectManager, highlightedObject);
+            cmd.execute();
+            pushCommand(cmd);
+
             Logger::getInstance()->temporaryLog("ERASE: " + objectDescription);
-            
             hasCompleted = true;
             return true;
         }

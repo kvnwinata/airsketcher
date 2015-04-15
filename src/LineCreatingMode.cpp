@@ -3,10 +3,13 @@
 //  airsketcher
 //
 //  Created by Pramod Kandel on 4/6/15.
+//  Last update by Patricia Suriana on 4/14/15.
 //
 //
 
 #include "LineCreatingMode.h"
+
+#include "AirCommand.h"
 #include "logger.h"
 
 std::vector<std::string> LineCreatingMode::getCommands()
@@ -114,12 +117,13 @@ bool LineCreatingMode::createLine(AirObjectManager &objectManager)
     
     if (dist != 0.0)
     {
-        AirLine* line = new AirLine();
-        if (NULL == line){
+        AirCommandLine cmd(objectManager, startPoint, endPoint);
+        cmd.execute();        
+        if (NULL == cmd.getLine())
+        {
             return false;
         }
-        line->setup(startPoint, endPoint, ofColor::gray);
-        objectManager.addObject(line);
+        pushCommand(cmd);
         return true;
     }
 

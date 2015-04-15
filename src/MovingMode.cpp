@@ -3,11 +3,13 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/22/15.
-//  Last update by Patricia Suriana on 3/31/15.
+//  Last update by Patricia Suriana on 4/14/15.
 //
 //
 
 #include "MovingMode.h"
+
+#include "AirCommand.h"
 #include "Logger.h"
 
 std::vector<std::string> MovingMode::getCommands()
@@ -91,6 +93,9 @@ void MovingMode::update(HandProcessor &handProcessor, SpeechProcessor &speechPro
     }
     if (hasCompleted)
     {
+        AirCommandMoving cmd(movingObject, originalPosition, movingObject->getPosition());
+        cmd.execute();
+        pushCommand(cmd);
         movingObject = NULL;
     }
 }

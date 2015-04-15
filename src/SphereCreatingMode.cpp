@@ -8,6 +8,7 @@
 
 #include "SphereCreatingMode.h"
 
+#include "AirCommand.h"
 #include "AirSphere.h"
 #include "Logger.h"
 
@@ -120,13 +121,13 @@ bool SphereCreatingMode::createSphere(AirObjectManager &objectManager)
     float radius = computeTraceRadius(centroid);
     if (radius > 0.0)
     {
-        AirSphere* sphere = new AirSphere();
-        if (NULL == sphere)
+        AirCommandSphere cmd(objectManager, centroid, radius);
+        cmd.execute();        
+        if (NULL == cmd.getSphere())
         {
             return false;
         }
-        sphere->setup(centroid, radius, ofColor::gray); // Default color: gray
-        objectManager.addObject(sphere);
+        pushCommand(cmd);
         return true;
     }
     return false;

@@ -3,6 +3,7 @@
 //  airsketcher
 //
 //  Created by Kevin Wong on 3/22/15.
+//  Last update by Patricia Suriana on 4/14/15
 //
 //
 
@@ -34,6 +35,22 @@ public:
     
 protected:
     bool hasCompleted;
+
+    // For undo-redo
+    std::stack<AirCommand> undoCommands;
+    std::stack<AirCommand> redoCommands;
+
+    inline void pushCommand(AirCommand cmd) { 
+        undoCommands.push(cmd);
+        redoCommands = std::stack<AirCommand>();
+    };
+
+    /* Pop the command on the top of the undoCommands stack */
+    inline AirCommand deleteCommand(AirCommand cmd) { 
+        AirCommand cmd = undoCommands.top();
+        undoCommands.pop();
+        return cmd;
+    };
 };
 
 #endif /* defined(__airsketcher__AirControlMode__) */

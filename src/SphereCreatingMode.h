@@ -29,7 +29,7 @@ public:
     std::string getHelpMessage() override;
 
 private:
-    
+
     enum DRAWING_MODE {
         NONE = 0,
         DRAW,
@@ -37,8 +37,8 @@ private:
     };
     
     std::vector<ofPoint> traces;
-    
     DRAWING_MODE drawCircleMode;
+    
     bool createSphere(AirController* controller, AirObjectManager &objectManager);
     
     inline ofPoint computeTraceCentroid()
@@ -55,7 +55,7 @@ private:
     {
         float radius = 0.0;
         for (const ofPoint& point : traces) {
-            float distance = sqrt((traces.front()-traces.back()).lengthSquared());
+            float distance = sqrt((point-centroid).lengthSquared());
             radius += distance;
         }
         radius /= traces.size();

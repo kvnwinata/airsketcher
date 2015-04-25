@@ -99,12 +99,9 @@ void ResizingMode::update(AirController* controller, HandProcessor &handProcesso
         {
             // update scaling params
             relativePosition = handProcessor.getHandAtIndex(0)->getTipLocation() - originalCenterOfResizing;
-            
             float currentDistance = ofPoint(relativePosition.x, relativePosition.z).length();
             float newScale = currentDistance/originalDistance * originalScale;
-
-            AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, newScale);
-            controller->pushCommand(cmd);
+            resizingObject->setScale(newScale);         
         }
         else
         {
@@ -113,6 +110,8 @@ void ResizingMode::update(AirController* controller, HandProcessor &handProcesso
         }
     }
     if (hasCompleted) {
+        AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, resizingObject->getScale());
+        controller->pushCommand(cmd);
         resizingObject = NULL;
     }
 }

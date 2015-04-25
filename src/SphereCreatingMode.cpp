@@ -24,7 +24,7 @@ SphereCreatingMode::SphereCreatingMode()
     : AirControlMode()
     , drawCircleMode(NONE)
 {
-    
+    traces.resize(2, ofPoint());
 }
 
 SphereCreatingMode::~SphereCreatingMode()
@@ -53,6 +53,18 @@ bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcesso
 {
     if (lastCommand == "draw sphere")
     {
+        originalPosition = handProcessor.getHandAtIndex(0)->getTipLocation();
+            originalCenterOfResizing = resizingObject->getPosition();
+            relativePosition = originalPosition - originalCenterOfResizing;
+
+        AirCommandSphere* cmd = new AirCommandSphere(objectManager, centroid, radius);
+        if (!controller->pushCommand(cmd))
+        {
+            Logger::getInstance()->temporaryLog("DRAW SPHERE failed; cannot allocate new copy");
+            hasCompleted = true;
+            return false;
+        }
+
         hasCompleted = false;
         return true;
     }
@@ -62,8 +74,11 @@ bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcesso
 void SphereCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
+    bool isCancelled = false;
+
     if (command == "cancel")
     {
+        isCancelled = true;
         hasCompleted = true;
     } 
     else 
@@ -76,9 +91,11 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
             {
                 switch (drawCircleMode) {
                     case DRAW:
-                        traces.push_back(hand->getTipLocation());
+                        traces[1] = hand->getTipLocation();
                         break;
                     case NONE:
+                        traces[0] = hand->getTipLocation();
+                        traces[1] = hand->getTipLocation();
                         drawCircleMode = DRAW;
                         break;
                     default:
@@ -110,6 +127,9 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
 
     if (hasCompleted)
     {
+        if (isCancelled) {
+            controller->popCommand();
+        }
         drawCircleMode = NONE;
         traces.clear();
     }
@@ -137,8 +157,7 @@ std::string SphereCreatingMode::getStatusMessage()
         case DRAW:
         {
             std::stringstream msg;
-            msg << "DRAWING SPHERE: current trace size ";
-            msg << traces.size();
+            msg << "DRAWING SPHERE";
             return msg.str();
         }
         case DONE:
@@ -153,7 +172,7 @@ std::string SphereCreatingMode::getHelpMessage()
     std::string msg;
     switch (drawCircleMode){
         case NONE:
-            msg = "Pinch your fingers and draw a circle. \n";
+            msg = "Pinch your fingers and draw line (radius + centroid). \n";
             break;
         case DRAW:
             msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";

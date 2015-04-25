@@ -13,14 +13,8 @@ std::vector<std::string> UndoRedoMode::getCommands()
 {
     std::vector<std::string> commands;
     
-    commands.push_back("computer undo one");
-    commands.push_back("computer redo one");
-    commands.push_back("computer undo two");
-    commands.push_back("computer redo two");
-    commands.push_back("computer undo three");
-    commands.push_back("computer redo three");
-    commands.push_back("computer undo four");
-    commands.push_back("computer redo four");
+    commands.push_back("computer undo");
+    commands.push_back("computer redo");
     return commands;
 }
 
@@ -45,17 +39,19 @@ bool UndoRedoMode::tryActivateMode(AirController* controller, HandProcessor &han
 	std::string commandString = lastCommand.substr(0,4);
     if (commandString == "undo")
     {
-    	std::string levelsString = lastCommand.substr(5);
-    	undo(controller, getLevelsFromString(levelsString));
-        Logger::getInstance()->temporaryLog("UNDO " + levelsString);
+    	//std::string levelsString = lastCommand.substr(5);
+        //int level = getLevelsFromString(levelsString);
+    	undo(controller, 1);
+        Logger::getInstance()->temporaryLog("UNDO");
         hasCompleted = true;
         return true;
     } 
     else if (commandString == "redo") 
     {
-    	std::string levelsString = lastCommand.substr(5);
-    	redo(controller, getLevelsFromString(levelsString));
-    	Logger::getInstance()->temporaryLog("REDO " + levelsString);
+    	//std::string levelsString = lastCommand.substr(5);
+        //int level = getLevelsFromString(levelsString);
+    	redo(controller, 1);
+    	Logger::getInstance()->temporaryLog("REDO");
         hasCompleted = true;
         return true;
     }

@@ -39,14 +39,12 @@ private:
         DONE
     };
     
-    bool createCylinder(AirController* controller, AirObjectManager &objectManager);
-    
     DRAWING_MODE drawCylinderMode;
     std::vector<ofPoint> circleTraces;
-    ofPoint startHeight;
-    ofPoint endHeight;
     ofPoint cylinderBaseLoc;
     AirCylinder* newCylinder;
+    
+    bool createCylinder(AirController* controller, AirObjectManager &objectManager);
     
     inline ofPoint computeBaseCircleTraceCentroid()
     {
@@ -62,7 +60,7 @@ private:
     {
         float radius = 0.0;
         for (const ofPoint& point : circleTraces) {
-            float distance = sqrt((circleTraces.front()-circleTraces.back()).lengthSquared());
+            float distance = sqrt((point-centroid).lengthSquared());
             radius += distance;
         }
         radius /= circleTraces.size();

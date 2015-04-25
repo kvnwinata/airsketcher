@@ -28,7 +28,7 @@ CylinderCreatingMode::CylinderCreatingMode()
     , drawCylinderMode(NONE_CIRCLE)
     , newCylinder(NULL)
 {
-    
+    circleTraces.resize(2, ofPoint());
 }
 
 CylinderCreatingMode::~CylinderCreatingMode()
@@ -50,9 +50,6 @@ void CylinderCreatingMode::drawMode()
             }
         }
     }
-    /*if (drawCylinderMode == DRAW_HEIGHT) {
-        ofLine(startHeight, endHeight);
-    }*/
 }
 
 bool CylinderCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
@@ -85,13 +82,10 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
             {
                 switch (drawCylinderMode) {
                     case DRAW_CIRCLE:
-                        circleTraces.push_back(hand->getTipLocation());
+                        circleTraces[1] = hand->getTipLocation();
                         break;
                     case DRAW_HEIGHT:
                     {
-                        endHeight = hand->getTipLocation();
-                        //float height =  DEFAULT_HEIGHT + computeCylinderHeight();
-                        
                         float height = hand->getTipLocation()[2] - cylinderBaseLoc[2];
                         if ((height >= 0) && (height < DEFAULT_HEIGHT)) {
                             height = DEFAULT_HEIGHT;
@@ -106,10 +100,11 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
                         break;
                     }
                     case NONE_CIRCLE:
+                        circleTraces[0] = hand->getTipLocation(); // Start point
+                        circleTraces[1] = hand->getTipLocation(); // End point
                         drawCylinderMode = DRAW_CIRCLE;
                         break;
                     case NONE_HEIGHT:
-                        startHeight = hand->getTipLocation();
                         drawCylinderMode = DRAW_HEIGHT;
                         break;
                     default:
@@ -160,8 +155,6 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
         newCylinder = NULL;
         drawCylinderMode = NONE_CIRCLE;
         circleTraces.clear();
-        startHeight = ofPoint();
-        endHeight = ofPoint();
     }
 }
 
@@ -218,7 +211,7 @@ std::string CylinderCreatingMode::getHelpMessage()
     std::string msg;
     switch (drawCylinderMode) {
         case NONE_CIRCLE:
-            msg = "Pinch your fingers and draw a circle. \n";
+            msg = "Pinch your fingers and draw line (radius + centroid). \n";
             break;
         case DRAW_CIRCLE:
             msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";

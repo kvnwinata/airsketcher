@@ -154,7 +154,7 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
         }
         newCylinder = NULL;
         drawCylinderMode = NONE_CIRCLE;
-        circleTraces.clear();
+        circleTraces.resize(2, ofPoint());
     }
 }
 

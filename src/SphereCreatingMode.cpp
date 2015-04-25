@@ -53,18 +53,6 @@ bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcesso
 {
     if (lastCommand == "draw sphere")
     {
-        originalPosition = handProcessor.getHandAtIndex(0)->getTipLocation();
-            originalCenterOfResizing = resizingObject->getPosition();
-            relativePosition = originalPosition - originalCenterOfResizing;
-
-        AirCommandSphere* cmd = new AirCommandSphere(objectManager, centroid, radius);
-        if (!controller->pushCommand(cmd))
-        {
-            Logger::getInstance()->temporaryLog("DRAW SPHERE failed; cannot allocate new copy");
-            hasCompleted = true;
-            return false;
-        }
-
         hasCompleted = false;
         return true;
     }
@@ -131,7 +119,7 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
             controller->popCommand();
         }
         drawCircleMode = NONE;
-        traces.clear();
+        traces.resize(2, ofPoint());
     }
 }
 

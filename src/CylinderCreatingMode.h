@@ -67,12 +67,6 @@ private:
         return radius;
     }
     
-    inline float computeCylinderHeight()
-    {
-        float height = sqrt((endHeight-startHeight).lengthSquared());
-        return height;
-    }
-    
     /* If height is negative, the cylinder's centroid should be shifted downwards */
     inline ofPoint computeCylinderCentroid(float height)
     {

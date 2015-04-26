@@ -57,8 +57,9 @@ void AirObject::draw() const
     ofScale(scale, scale, scale);
     
     // draw
+    ofSetColor(255, 255, 255);
+    ofSetColor(color);
     drawNormalized();
-    
     ofPopMatrix();
 }
 
@@ -79,7 +80,31 @@ void AirObject::drawHighlight() const
     ofScale(scale, scale, scale);
     
     // draw
+    ofSetColor(255, 255, 255);
+    ofSetColor(color);
     drawHighlightNormalized();
+    ofPopMatrix();
+}
+
+void AirObject::drawShadow(bool isHighlighted) const
+{
+    ofPushMatrix();
+    ofTranslate(position.x, position.y);
+    float rotationAngle;
+    ofVec3f rotationAxis;
+    orientation.getRotate(rotationAngle, rotationAxis);
+    ofScale(scale, scale, 0.0001f);
+    ofRotate(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+    ofSetColor(20, 20, 20, 255);
+    
+    if (!isHighlighted)
+    {
+        drawNormalized();
+    }
+    else
+    {
+        drawHighlightNormalized();
+    }
     
     ofPopMatrix();
 }

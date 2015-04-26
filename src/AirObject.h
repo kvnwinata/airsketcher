@@ -36,6 +36,7 @@ public:
     
     void draw()             const; // draw object
     void drawHighlight()    const; // draw highlight (e.g. bounding box)
+    void drawShadow(bool isHighlighted = false)       const;
     
     // center at (0,0,0), normalized w.r.t rotation and translation
     virtual void drawNormalized()             const = 0; // draw object

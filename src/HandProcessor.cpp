@@ -28,6 +28,7 @@ void HandProcessor::drawHands()
     for (int i = 0; i < hands.size(); i++)
     {
         hands[i].draw();
+        hands[i].drawShadow();
     }
     
     if (controller.isConnected())
@@ -40,7 +41,7 @@ void HandProcessor::drawHands()
         
         ofScale(3,3,3);
         ofTranslate(0,0,-10);
-        plane.drawVertices();
+        plane.drawFaces();
         ofTranslate(0,0, 10);
 
         ofPopMatrix();

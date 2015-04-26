@@ -35,6 +35,16 @@ void Logger::temporaryLog(std::string message)
     time = ofGetElapsedTimef();
 }
 
+std::string Logger::getTempMessage()
+{
+    if (ofGetElapsedTimef() - time < 8)
+    {
+        return temporaryMessage;
+    } else {
+        return "";
+    }
+}
+
 void Logger::print()
 {
     ofSetColor(255,255,255);
@@ -54,5 +64,13 @@ void Logger::print()
     ofPopMatrix();
 }
 
-Logger::Logger() : temporaryMessage(""){}
+//void Logger::playStartModeSound(){startModeSound.play();}
+//void Logger::playEndModeSound(){endModeSound.play();}
+//void Logger::playErrorSound(){errorSound.play();}
+
+Logger::Logger() : temporaryMessage("")
+{
+
+}
+
 Logger::~Logger(){}

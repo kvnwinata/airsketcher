@@ -35,9 +35,9 @@ void LeapHand::updateHand(const Leap::Hand &handObject)
     {
         const Leap::Finger & finger = handObject.fingers()[j];
         
-        joints[j*4+0] = positionToOfPoint(finger.jointPosition(finger.JOINT_DIP));
-        joints[j*4+1] = positionToOfPoint(finger.jointPosition(finger.JOINT_MCP));
-        joints[j*4+2] = positionToOfPoint(finger.jointPosition(finger.JOINT_PIP));
+        joints[j*4+0] = positionToOfPoint(finger.jointPosition(finger.JOINT_MCP));
+        joints[j*4+1] = positionToOfPoint(finger.jointPosition(finger.JOINT_PIP));
+        joints[j*4+2] = positionToOfPoint(finger.jointPosition(finger.JOINT_DIP));
         joints[j*4+3] = positionToOfPoint(finger.jointPosition(finger.JOINT_TIP));
     }
     
@@ -81,7 +81,7 @@ ofPoint LeapHand::getTipLocation()
     return joints[INDEX_TIP];
 }
 
-void LeapHand::draw()
+void LeapHand::drawJoints() // OLD, not being used
 {
     if (!isActive) return;
     
@@ -107,6 +107,82 @@ void LeapHand::draw()
     ofSetColor(50, 50, 50);
     ofLine(tip, ofPoint(tip.x, tip.y, 0));
 };
+
+void LeapHand::draw()
+{
+    if (!isActive) return;
+    
+    ofSetColor(64,64, 255, 255);
+    for (int i = 0; i < Joint_Count; i++)
+    {
+        ofDrawSphere(joints[i], 5);
+    }
+    
+    for (int finger = 0; finger < 5; finger++)
+    {
+        for (int segment = 0; segment < 3; segment++)
+        {
+            ofPoint joint1 = joints[finger * 4 + segment];
+            ofPoint joint2 = joints[finger * 4 + segment + 1];
+            
+            ofSetColor(255, 255, 255, 255);
+            ofPushMatrix();
+            ofTranslate((joint1 + joint2)/2);
+            
+            ofVec3f zAxis(0,0,1.f);
+            
+            float rotationAngle;
+            ofVec3f rotationAxis;
+            rotationAxis = zAxis.crossed(joint2 - joint1).normalized();
+            rotationAngle = zAxis.angle(joint2 - joint1);
+            ofRotate(rotationAngle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+            ofRotate(90, 1, 0, 0);
+            ofDrawCylinder(5, (joint1-joint2).length());
+            ofPopMatrix();
+        }
+    }
+    
+    ofPoint tip = joints[INDEX_TIP];
+    
+    if (isPinching)
+    {
+        ofSetColor(255,0,255);
+    }
+    else
+    {
+        ofSetColor(255,255,0);
+    }
+    
+    ofDrawSphere(tip, 8);
+    
+    //ofSetColor(50, 50, 50);
+    //ofLine(tip, ofPoint(tip.x, tip.y, 0));
+};
+
+void LeapHand::drawShadow()
+{
+    if (!isActive) return;
+    
+    ofSetColor(20,20, 20, 255);
+    for (int i = 0; i < Joint_Count; i++)
+    {
+        ofCircle(joints[i].x, joints[i].y, 0, 5);
+    }
+    ofSetLineWidth(5.f);
+
+    for (int finger = 0; finger < 5; finger++)
+    {
+        for (int segment = 0; segment < 3; segment++)
+        {
+            ofPoint joint1 = joints[finger * 4 + segment];
+            ofPoint joint2 = joints[finger * 4 + segment + 1];
+            
+            ofLine(joint1.x, joint1.y, joint2.x, joint2.y);
+        }
+    }
+    ofSetLineWidth(1.f);
+}
+
 
 ofPoint LeapHand::positionToOfPoint(const Leap::Vector &vector)
 {

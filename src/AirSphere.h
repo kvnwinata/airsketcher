@@ -29,6 +29,9 @@ public:
     
     std::string getDescription() const override;
     
+    float getRadius() const { return radius; };
+    void setRadius(float newRadius) { radius = newRadius; };
+    
 private:
     
     float   radius;

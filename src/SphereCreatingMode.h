@@ -36,6 +36,7 @@ private:
         DONE        
     };
     
+    AirSphere* sphere;
     std::vector<ofPoint> traces;
     DRAWING_MODE drawCircleMode;
     

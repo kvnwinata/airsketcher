@@ -55,8 +55,8 @@ bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &hand
                 hasCompleted = true;
                 return false;
             }
-            
             objectCopy = cmd->getObjectCopy();
+            
             hasCompleted = false;
             return true;
         }

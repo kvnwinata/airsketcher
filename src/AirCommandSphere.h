@@ -21,13 +21,13 @@ public:
     bool execute() override;
     void unexecute() override;
     
-    AirObject* getObject() { return _object; }
+    AirSphere* getObject() { return _object; }
     
 private:
     AirObjectManager& _objectManager;
     const ofPoint _centroid;
     const float _radius;
-    AirObject* _object;
+    AirSphere* _object;
 };
 
 

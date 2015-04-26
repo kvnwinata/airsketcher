@@ -54,5 +54,13 @@ void Logger::print()
     ofPopMatrix();
 }
 
-Logger::Logger() : temporaryMessage(""){}
+//void Logger::playStartModeSound(){startModeSound.play();}
+//void Logger::playEndModeSound(){endModeSound.play();}
+//void Logger::playErrorSound(){errorSound.play();}
+
+Logger::Logger() : temporaryMessage("")
+{
+
+}
+
 Logger::~Logger(){}

@@ -23,6 +23,10 @@ public:
     void log(std::string message);
     void print();
     
+//    void playErrorSound();
+//    void playStartModeSound();
+//    void playEndModeSound();
+    
 private:
     Logger();
     ~Logger();
@@ -33,6 +37,7 @@ private:
     std::string temporaryMessage;
     
     static Logger* singleton;
+    
 };
 
 

@@ -9,7 +9,6 @@ void ofApp::setup(){
     
     // Main components setup
     
-    
     // add words to dictionary
     speechProcessor.setup(controller.getCommands());
     
@@ -26,12 +25,15 @@ void ofApp::setup(){
     //material.setShininess(2.f);
     material.setAmbientColor(ofColor(255,255,255));
     material.setDiffuseColor(ofColor(255,255,255));
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     handProcessor.update();
     controller.update(handProcessor, speechProcessor, objectManager);
+    
+    ofSoundUpdate();
 }
 
 //--------------------------------------------------------------
@@ -103,7 +105,6 @@ void ofApp::keyPressed(int key){
         line->setup(ofPoint (0, 0, 0), ofPoint(100,200,300), ofColor(50,50,255));
         objectManager.addObject(line);
     }
-
 }
 
 //--------------------------------------------------------------

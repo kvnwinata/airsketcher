@@ -23,6 +23,8 @@ public:
     void log(std::string message);
     void print();
     
+    std::string getTempMessage();
+    
 //    void playErrorSound();
 //    void playStartModeSound();
 //    void playEndModeSound();

@@ -152,10 +152,12 @@ std::string AirController::getStatusMessage()
     std::stringstream msg;
     if (currentMode)
     {
-        msg << "[MODE]: ";
         msg << currentMode->getStatusMessage();
     }
-    
+    else
+    {
+        msg << "No Currently Active Mode";
+    }
     return msg.str();
 }
 
@@ -199,19 +201,7 @@ std::string AirController::getHelpMessage()
     
     std::stringstream msg;
     
-    msg << "Available global commands:\n";
-    msg << "'computer draw sphere'\n";
-    msg << "'computer draw cylinder'\n";
-    msg << "'computer draw line'\n";
-
-    msg << "\nAvailable commands WHILE HIGHLIGHTING AN OBJECT:\n";
-    msg << "'computer move this'\n";
-    msg << "'computer resize this'\n";
-    msg << "'computer rotate this'\n";
-    msg << "'computer erase this'\n";
-    msg << "'computer color this [red/green/blue/orange/yellow/purple/white/black]'\n";
-    
-    msg << "\nPinch using both hands to change point of view";
+    msg << "Press 'h' for help on available voice commands.";
     
     return msg.str();
 }

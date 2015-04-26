@@ -23,6 +23,8 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
+    void displayHelpMessage();
+
     
 private: // Air Sketcher Main Components
     
@@ -38,5 +40,9 @@ private:
     ofEasyCam           ecam;
     
     ofLight             pointLight;
-    ofMaterial          material;    
+    ofMaterial          material;
+    
+    ofTrueTypeFont      text;
+    
+    bool                displayHelp;
 };

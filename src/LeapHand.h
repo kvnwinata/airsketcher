@@ -26,11 +26,11 @@ public:
     
     enum Joint
     {
-        THUMB_DIP = 0,  THUMB_MCP = 1,  THUMB_PIP = 2,  THUMB_TIP = 3,
-        INDEX_DIP = 4,  INDEX_MCP = 5,  INDEX_PIP = 6,  INDEX_TIP = 7,
-        MIDDLE_DIP = 8, MIDDLE_MCP = 9, MIDDLE_PIP = 10,MIDDLE_TIP = 11,
-        RING_DIP = 12,  RING_MCP = 13,  RING_PIP = 14,  RING_TIP = 15,
-        PINKY_DIP = 16, PINKY_MCP = 17, PINKY_PIP = 18, PINKY_TIP = 19,
+        THUMB_MCP = 0,  THUMB_PIP = 1,  THUMB_DIP = 2,  THUMB_TIP = 3,
+        INDEX_MCP = 4,  INDEX_PIP = 5,  INDEX_DIP = 6,  INDEX_TIP = 7,
+        MIDDLE_MCP = 8, MIDDLE_PIP = 9, MIDDLE_DIP = 10,MIDDLE_TIP = 11,
+        RING_MCP = 12,  RING_PIP = 13,  RING_DIP = 14,  RING_TIP = 15,
+        PINKY_MCP = 16, PINKY_PIP = 17, PINKY_DIP = 18, PINKY_TIP = 19,
         Joint_Count = 20,
     };
     
@@ -39,6 +39,7 @@ public:
     LeapHand();
     
     void draw();
+    void drawJoints();
     void updateHand(const Leap::Hand &handObject);
     ofPoint getTipLocation();
     bool getIsActive() const;

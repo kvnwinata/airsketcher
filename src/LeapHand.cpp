@@ -163,7 +163,7 @@ void LeapHand::drawShadow()
 {
     if (!isActive) return;
     
-    ofSetColor(0,0, 0, 64);
+    ofSetColor(20,20, 20, 255);
     for (int i = 0; i < Joint_Count; i++)
     {
         ofCircle(joints[i].x, joints[i].y, 0, 5);

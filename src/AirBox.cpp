@@ -32,18 +32,13 @@ void AirBox::setup(ofPoint centerPosition, ofVec3f s, ofColor c)
 
 void AirBox::drawNormalized() const
 {
-    ofSetColor(255,255,255);
-    ofSetColor(color);
     ofDrawBox(ofPoint(0,0,0), size.x, size.y, size.z);
-    ofSetColor(255, 255, 255);
 }
 
 void AirBox::drawHighlightNormalized() const
 {
-    ofSetColor(color);
     ofNoFill();
     ofDrawBox(ofPoint(0,0,0), size.x, size.y, size.z);
-    ofSetColor(255,255,255);
     ofFill();
 }
 

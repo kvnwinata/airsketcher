@@ -35,20 +35,15 @@ void AirCylinder::setup(ofPoint centerPosition, float r, float h, ofColor c)
 
 void AirCylinder::drawNormalized() const
 {
-    ofSetColor(255,255,255);
-    ofSetColor(color);
     ofRotate(90, 1, 0, 0);
     ofDrawCylinder(ofPoint(0,0,0), radius, height);
-    ofSetColor(255, 255, 255);
 }
 
 void AirCylinder::drawHighlightNormalized() const
 {
-    ofSetColor(color);
     ofNoFill();
     ofRotate(90, 1, 0, 0);
     ofDrawCylinder(ofPoint(0,0,0), radius, height);
-    ofSetColor(255,255,255);
     ofFill();
 }
 

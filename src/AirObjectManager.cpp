@@ -51,12 +51,17 @@ void AirObjectManager::drawObjects()
 {
     for (AirObject* object : objects)
     {
-        if (highlightedObject != object) object->draw();
+        if (highlightedObject != object)
+        {
+            object->draw();
+            object->drawShadow(false);
+        }
     }
     
     if (highlightedObject)
     {
         highlightedObject->drawHighlight();
+        highlightedObject->drawShadow(true);
     }
 }
 

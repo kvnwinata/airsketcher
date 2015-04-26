@@ -155,9 +155,33 @@ void LeapHand::draw()
     
     ofDrawSphere(tip, 8);
     
-    ofSetColor(50, 50, 50);
-    ofLine(tip, ofPoint(tip.x, tip.y, 0));
+    //ofSetColor(50, 50, 50);
+    //ofLine(tip, ofPoint(tip.x, tip.y, 0));
 };
+
+void LeapHand::drawShadow()
+{
+    if (!isActive) return;
+    
+    ofSetColor(0,0, 0, 64);
+    for (int i = 0; i < Joint_Count; i++)
+    {
+        ofCircle(joints[i].x, joints[i].y, 0, 5);
+    }
+    ofSetLineWidth(5.f);
+
+    for (int finger = 0; finger < 5; finger++)
+    {
+        for (int segment = 0; segment < 3; segment++)
+        {
+            ofPoint joint1 = joints[finger * 4 + segment];
+            ofPoint joint2 = joints[finger * 4 + segment + 1];
+            
+            ofLine(joint1.x, joint1.y, joint2.x, joint2.y);
+        }
+    }
+    ofSetLineWidth(1.f);
+}
 
 
 ofPoint LeapHand::positionToOfPoint(const Leap::Vector &vector)

@@ -39,6 +39,7 @@ public:
     LeapHand();
     
     void draw();
+    void drawShadow();
     void drawJoints();
     void updateHand(const Leap::Hand &handObject);
     ofPoint getTipLocation();

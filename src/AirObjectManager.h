@@ -33,6 +33,9 @@ public:
     // Delete object from the container; handle memory deallocation as well.
     void deleteObject(AirObject* object);
     
+    // Remove object from the container and hands ownership to the caller.
+    void getObjectOwnership(AirObject* object);
+    
     void updateHighlight(ofPoint location);
     AirObject* getHighlightedObject();
     

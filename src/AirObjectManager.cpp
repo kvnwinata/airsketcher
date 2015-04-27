@@ -47,6 +47,22 @@ void AirObjectManager::deleteObject(AirObject* object)
     }
 }
 
+void AirObjectManager::getObjectOwnership(AirObject* object)
+{
+    for (auto it = objects.begin(); it != objects.end(); ++it)
+    {
+        if((*it) == object)
+        {
+            if (highlightedObject == object)
+            {
+                highlightedObject = NULL;
+            }
+            objects.erase(it);
+            return;
+        }
+    }
+}
+
 void AirObjectManager::drawObjects()
 {
     for (AirObject* object : objects)

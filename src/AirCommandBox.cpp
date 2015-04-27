@@ -15,6 +15,13 @@ AirCommandBox::AirCommandBox(AirObjectManager& objectManager, ofPoint centroid, 
 , _sizeXYZ(sizeXYZ)
 , _object(NULL)
 {
+    AirBox* box = new AirBox();
+    if (NULL == box)
+    {
+        return false;
+    }
+    box->setup(_centroid, _sizeXYZ, ofColor::gray); // Default color: gray
+    _object = box;
 }
 
 AirCommandBox::~AirCommandBox()
@@ -24,19 +31,11 @@ AirCommandBox::~AirCommandBox()
 
 bool AirCommandBox::execute()
 {
-    AirBox* box = new AirBox();
-    if (NULL == box)
-    {
-        return false;
-    }
-    box->setup(_centroid, _sizeXYZ, ofColor::gray); // Default color: gray
-    _objectManager.addObject(box);
-    _object = box;
+    _objectManager.addObject(_object);
     return true;
 }
 
 void AirCommandBox::unexecute()
 {
-    _objectManager.deleteObject(_object);
-    _object = NULL;
+    _objectManager.getObjectOwnership(_object);
 }

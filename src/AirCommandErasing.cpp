@@ -22,13 +22,7 @@ AirCommandErasing::~AirCommandErasing()
 
 bool AirCommandErasing::execute()
 {
-    AirObject* copy = _object->getCopy();
-    if (NULL == copy)
-    {
-        return false;
-    }
-    _objectManager.deleteObject(_object);
-    _object = copy;
+    _objectManager.getObjectOwnership(_object);
     return true;
 }
 

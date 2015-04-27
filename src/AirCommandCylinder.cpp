@@ -16,6 +16,13 @@ AirCommandCylinder::AirCommandCylinder(AirObjectManager& objectManager, ofPoint 
 , _height(height)
 , _object(NULL)
 {
+    AirCylinder* cylinder = new AirCylinder();
+    if (NULL == cylinder)
+    {
+        return false;
+    }
+    cylinder->setup(_centroid, _radius, _height, ofColor::gray); // Default color: gray
+    _object = cylinder;
 }
 
 AirCommandCylinder::~AirCommandCylinder()
@@ -25,19 +32,11 @@ AirCommandCylinder::~AirCommandCylinder()
 
 bool AirCommandCylinder::execute()
 {
-    AirCylinder* cylinder = new AirCylinder();
-    if (NULL == cylinder)
-    {
-        return false;
-    }
-    cylinder->setup(_centroid, _radius, _height, ofColor::gray); // Default color: gray
-    _objectManager.addObject(cylinder);
-    _object = cylinder;
+    _objectManager.addObject(_object);
     return true;
 }
 
 void AirCommandCylinder::unexecute()
 {
-    _objectManager.deleteObject(_object);
-    _object = NULL;
+    _objectManager.getObjectOwnership(_object);
 }

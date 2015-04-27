@@ -15,6 +15,13 @@ AirCommandLine::AirCommandLine(AirObjectManager& objectManager, ofPoint startPoi
 , _endPoint(endPoint)
 , _object(NULL)
 {
+    AirLine* line = new AirLine();
+    if (NULL == line)
+    {
+        return false;
+    }
+    line->setup(_startPoint, _endPoint, ofColor::gray); // Default color: gray
+    _object = line;
 }
 
 AirCommandLine::~AirCommandLine()
@@ -24,19 +31,11 @@ AirCommandLine::~AirCommandLine()
 
 bool AirCommandLine::execute()
 {
-    AirLine* line = new AirLine();
-    if (NULL == line)
-    {
-        return false;
-    }
-    line->setup(_startPoint, _endPoint, ofColor::gray); // Default color: gray
-    _objectManager.addObject(line);
-    _object = line;
+    _objectManager.addObject(_object);
     return true;
 }
 
 void AirCommandLine::unexecute()
 {
-    _objectManager.deleteObject(_object);
-    _object = NULL;
+    _objectManager.getObjectOwnership(_object);
 }

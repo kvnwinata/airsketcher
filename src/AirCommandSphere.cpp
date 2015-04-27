@@ -15,6 +15,12 @@ AirCommandSphere::AirCommandSphere(AirObjectManager& objectManager, ofPoint cent
 , _radius(radius)
 , _object(NULL)
 {
+    AirSphere* sphere = new AirSphere();
+    if (NULL != sphere)
+    {
+        sphere->setup(_centroid, _radius, ofColor::gray); // Default color: gray
+    }
+    _object = sphere;
 }
 
 AirCommandSphere::~AirCommandSphere()
@@ -24,19 +30,11 @@ AirCommandSphere::~AirCommandSphere()
 
 bool AirCommandSphere::execute()
 {
-    AirSphere* sphere = new AirSphere();
-    if (NULL == sphere)
-    {
-        return false;
-    }
-    sphere->setup(_centroid, _radius, ofColor::gray); // Default color: gray
-    _objectManager.addObject(sphere);
-    _object = sphere;
+    _objectManager.addObject(_object);
     return true;
 }
 
 void AirCommandSphere::unexecute()
 {
-    _objectManager.deleteObject(_object);
-    _object = NULL;
+    _objectManager.getObjectOwnership(_object);
 }

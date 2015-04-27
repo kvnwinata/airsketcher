@@ -28,6 +28,7 @@ private:
     const ofPoint _centroid;
     const float _radius;
     AirSphere* _object;
+    bool _ownObject;
 };
 
 

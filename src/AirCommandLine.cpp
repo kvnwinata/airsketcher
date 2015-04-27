@@ -14,6 +14,7 @@ AirCommandLine::AirCommandLine(AirObjectManager& objectManager, ofPoint startPoi
 , _startPoint(startPoint)
 , _endPoint(endPoint)
 , _object(NULL)
+, _ownObject(false)
 {
     AirLine* line = new AirLine();
     if (NULL == line)
@@ -26,16 +27,21 @@ AirCommandLine::AirCommandLine(AirObjectManager& objectManager, ofPoint startPoi
 
 AirCommandLine::~AirCommandLine()
 {
-    
+    if (_ownObject && (NULL != _object))
+    {
+        delete _object;
+    }
 }
 
 bool AirCommandLine::execute()
 {
     _objectManager.addObject(_object);
+    _ownObject = true;
     return true;
 }
 
 void AirCommandLine::unexecute()
 {
     _objectManager.getObjectOwnership(_object);
+    _ownObject = false;
 }

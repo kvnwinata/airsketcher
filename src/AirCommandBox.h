@@ -28,6 +28,7 @@ private:
     const ofPoint _centroid;
     const ofPoint _sizeXYZ;
     AirObject* _object;
+    bool _ownObject;
 };
 
 #endif /* defined(__airsketcher__AirCommandBox__) */

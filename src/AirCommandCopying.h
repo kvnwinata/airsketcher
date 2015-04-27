@@ -27,6 +27,7 @@ private:
     AirObjectManager& _objectManager;
     const AirObject* _copiedObject; // should be a valid pointer
     AirObject* _objectCopy;
+    bool _ownObject;
 };
 
 #endif /* defined(__airsketcher__AirCommandCopying__) */

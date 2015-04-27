@@ -36,6 +36,9 @@ public:
     // Remove object from the container and hands ownership to the caller.
     void getObjectOwnership(AirObject* object);
     
+    // Remove all objects from the container and hands their ownerships to the caller.
+    std::vector<AirObject*> getOwnershipAll();
+    
     void updateHighlight(ofPoint location);
     AirObject* getHighlightedObject();
     

@@ -23,7 +23,8 @@ public:
     
 private:
     AirObjectManager& _objectManager;
-    AirObject* _object; // should be a valid pointer
+    std::vector<AirObject*> _objects; // should all be valid pointers
+    bool _ownObjects;
 };
 
 #endif /* defined(__airsketcher__AirCommandEraseAll__) */

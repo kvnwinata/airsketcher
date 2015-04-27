@@ -28,6 +28,7 @@ private:
     const ofPoint _startPoint;
     const ofPoint _endPoint;
     AirObject* _object;
+    bool _ownObject;
 };
 
 #endif /* defined(__airsketcher__AirCommandLine__) */

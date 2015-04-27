@@ -13,7 +13,9 @@ AirCommandCopying::AirCommandCopying(AirObjectManager& objectManager, AirObject*
 , _objectManager(objectManager)
 , _copiedObject(copiedObject)
 , _objectCopy(NULL)
+, _ownObject(false)
 {
+    _objectCopy = _copiedObject->getCopy();
 }
 
 AirCommandCopying::~AirCommandCopying()
@@ -23,18 +25,18 @@ AirCommandCopying::~AirCommandCopying()
 
 bool AirCommandCopying::execute()
 {
-    _objectCopy = _copiedObject->getCopy();
     if (NULL == _objectCopy)
     {
         return false;
     }
     _objectManager.addObject(_objectCopy);
     _objectManager.switchHighlightedObject(_objectCopy, _objectCopy->getPosition());
+    _ownObject = true;
     return true;
 }
 
 void AirCommandCopying::unexecute()
 {
-    _objectManager.deleteObject(_objectCopy);
-    _objectCopy = NULL;
+    _objectManager.getObjectOwnership(_objectCopy);
+    _ownObject = false;
 }

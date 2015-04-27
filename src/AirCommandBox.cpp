@@ -14,6 +14,7 @@ AirCommandBox::AirCommandBox(AirObjectManager& objectManager, ofPoint centroid, 
 , _centroid(centroid)
 , _sizeXYZ(sizeXYZ)
 , _object(NULL)
+, _ownObject(false)
 {
     AirBox* box = new AirBox();
     if (NULL == box)
@@ -26,16 +27,21 @@ AirCommandBox::AirCommandBox(AirObjectManager& objectManager, ofPoint centroid, 
 
 AirCommandBox::~AirCommandBox()
 {
-    
+    if (_ownObject && (NULL != _object))
+    {
+        delete _object;
+    }
 }
 
 bool AirCommandBox::execute()
 {
     _objectManager.addObject(_object);
+    _ownObject = true;
     return true;
 }
 
 void AirCommandBox::unexecute()
 {
     _objectManager.getObjectOwnership(_object);
+    _ownObject = false;
 }

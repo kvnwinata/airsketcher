@@ -24,6 +24,7 @@ public:
 private:
     AirObjectManager& _objectManager;
     AirObject* _object; // should be a valid pointer
+    bool _ownObject;
 };
 
 #endif /* defined(__airsketcher__AirCommandErasing__) */

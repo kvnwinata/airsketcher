@@ -29,6 +29,7 @@ private:
     const float _radius;
     const float _height;
     AirObject* _object;
+    bool _ownObject;
 };
 
 #endif /* defined(__airsketcher__AirCommandCylinder__) */

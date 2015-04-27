@@ -63,6 +63,14 @@ void AirObjectManager::getObjectOwnership(AirObject* object)
     }
 }
 
+std::vector<AirObject*> AirObjectManager::getOwnershipAll()
+{
+    highlightedObject = NULL;
+    std::vector<AirObject*> out;
+    out.swap(objects);
+    return out;
+}
+
 void AirObjectManager::drawObjects()
 {
     for (AirObject* object : objects)

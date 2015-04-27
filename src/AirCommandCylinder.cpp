@@ -15,6 +15,7 @@ AirCommandCylinder::AirCommandCylinder(AirObjectManager& objectManager, ofPoint 
 , _radius(radius)
 , _height(height)
 , _object(NULL)
+, _ownObject(false)
 {
     AirCylinder* cylinder = new AirCylinder();
     if (NULL == cylinder)
@@ -27,16 +28,21 @@ AirCommandCylinder::AirCommandCylinder(AirObjectManager& objectManager, ofPoint 
 
 AirCommandCylinder::~AirCommandCylinder()
 {
-    
+    if (_ownObject && (NULL != _object))
+    {
+        delete _object;
+    }
 }
 
 bool AirCommandCylinder::execute()
 {
     _objectManager.addObject(_object);
+    _ownObject = true;
     return true;
 }
 
 void AirCommandCylinder::unexecute()
 {
     _objectManager.getObjectOwnership(_object);
+    _ownObject = false;
 }

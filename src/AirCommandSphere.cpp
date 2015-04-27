@@ -14,6 +14,7 @@ AirCommandSphere::AirCommandSphere(AirObjectManager& objectManager, ofPoint cent
 , _centroid(centroid)
 , _radius(radius)
 , _object(NULL)
+, _ownObject(false)
 {
     AirSphere* sphere = new AirSphere();
     if (NULL != sphere)
@@ -25,16 +26,21 @@ AirCommandSphere::AirCommandSphere(AirObjectManager& objectManager, ofPoint cent
 
 AirCommandSphere::~AirCommandSphere()
 {
-    
+    if (_ownObject && (NULL != _object))
+    {
+        delete _object;
+    }
 }
 
 bool AirCommandSphere::execute()
 {
     _objectManager.addObject(_object);
+    _ownObject = true;
     return true;
 }
 
 void AirCommandSphere::unexecute()
 {
     _objectManager.getObjectOwnership(_object);
+    _ownObject = false;
 }

@@ -11,27 +11,34 @@
 AirCommandEraseAll::AirCommandEraseAll(AirObjectManager& objectManager)
 : AirCommand()
 , _objectManager(objectManager)
+, _ownObjects(false)
 {
 }
 
 AirCommandEraseAll::~AirCommandEraseAll()
 {
-    
+    if (_ownObjects)
+    {
+        for (AirObject* object : _objects) {
+            if (NULL != object) {
+                delete object;
+            }
+        }
+    }
 }
 
 bool AirCommandEraseAll::execute()
 {
-    AirObject* copy = _object->getCopy();
-    if (NULL == copy)
-    {
-        return false;
-    }
-    _objectManager.deleteObject(_object);
-    _object = copy;
+    _objects = _objectManager.getOwnershipAll();
+    _ownObjects = true;
     return true;
 }
 
 void AirCommandEraseAll::unexecute()
 {
-    _objectManager.addObject(_object);
+    for (AirObject* object : _objects)
+    {
+        _objectManager.addObject(object);
+    }
+    _ownObjects = false;
 }

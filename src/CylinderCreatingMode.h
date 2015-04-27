@@ -60,7 +60,8 @@ private:
     {
         float radius = 0.0;
         for (const ofPoint& point : circleTraces) {
-            float distance = sqrt((point-centroid).lengthSquared());
+            ofPoint delta = point-centroid;
+            float distance = sqrt(delta[0]*delta[0] + delta[1]*delta[1]);
             radius += distance;
         }
         radius /= circleTraces.size();

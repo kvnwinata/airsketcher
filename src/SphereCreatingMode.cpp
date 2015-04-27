@@ -172,7 +172,7 @@ std::string SphereCreatingMode::getHelpMessage()
     std::string msg;
     switch (drawCircleMode){
         case NONE:
-            msg = "Pinch your hand and move it to draw and resize sphere. \n";
+            msg = "Pinch your hand and move around (outwards or inwards) to draw and resize sphere. \n";
             break;
         case DRAW:
             msg = "When finished, release your pinch\n OR to cancel midway, say 'computer cancel'\n";

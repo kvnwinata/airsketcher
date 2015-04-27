@@ -93,7 +93,7 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
                         traces[1] = hand->getTipLocation() + ofPoint(DEFAULT_RADIUS, DEFAULT_RADIUS, DEFAULT_RADIUS);
                         if (!createSphere(controller, objectManager))
                         {
-                            Logger::getInstance()->temporaryLog("Drawing SPHERE failed; cannot allocate new copy");
+                            Logger::getInstance()->temporaryLog("Drawing sphere FAILED; cannot allocate new copy");
                             hasCompleted = true;
                             return false;
                         }

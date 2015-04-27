@@ -21,6 +21,7 @@
 #include "LineCreatingMode.h"
 #include "BoxCreatingMode.h"
 #include "UndoRedoMode.h"
+#include "EraseAllMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -36,6 +37,7 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new LineCreatingMode());
     modes.push_back(new BoxCreatingMode());
     modes.push_back(new UndoRedoMode());
+    modes.push_back(new EraseAllMode());
 }
 
 AirController::~AirController()

@@ -32,10 +32,8 @@ public:
 private:
     
     enum DRAWING_MODE {
-        NONE_CIRCLE = 0,
-        DRAW_CIRCLE,
-        NONE_HEIGHT,
-        DRAW_HEIGHT,
+        NONE = 0,
+        DRAW,
         DONE
     };
     

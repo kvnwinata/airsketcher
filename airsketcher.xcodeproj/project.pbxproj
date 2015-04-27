@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B33A7201AEED4D400F368D5 /* EraseAllMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */; };
+		0B33A7231AEED53500F368D5 /* AirCommandEraseAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B33A7211AEED53500F368D5 /* AirCommandEraseAll.cpp */; };
 		0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */; };
 		0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */; };
 		0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */; };
@@ -103,6 +105,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EraseAllMode.cpp; sourceTree = "<group>"; };
+		0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EraseAllMode.h; sourceTree = "<group>"; };
+		0B33A7211AEED53500F368D5 /* AirCommandEraseAll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandEraseAll.cpp; sourceTree = "<group>"; };
+		0B33A7221AEED53500F368D5 /* AirCommandEraseAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCommandEraseAll.h; sourceTree = "<group>"; };
 		0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyingMode.cpp; sourceTree = "<group>"; };
 		0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyingMode.h; sourceTree = "<group>"; };
 		0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ErasingMode.cpp; sourceTree = "<group>"; };
@@ -273,6 +279,8 @@
 				0BD974941ADE1FA8000D3D1A /* AirCommandBox.h */,
 				0BD974961ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp */,
 				0BD974971ADE1FB9000D3D1A /* AirCommandSpaceRotating.h */,
+				0B33A7211AEED53500F368D5 /* AirCommandEraseAll.cpp */,
+				0B33A7221AEED53500F368D5 /* AirCommandEraseAll.h */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -397,6 +405,8 @@
 				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
 				0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */,
 				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
+				0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */,
+				0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -627,7 +637,9 @@
 				0BD9747C1ADE1431000D3D1A /* AirCommandLine.cpp in Sources */,
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				0B33A7231AEED53500F368D5 /* AirCommandEraseAll.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
+				0B33A7201AEED4D400F368D5 /* EraseAllMode.cpp in Sources */,
 				0BD974921ADE1F7A000D3D1A /* AirCommandRotating.cpp in Sources */,
 				CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,

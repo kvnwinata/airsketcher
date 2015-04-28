@@ -50,6 +50,8 @@ void LeapHand::updateIsPinching()
     // check current value:
     bool shouldPinch = (pinchStrength + grabStrength) > 0.8;
     
+    
+    
     // update history
     pinchHistory.pop_front();
     pinchHistory.push_back(shouldPinch);

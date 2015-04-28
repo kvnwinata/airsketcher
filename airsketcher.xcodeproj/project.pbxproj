@@ -50,6 +50,7 @@
 		CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB7997C51ABB7DBE00253491 /* LeapUtil.cpp */; };
 		CB7997CD1ABB7DBE00253491 /* LeapUtilGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB7997C71ABB7DBE00253491 /* LeapUtilGL.cpp */; };
 		CB7997CE1ABB7DDB00253491 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = CB7997C11ABB7DBE00253491 /* libLeap.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CB823FD91AEFD46000D99F48 /* GrabMovingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB823FD81AEFD46000D99F48 /* GrabMovingMode.cpp */; };
 		CB8405111ABFB46500EB202C /* MovingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB84050F1ABFB46500EB202C /* MovingMode.cpp */; };
 		CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */; };
 		CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBF644A31AC072DF00CF276E /* LeapHand.cpp */; };
@@ -189,6 +190,8 @@
 		CB7997C71ABB7DBE00253491 /* LeapUtilGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LeapUtilGL.cpp; sourceTree = "<group>"; };
 		CB7997C81ABB7DBE00253491 /* LeapUtilGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapUtilGL.h; sourceTree = "<group>"; };
 		CB7997C91ABB7DBE00253491 /* version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = version.txt; sourceTree = "<group>"; };
+		CB823FD71AEFD46000D99F48 /* GrabMovingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabMovingMode.h; sourceTree = "<group>"; };
+		CB823FD81AEFD46000D99F48 /* GrabMovingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabMovingMode.cpp; sourceTree = "<group>"; };
 		CB84050F1ABFB46500EB202C /* MovingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingMode.cpp; sourceTree = "<group>"; };
 		CB8405101ABFB46500EB202C /* MovingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingMode.h; sourceTree = "<group>"; };
 		CBD709811AC0A54800EF0DC2 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 				CB6071491ABCA7D9001E03EF /* AirController.h */,
 				CB2F0D441AD1E825004FF7D6 /* SpaceRotatingMode.cpp */,
 				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
+				CB823FD71AEFD46000D99F48 /* GrabMovingMode.h */,
+				CB823FD81AEFD46000D99F48 /* GrabMovingMode.cpp */,
 				CB84050F1ABFB46500EB202C /* MovingMode.cpp */,
 				CB8405101ABFB46500EB202C /* MovingMode.h */,
 				CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */,
@@ -640,6 +645,7 @@
 				0B33A7231AEED53500F368D5 /* AirCommandEraseAll.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
 				0B33A7201AEED4D400F368D5 /* EraseAllMode.cpp in Sources */,
+				CB823FD91AEFD46000D99F48 /* GrabMovingMode.cpp in Sources */,
 				0BD974921ADE1F7A000D3D1A /* AirCommandRotating.cpp in Sources */,
 				CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */,
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,

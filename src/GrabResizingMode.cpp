@@ -116,9 +116,12 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
         }
     }
     if (hasCompleted) {
-        AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, resizingObject->getScale());
-        controller->pushCommand(cmd);
-        resizingObject = NULL;
+        if (resizingObject)
+        {
+            AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, resizingObject->getScale());
+            controller->pushCommand(cmd);
+            resizingObject = NULL;c
+        }
     }
 }
 

@@ -27,15 +27,15 @@
 
 AirController::AirController() : currentMode(NULL)
 {
-    //modes.push_back(new MovingMode());
-    modes.push_back(new GrabMovingMode());
+    modes.push_back(new MovingMode());
+    //modes.push_back(new GrabMovingMode());
     
     modes.push_back(new ColoringMode());
     modes.push_back(new CopyingMode());
     modes.push_back(new CylinderCreatingMode());
     modes.push_back(new ErasingMode());
     modes.push_back(new SphereCreatingMode());
-    modes.push_back(new GrabResizingMode());
+    modes.push_back(new ResizingMode());
     modes.push_back(new RotatingMode());
     modes.push_back(new SpaceRotatingMode());
     modes.push_back(new LineCreatingMode());

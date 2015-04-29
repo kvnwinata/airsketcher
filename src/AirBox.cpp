@@ -37,9 +37,13 @@ void AirBox::drawNormalized() const
 
 void AirBox::drawHighlightNormalized() const
 {
+    ofSetLineWidth(4.f);
     ofNoFill();
     ofDrawBox(ofPoint(0,0,0), size.x, size.y, size.z);
     ofFill();
+    ofSetColor(255, 255, 255, 64);
+    ofDrawBox(ofPoint(0,0,0), size.x, size.y, size.z);
+    ofSetLineWidth(1.f);
 }
 
 AirObject* AirBox::getCopy() const

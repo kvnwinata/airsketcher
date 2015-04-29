@@ -50,6 +50,7 @@ bool MovingMode::tryActivateMode(AirController* controller, HandProcessor &handP
         {
             movingObject = highlightedObject;
             originalPosition = movingObject->getPosition();
+            offset = handProcessor.getHandAtIndex(0)->getTipLocation() - originalPosition;
             
             hasCompleted = false;
             return true;
@@ -83,7 +84,7 @@ void MovingMode::update(AirController* controller, HandProcessor &handProcessor,
         
         if (hand->getIsActive())
         {
-            movingObject->setPosition(hand->getTipLocation());
+            movingObject->setPosition(hand->getTipLocation()-offset);
         }
         else
         {
@@ -104,12 +105,8 @@ std::string MovingMode::getStatusMessage()
     if (NULL != movingObject)
     {
         std::stringstream msg;
-        msg << "MOVING ";
+        msg << "Moving ";
         msg << movingObject->getDescription();
-        msg << "\n FROM ";
-        msg << originalPosition;
-        msg << "\n TO ";
-        msg << movingObject->getPosition();
         
         return msg.str();
     }

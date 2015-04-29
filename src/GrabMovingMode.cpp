@@ -43,6 +43,7 @@ bool GrabMovingMode::tryActivateMode(AirController* controller, HandProcessor &h
     {
         movingObject = highlightedObject;
         originalPosition = movingObject->getPosition();
+        offset = hand->getTipLocation() - originalPosition;
         
         hasCompleted = false;
         return true;
@@ -68,7 +69,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
     {
         if (hand->getIsActive())
         {
-            movingObject->setPosition(hand->getTipLocation());
+            movingObject->setPosition(hand->getTipLocation()-offset);
         }
         else
         {

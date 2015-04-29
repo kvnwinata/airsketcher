@@ -33,6 +33,7 @@ private:
     AirObject * movingObject;
     
     ofPoint originalPosition;
+    ofVec3f offset;
 };
 
 #endif /* defined(__airsketcher__GrabMovingMode__) */

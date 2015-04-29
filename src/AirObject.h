@@ -57,6 +57,7 @@ protected:
     void copyData(AirObject* object) const {
         object->orientation = orientation;
         object->position = position;
+        object->scale = scale;
         object->color = color;
     }
     

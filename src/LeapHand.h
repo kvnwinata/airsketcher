@@ -16,6 +16,12 @@ class LeapHand
 {
 public:
     
+    float pinchFactor;
+    float grabFactor;
+    float pinchThreshold;
+    float grabThreshold;
+    float poseThreshold;
+    
     enum fingerType {
         THUMB = 0,
         INDEX = 1,

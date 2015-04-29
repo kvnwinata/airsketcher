@@ -25,6 +25,8 @@ public:
     
     LeapHand* getHandAtIndex(int i); // 0 or 1
     
+    bool getIsConnected() const {return controller.isConnected();};
+    
 private:
     void processCurrentFrame(const Leap::Frame &frame);
 
@@ -37,7 +39,6 @@ private:
     
     ofImage             leapImage;
     ofPlanePrimitive    plane;
-
 
 };
 

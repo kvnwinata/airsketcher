@@ -7,6 +7,7 @@
 //
 
 #include "HandProcessor.h"
+#include "Logger.h"
 
 HandProcessor::HandProcessor()
 {
@@ -15,7 +16,7 @@ HandProcessor::HandProcessor()
     
     leapImage.loadImage("leap.png");
     plane.set(500, 500, 50, 50);
-
+    
 }
 
 HandProcessor::~HandProcessor()
@@ -113,7 +114,4 @@ void HandProcessor::processCurrentFrame(const Leap::Frame &frame)
 void HandProcessor::onConnect(const Leap::Controller &leapController)
 {
     std::cout << "Connected" << std::endl;
-    
-    // ENABLE GESTURES HERE:
-    //leapController.enableGesture(Leap::Gesture::TYPE_SWIPE);
 }

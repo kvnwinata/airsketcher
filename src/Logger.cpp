@@ -52,7 +52,7 @@ void Logger::print()
     
     if (ofGetElapsedTimef() - time < 8)
     {
-        ofDrawBitmapString(temporaryMessage, ofPoint(0,0));
+        //ofDrawBitmapString(temporaryMessage, ofPoint(0,0));
     }
 
     for (std::string message : messages)

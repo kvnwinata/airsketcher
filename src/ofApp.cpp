@@ -84,7 +84,7 @@ void ofApp::draw(){
     //ofDrawBitmapString(controller.getHelpMessage(), 10, ofGetHeight()*0.75);
     
     ofTranslate(10,ofGetWindowHeight()/2);
-    //Logger::getInstance()->print();
+    Logger::getInstance()->print();
     ofPopMatrix();
     
     
@@ -109,6 +109,19 @@ void ofApp::draw(){
     ofPopMatrix();
     
     displayHelpMessage();
+    
+    if (!handProcessor.getIsConnected())
+    {
+        ofTranslate(ofGetWidth()/3,ofGetHeight()/2);
+        ofScale(0.5,0.5);
+        text.drawString("Please connect the Leap sensor.", 0, 0);
+    }
+    else if (!handProcessor.getHandAtIndex(0)->getIsActive())
+    {
+        ofTranslate(ofGetWidth()/3,ofGetHeight()/2);
+        ofScale(0.5,0.5);
+        text.drawString("Please place your hand above the Leap sensor.", 0, 0);
+    }
 }
 
 //--------------------------------------------------------------

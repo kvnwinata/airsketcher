@@ -103,6 +103,21 @@ void AirObjectManager::updateHighlight(ofPoint location)
     }
 }
 
+void AirObjectManager::updateHighlight(ofPoint location, AirObject* forbiddenObject)
+{
+    highlightedObject = 0;
+    
+    for (AirObject* object : objects)
+    {
+        if (object != forbiddenObject && object->isInside(location))
+        {
+            highlightedObject = object;
+            break;
+        }
+    }
+}
+
+
 bool AirObjectManager::switchHighlightedObject(AirObject* objectToHighlight, ofPoint location)
 {
     if (objectToHighlight == NULL) return false;

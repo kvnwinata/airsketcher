@@ -26,8 +26,8 @@ LeapHand::LeapHand():isActive(false)
     pinchFactor = 0.6;
     grabFactor = 0.4;
     
-    pinchThreshold = 0.6;
-    grabThreshold = 0.6;
+    pinchThreshold = 0.4;
+    grabThreshold = 0.4;
 };
 
 void LeapHand::updateHand(const Leap::Hand &handObject)
@@ -58,7 +58,7 @@ void LeapHand::updateIsPinching()
     //bool shouldPinch = (pinchFactor * pinchStrength + grabFactor * grabStrength)/2 > poseThreshold;
     bool shouldPinch = (pinchStrength > pinchThreshold) || (grabStrength > grabThreshold);
     
-    Logger::getInstance()->log("p: "  + ofToString(pinchStrength) + " g: " + ofToString(grabStrength) );
+    //Logger::getInstance()->log("p: "  + ofToString(pinchStrength) + " g: " + ofToString(grabStrength) );
     
     // update history
     pinchHistory.pop_front();

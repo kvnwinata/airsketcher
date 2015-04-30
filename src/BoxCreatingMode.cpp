@@ -12,6 +12,8 @@
 #include "AirCommandBox.h"
 #include "logger.h"
 
+#define DEFAULT_LENGTH 20
+
 std::vector<std::string> BoxCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
@@ -19,9 +21,9 @@ std::vector<std::string> BoxCreatingMode::getCommands()
     return commands;
 }
 
-BoxCreatingMode::BoxCreatingMode() : AirControlMode()
+BoxCreatingMode::BoxCreatingMode() : AirControlMode(), box(NULL), drawBoxMode(NONE)
 {
-    
+    traces.resize(2, ofPoint());
 }
 
 BoxCreatingMode::~BoxCreatingMode()
@@ -53,8 +55,11 @@ bool BoxCreatingMode::tryActivateMode(AirController* controller, HandProcessor &
 void BoxCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
+    bool isCancelled = false;
+    
     if (command == "cancel")
     {
+        isCancelled = true;
         hasCompleted = true;
     }
     else
@@ -67,9 +72,23 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
             {
                 switch (drawBoxMode) {
                     case DRAW:
+                    {
                         traces.push_back(hand->getTipLocation());
+                        ofVec3f size_xyz = getSize();
+                        box->setSize(size_xyz);
                         break;
+                    }
                     case NONE:
+                        traces[0] = hand->getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+                        traces[1] = hand->getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+                        
+                        if (!createBox(controller, objectManager))
+                        {
+                            Logger::getInstance()->temporaryLog("Drawing box FAILED; cannot allocate new copy");
+                            hasCompleted = true;
+                            return false;
+                        }
+                        
                         drawBoxMode = DRAW;
                         break;
                     default:
@@ -88,21 +107,18 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
         }
         
         if (drawBoxMode == DONE) {
-            if (!createBox(controller, objectManager))
-            {
-                std::stringstream msg;
-                msg << "FAILED to create new box; trace size ";
-                msg << traces.size();
-                Logger::getInstance()->temporaryLog(msg.str());
-            }
             hasCompleted = true;
         }
     }
     
     if (hasCompleted)
     {
+        if (isCancelled) {
+            controller -> popCommand();
+        }
+        box = NULL;
         drawBoxMode = NONE;
-        traces.clear();
+        traces.resize(2, ofPoint());
     }
 }
 
@@ -121,6 +137,7 @@ bool BoxCreatingMode::createBox(AirController* controller, AirObjectManager &obj
         {
             return false;
         }
+        box = cmd-> getObject();
         return true;
     }
     
@@ -130,7 +147,20 @@ bool BoxCreatingMode::createBox(AirController* controller, AirObjectManager &obj
 
 std::string BoxCreatingMode::getStatusMessage()
 {
-    return "DRAW A BOX";
+    switch (drawBoxMode) {
+        case DRAW:
+        {
+            std::stringstream msg;
+            msg << "Drawing SPHERE ";
+            msg << box->getDescription();
+            msg << "\n at ";
+            msg << box->getPosition();
+        }
+        case DONE:
+            return "Drawing BOX: done";
+        default:
+            return "Drawing BOX: release pinch when done";
+    }
 }
 
 

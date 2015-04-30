@@ -29,6 +29,9 @@ public:
     
     std::string getDescription() const override;
     
+    ofVec3f getSize() const;
+    void setSize(ofVec3f size);
+    
 private:
     
     ofVec3f   size;

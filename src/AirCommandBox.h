@@ -21,13 +21,13 @@ public:
     bool execute() override;
     void unexecute() override;
     
-    AirObject* getObject() { return _object; }
+    AirBox* getObject() { return _object; }
     
 private:
     AirObjectManager& _objectManager;
     const ofPoint _centroid;
     const ofPoint _sizeXYZ;
-    AirObject* _object;
+    AirBox* _object;
     bool _ownObject;
 };
 

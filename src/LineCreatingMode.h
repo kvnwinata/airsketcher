@@ -35,6 +35,7 @@ private:
         NONE
     };
     
+    AirLine* line;
     std::string drawCommand = "draw line";
     
     std::vector<ofPoint> traces;

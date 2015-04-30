@@ -103,3 +103,7 @@ std::string AirLine::getDescription() const
     
     return msg.str();
 }
+
+float AirLine::getLength() const {
+    return length;
+}

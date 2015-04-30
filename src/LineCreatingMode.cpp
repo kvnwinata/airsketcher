@@ -12,6 +12,9 @@
 #include "AirCommandLine.h"
 #include "logger.h"
 
+
+#define DEFAULT_LENGTH 20
+
 std::vector<std::string> LineCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
@@ -19,9 +22,9 @@ std::vector<std::string> LineCreatingMode::getCommands()
     return commands;
 }
 
-LineCreatingMode::LineCreatingMode() : AirControlMode(), drawLineMode(NONE)
+LineCreatingMode::LineCreatingMode() : AirControlMode(), line(NULL), drawLineMode(NONE)
 {
-    
+    traces.resize(2, ofPoint());
 }
 
 LineCreatingMode::~LineCreatingMode()
@@ -33,7 +36,7 @@ void LineCreatingMode::drawMode()
 {
     if (drawLineMode == DRAW)
     {
-        ofLine(getStartPoint(), getEndPoint());
+        line -> updateEndPoints(getStartPoint(), getEndPoint());
     }
 }
 
@@ -53,9 +56,11 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
 {
 
     std::string command = speechProcessor.getLastCommand();
+    bool isCancelled = false;
     if (command == "cancel")
     {
         hasCompleted = true;
+        isCancelled = true;
     }
     else
     {
@@ -71,9 +76,20 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             {
                 switch (drawLineMode) {
                     case DRAW:
-                        traces.push_back(hand->getTipLocation());
+                        traces[1] = hand->getTipLocation();
+                        line -> updateEndPoints(getStartPoint(), getEndPoint());
                         break;
                     case NONE:
+                        traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+                        traces[1] = hand-> getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+                        
+                        if (!createLine(controller, objectManager))
+                        {
+                            Logger::getInstance()->temporaryLog("Drawing line FAILED; cannot allocate new copy");
+                            hasCompleted = true;
+                            return false;
+                        }
+                        
                         drawLineMode = DRAW;
                         break;
                     default:
@@ -92,21 +108,19 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
         }
         
         if (drawLineMode == DONE) {
-            if (!createLine(controller, objectManager))
-            {
-                std::stringstream msg;
-                msg << "FAILED to create new Line; trace size ";
-                msg << traces.size();
-                Logger::getInstance()->temporaryLog(msg.str());
-            }
+
             hasCompleted = true;
         }
     }
     
     if (hasCompleted)
     {
+        if (isCancelled) {
+            controller->popCommand();
+        }
+        
         drawLineMode = NONE;
-        traces.clear();
+        traces.resize(2, ofPoint());
     }
     
 }
@@ -126,6 +140,7 @@ bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &o
         {
             return false;
         }
+        line = cmd -> getObject();
         return true;
     }
 
@@ -135,7 +150,23 @@ bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &o
 
 std::string LineCreatingMode::getStatusMessage()
 {
-    return "DRAW A LINE";
+
+    switch (drawLineMode) {
+        case DRAW:
+        {
+            std::stringstream msg;
+            msg << "Drawing Line ";
+            msg << line->getDescription();
+            msg << "\n at ";
+            msg << line->getPosition();
+            msg << "\n with length";
+            msg << line -> getLength();
+        }
+        case DONE:
+            return "Drawing Line: done";
+        default:
+            return "Drawing Line: release pinch when done";
+    }
 }
 
 

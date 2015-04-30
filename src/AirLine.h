@@ -21,7 +21,8 @@ public:
     bool isInsideNormalized(ofPoint location) const override;
     
     void setup(ofPoint endPoint1, ofPoint endPoint2, ofColor color, float lineWidth = 5.f);
-    
+
+    float getLength() const;
     void setOrientation(ofQuaternion orientation) override;
     
     void getEndPoints(ofPoint* &endPoints);
@@ -31,14 +32,11 @@ public:
     void drawHighlightNormalized()    const override;
     
     AirObject* getCopy() const override;
-    
     std::string getDescription() const override;
     
 private:
-    
     // redundant info: line is basically a thin cylinder
     static const float interactionRadius;
-    
     float lineWidth;
     float length;
     

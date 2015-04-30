@@ -62,3 +62,6 @@ std::string AirBox::getDescription() const
     
     return msg.str();
 }
+
+ofVec3f AirBox::getSize() const {return size;}
+void AirBox::setSize(ofVec3f s){size = s;}

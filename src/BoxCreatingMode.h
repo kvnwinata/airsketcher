@@ -24,7 +24,6 @@ public:
     void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
-    
     std::string getStatusMessage() override;
     std::string getHelpMessage() override;
     
@@ -35,10 +34,9 @@ private:
         NONE
     };
     
+    AirBox* box;
     std::string drawCommand = "draw box";
-    
     std::vector<ofPoint> traces;
-    
     DRAWING_MODE drawBoxMode;
     
     bool createBox(AirController* controller, AirObjectManager &objectManager);

@@ -70,7 +70,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
         {
             // need to update higlighted object for snapping
             ofPoint tipLocation = hand->getTipLocation();
-            objectManager.updateHighlight(tipLocation);
+            objectManager.updateHighlight(tipLocation, line);
 
             if (hand->getIsPinching())
             {

@@ -40,6 +40,8 @@ public:
     std::vector<AirObject*> getOwnershipAll();
     
     void updateHighlight(ofPoint location);
+    void updateHighlight(ofPoint location, AirObject * forbiddenObject);
+    
     AirObject* getHighlightedObject();
     
     // Force switching the highlight to passed object.

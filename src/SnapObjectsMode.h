@@ -27,7 +27,7 @@ private:
     };
     
     AirLine* line;
-    std::string drawCommand = "snap";
+    std::string drawCommand = "snap line";
     
     std::vector<ofPoint> traces;
     

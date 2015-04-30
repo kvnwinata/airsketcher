@@ -85,22 +85,21 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
                         if (highlightedObject){
                             highlightPosition = highlightedObject -> getPosition();
                             objDescr = highlightedObject -> getDescription();
-                            Logger::getInstance()->temporaryLog(highlightedObject -> getDescription());
+                            
                             if (!snapped) {
+                                std::string snapDescr = "snapped with "+ objDescr;
+                                Logger::getInstance()->temporaryLog(snapDescr);
                                 traces[0] = highlightPosition;
                                 snappedFirstObj = objDescr;
                                 snapped = true;
                             }
                             else{
-                                std::string descr = "highlighted: " + objDescr + "line: "+lineObjDescr + "first: "+snappedFirstObj;
-                                Logger::getInstance() -> temporaryLog(descr);
+                                //std::string descr = "highlighted: " + objDescr + "line: "+lineObjDescr + "first: "+snappedFirstObj;
+                                //Logger::getInstance() -> temporaryLog(descr);
                                 
                                 //if the highlighted object is not the line or the first object
                                 if (objDescr.compare(lineObjDescr) != 0 && objDescr.compare(snappedFirstObj) != 0){
-                                    Logger::getInstance() -> temporaryLog("Snapping second.");
                                     traces[1] = highlightPosition;
-                                    hasCompleted = true;
-                                    break;
                                 }
                                 
                             }
@@ -119,7 +118,7 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
                         
                         if (!createLine(controller, objectManager))
                         {
-                            Logger::getInstance()->temporaryLog("Drawing line FAILED; cannot allocate new copy");
+                            Logger::getInstance()->temporaryLog("Snapping FAILED; cannot allocate new copy");
                             hasCompleted = true;
                             return false;
                         }
@@ -158,6 +157,10 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
         AirObject * newObject;
         startPoint = ofPoint();
         endPoint = ofPoint();
+        snappedFirstObj="";
+        lineObjDescr= "";
+        snapped = false;
+        
     }
     
 }
@@ -192,7 +195,7 @@ std::string SnapObjectsMode::getStatusMessage()
         case DRAW:
         {
             std::stringstream msg;
-            msg << "Drawing Line ";
+            msg << "Snapping ";
             msg << line->getDescription();
             msg << "\n at ";
             msg << line->getPosition();
@@ -212,10 +215,10 @@ std::string SnapObjectsMode::getHelpMessage()
     std::string msg ="";
     switch (drawLineMode){
         case DRAW:
-            msg ="When finished, slowly release your pinch \n";
+            msg ="Object snapped. Select another, and release pinch slowly. \n";
             break;
         case NONE:
-            msg = "Pinch your all fingers together to start then pull your line. \n";
+            msg = "Select an object to start then pull your line. \n";
             break;
         case DONE:
             msg = "You're done!";

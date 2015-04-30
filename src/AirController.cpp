@@ -24,6 +24,7 @@
 #include "EraseAllMode.h"
 #include "GrabMovingMode.h"
 #include "GrabResizingmode.h"
+#include "SnapObjectsMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -42,6 +43,7 @@ AirController::AirController() : currentMode(NULL)
     modes.push_back(new BoxCreatingMode());
     modes.push_back(new UndoRedoMode());
     modes.push_back(new EraseAllMode());
+    modes.push_back(new SnapObjectsMode());
 }
 
 AirController::~AirController()

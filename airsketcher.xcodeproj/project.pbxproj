@@ -30,6 +30,7 @@
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
 		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
 		B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */; };
+		B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB0193931AC091FE0012001C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0193921AC091FE0012001C /* Carbon.framework */; };
 		CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */; };
@@ -152,6 +153,8 @@
 		B71019811AD269C400FD53F7 /* BoxCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxCreatingMode.h; sourceTree = "<group>"; };
 		B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineCreatingMode.cpp; sourceTree = "<group>"; };
 		B71019841AD269DE00FD53F7 /* LineCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCreatingMode.h; sourceTree = "<group>"; };
+		B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SnapObjectsMode.cpp; sourceTree = "<group>"; };
+		B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapObjectsMode.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CB0193921AC091FE0012001C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CB145A081AF15F4E00B5CF1A /* GrabResizingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabResizingMode.h; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
 				0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */,
 				0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */,
+				B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */,
+				B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -671,6 +676,7 @@
 				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
+				B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */,
 				CB2F0D461AD1E825004FF7D6 /* SpaceRotatingMode.cpp in Sources */,
 				CB2F0D391ACF3E3A004FF7D6 /* ResizingMode.cpp in Sources */,
 				CB60714D1ABCA83E001E03EF /* SpeechProcessor.cpp in Sources */,

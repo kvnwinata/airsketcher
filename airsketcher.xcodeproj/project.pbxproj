@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B22DDF71AF4356800D4D233 /* GrabCylinderCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B22DDF51AF4356800D4D233 /* GrabCylinderCreatingMode.cpp */; };
+		0B22DDFA1AF4357F00D4D233 /* GrabSphereCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B22DDF81AF4357F00D4D233 /* GrabSphereCreatingMode.cpp */; };
+		0B22DDFD1AF4359500D4D233 /* GrabCopyingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B22DDFB1AF4359500D4D233 /* GrabCopyingMode.cpp */; };
 		0B33A7201AEED4D400F368D5 /* EraseAllMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */; };
 		0B33A7231AEED53500F368D5 /* AirCommandEraseAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B33A7211AEED53500F368D5 /* AirCommandEraseAll.cpp */; };
 		0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */; };
@@ -108,6 +111,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B22DDF51AF4356800D4D233 /* GrabCylinderCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabCylinderCreatingMode.cpp; sourceTree = "<group>"; };
+		0B22DDF61AF4356800D4D233 /* GrabCylinderCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabCylinderCreatingMode.h; sourceTree = "<group>"; };
+		0B22DDF81AF4357F00D4D233 /* GrabSphereCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabSphereCreatingMode.cpp; sourceTree = "<group>"; };
+		0B22DDF91AF4357F00D4D233 /* GrabSphereCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabSphereCreatingMode.h; sourceTree = "<group>"; };
+		0B22DDFB1AF4359500D4D233 /* GrabCopyingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabCopyingMode.cpp; sourceTree = "<group>"; };
+		0B22DDFC1AF4359500D4D233 /* GrabCopyingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabCopyingMode.h; sourceTree = "<group>"; };
 		0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EraseAllMode.cpp; sourceTree = "<group>"; };
 		0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EraseAllMode.h; sourceTree = "<group>"; };
 		0B33A7211AEED53500F368D5 /* AirCommandEraseAll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCommandEraseAll.cpp; sourceTree = "<group>"; };
@@ -422,6 +431,12 @@
 				0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */,
 				B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */,
 				B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */,
+				0B22DDF51AF4356800D4D233 /* GrabCylinderCreatingMode.cpp */,
+				0B22DDF61AF4356800D4D233 /* GrabCylinderCreatingMode.h */,
+				0B22DDF81AF4357F00D4D233 /* GrabSphereCreatingMode.cpp */,
+				0B22DDF91AF4357F00D4D233 /* GrabSphereCreatingMode.h */,
+				0B22DDFB1AF4359500D4D233 /* GrabCopyingMode.cpp */,
+				0B22DDFC1AF4359500D4D233 /* GrabCopyingMode.h */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -637,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B22DDFA1AF4357F00D4D233 /* GrabSphereCreatingMode.cpp in Sources */,
 				CB3F6E291ABB88F500811BCF /* AirSphere.cpp in Sources */,
 				CB6071531ABCA8A2001E03EF /* Logger.cpp in Sources */,
 				0BD9748D1ADE152C000D3D1A /* AirCommand.cpp in Sources */,
@@ -650,6 +666,7 @@
 				CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */,
 				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
 				B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */,
+				0B22DDFD1AF4359500D4D233 /* GrabCopyingMode.cpp in Sources */,
 				0BD9747C1ADE1431000D3D1A /* AirCommandLine.cpp in Sources */,
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -674,6 +691,7 @@
 				0BD974981ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp in Sources */,
 				0BD974701ADE13EE000D3D1A /* AirCommandColoring.cpp in Sources */,
 				0B7BFC741ACAEE9D00A83042 /* CopyingMode.cpp in Sources */,
+				0B22DDF71AF4356800D4D233 /* GrabCylinderCreatingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
 				B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */,

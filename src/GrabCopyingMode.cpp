@@ -1,45 +1,44 @@
 //
-//  CopyingMode.cpp
+//  GrabCopyingMode.cpp
 //  airsketcher
 //
-//  Created by Patricia Suriana on 3/31/15.
+//  Created by Patricia Suriana on 5/1/15.
 //
 //
 
-#include "CopyingMode.h"
+#include "GrabCopyingMode.h"
 
 #include "AirCommandCopying.h"
 #include "Logger.h"
 
-std::vector<std::string> CopyingMode::getCommands()
+std::vector<std::string> GrabCopyingMode::getCommands()
 {
     std::vector<std::string> commands;
     
     commands.push_back("computer copy this");
     commands.push_back("computer place");
-    commands.push_back("computer done");
     commands.push_back("computer cancel");
     
     return commands;
 }
 
 
-CopyingMode::CopyingMode() : AirControlMode()
+GrabCopyingMode::GrabCopyingMode() : AirControlMode()
 {
     
 }
 
-CopyingMode::~CopyingMode()
+GrabCopyingMode::~GrabCopyingMode()
 {
     
 }
 
-void CopyingMode::drawMode()
+void GrabCopyingMode::drawMode()
 {
     
 }
 
-bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
+bool GrabCopyingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
     if (lastCommand == "copy this")
     {
@@ -71,12 +70,12 @@ bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &hand
     return false;
 }
 
-void CopyingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
+void GrabCopyingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
     
-    if (command == "place" || command == "done")
+    if (command == "place")
     {
         hasCompleted = true;
     }
@@ -108,7 +107,7 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
     }
 }
 
-std::string CopyingMode::getStatusMessage()
+std::string GrabCopyingMode::getStatusMessage()
 {
     if ((NULL != copiedObject) && (objectCopy != NULL))
     {
@@ -125,7 +124,7 @@ std::string CopyingMode::getStatusMessage()
     return "";
 }
 
-std::string CopyingMode::getHelpMessage()
+std::string GrabCopyingMode::getHelpMessage()
 {
     std::string msg =
     "Move the new object around.\n"

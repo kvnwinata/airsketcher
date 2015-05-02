@@ -48,8 +48,8 @@ bool SnapObjectsMode::tryActivateMode(AirController* controller, HandProcessor &
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
-    
 }
 
 void SnapObjectsMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)

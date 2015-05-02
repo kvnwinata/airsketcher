@@ -96,6 +96,7 @@ bool SpaceRotatingMode::tryActivateMode(AirController* controller, HandProcessor
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false; // do not enter mode
 }
 

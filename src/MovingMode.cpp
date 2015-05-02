@@ -62,6 +62,7 @@ bool MovingMode::tryActivateMode(AirController* controller, HandProcessor &handP
             return false;
         }
     }
+    hasCompleted = true;
     return false;
 }
 

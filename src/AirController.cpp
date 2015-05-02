@@ -12,9 +12,9 @@
 #include "ColoringMode.h"
 #include "CopyingMode.h"
 #include "CylinderCreatingMode.h"
+#include "SphereCreatingMode.h"
 #include "ErasingMode.h"
 #include "MovingMode.h"
-#include "SphereCreatingMode.h"
 #include "ResizingMode.h"
 #include "RotatingMode.h"
 #include "SpaceRotatingMode.h"
@@ -25,6 +25,9 @@
 #include "GrabMovingMode.h"
 #include "GrabResizingmode.h"
 #include "SnapObjectsMode.h"
+#include "GrabCopyingMode.h"
+#include "GrabCylinderCreatingMode.h"
+#include "GrabSphereCreatingMode.h"
 
 AirController::AirController() : currentMode(NULL)
 {
@@ -32,18 +35,24 @@ AirController::AirController() : currentMode(NULL)
     //modes.push_back(new GrabMovingMode());
     
     modes.push_back(new ColoringMode());
-    modes.push_back(new CopyingMode());
-    modes.push_back(new CylinderCreatingMode());
     modes.push_back(new ErasingMode());
-    modes.push_back(new SphereCreatingMode());
+    modes.push_back(new EraseAllMode());
+    modes.push_back(new UndoRedoMode());
+    
     modes.push_back(new ResizingMode());
     modes.push_back(new RotatingMode());
     modes.push_back(new SpaceRotatingMode());
+
     modes.push_back(new LineCreatingMode());
     modes.push_back(new BoxCreatingMode());
-    modes.push_back(new UndoRedoMode());
-    modes.push_back(new EraseAllMode());
     modes.push_back(new SnapObjectsMode());
+
+    /*modes.push_back(new CopyingMode());
+    modes.push_back(new CylinderCreatingMode());
+    modes.push_back(new SphereCreatingMode());*/
+    modes.push_back(new GrabCopyingMode());
+    modes.push_back(new GrabCylinderCreatingMode());
+    modes.push_back(new GrabSphereCreatingMode());
 }
 
 AirController::~AirController()

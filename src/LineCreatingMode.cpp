@@ -48,8 +48,8 @@ bool LineCreatingMode::tryActivateMode(AirController* controller, HandProcessor 
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
-
 }
 
 void LineCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)

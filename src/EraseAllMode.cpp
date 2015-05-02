@@ -52,6 +52,7 @@ bool EraseAllMode::tryActivateMode(AirController* controller, HandProcessor &han
         hasCompleted = true;
         return true;
     }
+    hasCompleted = true;
     return false;
 }
 

@@ -66,6 +66,7 @@ bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcesso
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
 }
 

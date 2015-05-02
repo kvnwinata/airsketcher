@@ -59,6 +59,7 @@ bool GrabCylinderCreatingMode::tryActivateMode(AirController* controller, HandPr
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
 }
 

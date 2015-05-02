@@ -67,6 +67,7 @@ bool CylinderCreatingMode::tryActivateMode(AirController* controller, HandProces
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
 }
 

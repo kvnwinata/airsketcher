@@ -42,9 +42,22 @@ bool GrabCopyingMode::tryActivateMode(AirController* controller, HandProcessor &
 {
     if (lastCommand == "copy this")
     {
-        hasCompleted = true;
-        return true;
+        // Try activate
+        AirObject* highlightedObject = objectManager.getHighlightedObject();
+        if (highlightedObject)
+        {
+            copiedObject = highlightedObject;
+            hasCompleted = false;
+            return true;
+        }
+        else
+        {
+            Logger::getInstance()->temporaryLog("No object selected; select object then say 'COPY THIS'");
+            hasCompleted = true;
+            return false;
+        }
     }
+    hasCompleted = true;
     return false;
 }
 
@@ -72,20 +85,12 @@ void GrabCopyingMode::update(AirController* controller, HandProcessor &handProce
                         break;
                     case NONE:
                     {
-                        // Try activate
-                        AirObject* highlightedObject = objectManager.getHighlightedObject();
-                        if (highlightedObject)
+                        AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
+                        if (!controller->pushCommand(cmd))
                         {
-                            copiedObject = highlightedObject;
-                            AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
-                            if (!controller->pushCommand(cmd))
-                            {
-                                Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
-                                hasCompleted = true;
-                            }
-                            objectCopy = cmd->getObjectCopy();
-                            hasCompleted = false;
+                            Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
                         }
+                        objectCopy = cmd->getObjectCopy();
                         copyingMode = DRAW;
                         break;
                     }

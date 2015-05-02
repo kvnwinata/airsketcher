@@ -111,6 +111,7 @@ bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &han
             return false;
         }
     }
+    hasCompleted = true;
     return false;
 }
 

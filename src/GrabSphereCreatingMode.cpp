@@ -59,6 +59,7 @@ bool GrabSphereCreatingMode::tryActivateMode(AirController* controller, HandProc
         hasCompleted = false;
         return true;
     }
+    hasCompleted = true;
     return false;
 }
 

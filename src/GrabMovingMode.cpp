@@ -54,7 +54,7 @@ bool GrabMovingMode::tryActivateMode(AirController* controller, HandProcessor &h
         hasCompleted = true;
         return false;
     }
-    
+    hasCompleted = true;
     return false;
 }
 

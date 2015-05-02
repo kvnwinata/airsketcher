@@ -69,6 +69,7 @@ bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &hand
             return false;
         }
     }
+    hasCompleted = true;
     return false;
 }
 

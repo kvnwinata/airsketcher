@@ -54,7 +54,6 @@ bool LineCreatingMode::tryActivateMode(AirController* controller, HandProcessor 
 
 void LineCreatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
-
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
     if (command == "cancel")
@@ -82,14 +81,11 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
                     case NONE:
                         traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
                         traces[1] = hand-> getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
-                        
                         if (!createLine(controller, objectManager))
                         {
                             Logger::getInstance()->temporaryLog("Drawing line FAILED; cannot allocate new copy");
                             hasCompleted = true;
-                            return false;
                         }
-                        
                         drawLineMode = DRAW;
                         break;
                     default:
@@ -99,6 +95,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             else if (drawLineMode == DRAW)
             {
                 drawLineMode = DONE;
+                hasCompleted = true;
             }
         }
         else
@@ -106,16 +103,12 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             // hand is lost
             hasCompleted = true;
         }
-        
-        if (drawLineMode == DONE) {
-
-            hasCompleted = true;
-        }
     }
     
     if (hasCompleted)
     {
-        if (isCancelled) {
+        if (isCancelled)
+        {
             controller->popCommand();
         }
         
@@ -132,7 +125,6 @@ bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &o
     ofPoint endPoint = getEndPoint();
     
     float dist = (endPoint - startPoint).length();
-    
     if (dist != 0.0)
     {
         AirCommandLine* cmd = new AirCommandLine(objectManager, startPoint, endPoint);
@@ -143,14 +135,12 @@ bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &o
         line = cmd -> getObject();
         return true;
     }
-
     return false;
 }
 
 
 std::string LineCreatingMode::getStatusMessage()
 {
-
     switch (drawLineMode) {
         case DRAW:
         {
@@ -172,7 +162,7 @@ std::string LineCreatingMode::getStatusMessage()
 
 std::string LineCreatingMode::getHelpMessage()
 {
-    std::string msg ="";
+    std::string msg = "";
     switch (drawLineMode){
         case DRAW:
             msg ="When finished, slowly release your pinch \n";
@@ -184,6 +174,5 @@ std::string LineCreatingMode::getHelpMessage()
             msg = "You're done!";
             break;
     }
-
     return msg;
 }

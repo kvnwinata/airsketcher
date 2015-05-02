@@ -106,8 +106,7 @@ std::string MovingMode::getStatusMessage()
     {
         std::stringstream msg;
         msg << "Moving ";
-        msg << movingObject->getDescription();
-        
+        msg << movingObject->getDescription();        
         return msg.str();
     }
     return "";
@@ -119,9 +118,9 @@ std::string MovingMode::getHelpMessage()
 //    "1. Point at the object you'd like to move. \n"
 //    "2. Say 'computer move this'. \n"
 //    "3. Move your hand to a new position while still pointing at the object. \n"
-//    "4. Then say 'computer place' to place the object. \n"
+//    "4. Then say 'computer done' to place the object. \n"
 //    "4. To cancel midway (before placing the object), say 'computer cancel'. \n";
-    "Move the object, then say 'computer place'\n"
+    "Move the object, then say 'computer done'\n"
     "\nOR say 'computer cancel' to cancel midway"
     ;
     return msg;

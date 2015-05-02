@@ -24,8 +24,8 @@ std::vector<std::string> GrabSphereCreatingMode::getCommands()
 
 GrabSphereCreatingMode::GrabSphereCreatingMode()
 : AirControlMode()
-, sphere(NULL)
 , drawCircleMode(NONE)
+, sphere(NULL)
 {
     traces.resize(2, ofPoint());
 }
@@ -95,7 +95,6 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
                         {
                             Logger::getInstance()->temporaryLog("Drawing sphere FAILED; cannot allocate new copy");
                             hasCompleted = true;
-                            return false;
                         }
                         drawCircleMode = DRAW;
                         break;
@@ -106,22 +105,20 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
             else if (drawCircleMode == DRAW)
             {
                 drawCircleMode = DONE;
+                hasCompleted = true;
             }
         }
         else
         {
             // hand is lost
             hasCompleted = true;
-        }
-        
-        if (drawCircleMode == DONE) {
-            hasCompleted = true;
-        }
+        }        
     }
     
     if (hasCompleted)
     {
-        if (isCancelled) {
+        if (isCancelled)
+        {
             controller->popCommand();
         }
         sphere = NULL;

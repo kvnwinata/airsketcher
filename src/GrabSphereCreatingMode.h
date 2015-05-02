@@ -36,9 +36,9 @@ private:
         DONE
     };
     
+    DRAWING_MODE drawCircleMode;
     AirSphere* sphere;
     std::vector<ofPoint> traces;
-    DRAWING_MODE drawCircleMode;
     
     bool createSphere(AirController* controller, AirObjectManager &objectManager);
     

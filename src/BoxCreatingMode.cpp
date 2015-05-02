@@ -81,14 +81,11 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
                     case NONE:
                         traces[0] = hand->getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
                         traces[1] = hand->getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
-                        
                         if (!createBox(controller, objectManager))
                         {
                             Logger::getInstance()->temporaryLog("Drawing box FAILED; cannot allocate new copy");
                             hasCompleted = true;
-                            return false;
-                        }
-                        
+                        }                        
                         drawBoxMode = DRAW;
                         break;
                     default:
@@ -98,6 +95,7 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
             else if (drawBoxMode == DRAW)
             {
                 drawBoxMode = DONE;
+                hasCompleted = true;
             }
         }
         else
@@ -105,15 +103,12 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
             // hand is lost
             hasCompleted = true;
         }
-        
-        if (drawBoxMode == DONE) {
-            hasCompleted = true;
-        }
     }
     
     if (hasCompleted)
     {
-        if (isCancelled) {
+        if (isCancelled)
+        {
             controller -> popCommand();
         }
         box = NULL;
@@ -125,7 +120,6 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
 
 bool BoxCreatingMode::createBox(AirController* controller, AirObjectManager &objectManager)
 {
-
     ofVec3f size_xyz = getSize();
     ofPoint center = getCenterPosition();
     float dist = size_xyz.length();
@@ -178,6 +172,5 @@ std::string BoxCreatingMode::getHelpMessage()
             msg = "You're done!";
             break;
     }
-    
     return msg;
 }

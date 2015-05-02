@@ -92,7 +92,6 @@ std::string GrabMovingMode::getStatusMessage()
         std::stringstream msg;
         msg << "Moving ";
         msg << movingObject->getDescription();
-        
         return msg.str();
     }
     return "";

@@ -112,6 +112,13 @@ void GrabCylinderCreatingMode::update(AirController* controller, HandProcessor &
             else if (drawCylinderMode == DRAW)
             {
                 drawCylinderMode = DONE;
+                std::stringstream msg;
+                msg << "Created CYLINDER (FINAL) with RADIUS ";
+                msg << newCylinder->getRadius();
+                msg << " and HEIGHT ";
+                msg << newCylinder->getHeight();
+                Logger::getInstance()->temporaryLog(msg.str());
+                hasCompleted = true;
             }
         }
         else
@@ -119,21 +126,12 @@ void GrabCylinderCreatingMode::update(AirController* controller, HandProcessor &
             // hand is lost
             hasCompleted = true;
         }
-        
-        if (drawCylinderMode == DONE) {
-            std::stringstream msg;
-            msg << "Created CYLINDER (FINAL) with RADIUS ";
-            msg << newCylinder->getRadius();
-            msg << " and HEIGHT ";
-            msg << newCylinder->getHeight();
-            Logger::getInstance()->temporaryLog(msg.str());
-            hasCompleted = true;
-        }
     }
     
     if (hasCompleted)
     {
-        if (isCancelled && (NULL != newCylinder)) {
+        if (isCancelled && (NULL != newCylinder))
+        {
             controller->popCommand();
         }
         newCylinder = NULL;

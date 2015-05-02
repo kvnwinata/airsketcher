@@ -29,6 +29,13 @@ public:
     
 private:
     
+    enum DRAWING_MODE {
+        NONE = 0,
+        DRAW,
+        DONE
+    };
+    
+    DRAWING_MODE copyingMode;    
     AirObject* objectCopy;
     AirObject* copiedObject;
 };

@@ -30,15 +30,8 @@ public:
 
 private:
 
-    enum DRAWING_MODE {
-        NONE = 0,
-        DRAW,
-        DONE        
-    };
-    
     AirSphere* sphere;
     std::vector<ofPoint> traces;
-    DRAWING_MODE drawCircleMode;
     
     bool createSphere(AirController* controller, AirObjectManager &objectManager);
     

@@ -14,17 +14,18 @@
 std::vector<std::string> CopyingMode::getCommands()
 {
     std::vector<std::string> commands;
-    
     commands.push_back("computer copy this");
     commands.push_back("computer place");
     commands.push_back("computer done");
     commands.push_back("computer cancel");
-    
     return commands;
 }
 
 
-CopyingMode::CopyingMode() : AirControlMode()
+CopyingMode::CopyingMode()
+: AirControlMode()
+, objectCopy(NULL)
+, copiedObject(NULL)
 {
     
 }
@@ -43,8 +44,8 @@ bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &hand
 {
     if (lastCommand == "copy this")
     {
-        // try activate
-        AirObject * highlightedObject = objectManager.getHighlightedObject();
+        // Try activate
+        AirObject* highlightedObject = objectManager.getHighlightedObject();
         
         if (highlightedObject)
         {
@@ -129,7 +130,7 @@ std::string CopyingMode::getHelpMessage()
 {
     std::string msg =
     "Move the new object around.\n"
-    "Then say 'computer place' to place the new object. \n\n"
+    "Then say 'computer done' to place the new object. \n\n"
     "OR to cancel midway, say 'computer cancel'. \n";
     return msg;
 }

@@ -31,13 +31,6 @@ public:
 
 private:
     
-    enum DRAWING_MODE {
-        NONE = 0,
-        DRAW,
-        DONE
-    };
-    
-    DRAWING_MODE drawCylinderMode;
     std::vector<ofPoint> circleTraces;
     ofPoint cylinderBaseLoc;
     AirCylinder* newCylinder;

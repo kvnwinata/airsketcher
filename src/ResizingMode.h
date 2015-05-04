@@ -39,9 +39,9 @@ private:
     float originalDistance;
     
     float startTime;
-    std::string completeTag    = "voice-move";
-    std::string lostTag        = "voice-move-lost";
-    std::string cancelTag      = "voice-move-cancel";
+    std::string completeTag    = "voice-resize";
+    std::string lostTag        = "voice-resize-lost";
+    std::string cancelTag      = "voice-resize-cancel";
 
 };
 

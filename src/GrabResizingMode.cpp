@@ -17,7 +17,6 @@ std::vector<std::string> GrabResizingMode::getCommands()
     std::vector<std::string> commands;
     
     commands.push_back("computer resize");
-    //commands.push_back("computer done");
     commands.push_back("computer cancel");
     
     return commands;
@@ -135,23 +134,20 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
 
 std::string GrabResizingMode::getStatusMessage()
 {
-    if (NULL != resizingObject) {
+    if (NULL != resizingObject)
+    {
         std::stringstream msg;
-        msg << "RESIZING ";
+        msg << "Resizing ";
         msg << resizingObject->getDescription();
-        msg << "\n FROM ";
-        msg << originalScale;
-        msg << "\n TO ";
-        msg << resizingObject->getScale();
         return msg.str();
     }
-    return "Resizing";
+    return "RESIZE: Pinch to resize object";
 }
 
 std::string GrabResizingMode::getHelpMessage()
 {
     std::string msg =
-    "Adjust the size by moving your hand, then say 'computer done'\n"
+    "Adjust the size by moving your hand then release pinch'\n"
     "OR say 'computer cancel' if you change your mind"
     ;
     return msg;

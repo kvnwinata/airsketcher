@@ -173,7 +173,7 @@ std::string RotatingMode::getStatusMessage()
 std::string RotatingMode::getHelpMessage()
 {
     std::string msg =
-    "Rotate the object, then say 'computer done'"
+    "Rotate the object by moving your hand around the object, then say 'computer done'"
     ;
     return msg;
 }

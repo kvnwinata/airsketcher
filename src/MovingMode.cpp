@@ -130,7 +130,7 @@ std::string MovingMode::getHelpMessage()
 //    "3. Move your hand to a new position while still pointing at the object. \n"
 //    "4. Then say 'computer done' to place the object. \n"
 //    "4. To cancel midway (before placing the object), say 'computer cancel'. \n";
-    "Move the object, then say 'computer done'\n"
+    "Place the object, then say 'computer done'\n"
     "\nOR say 'computer cancel' to cancel midway"
     ;
     return msg;

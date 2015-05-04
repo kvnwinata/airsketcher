@@ -177,24 +177,17 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
 
 std::string GrabRotatingMode::getStatusMessage()
 {
-    if (NULL != rotatingObject) {
+    if (NULL != rotatingObject)
+    {
         std::stringstream msg;
-        msg << "ROTATING ";
+        msg << "Rotating ";
         msg << rotatingObject->getDescription();
-        
         return msg.str();
     }
-    return "Rotating";
+    return "ROTATE: Pinch to rotate object";
 }
 
 std::string GrabRotatingMode::getHelpMessage()
 {
-    if (rotatingObject)
-    {
-        return "Rotate the object, then release pinch.\nOr say 'computer cancel'";
-    }
-    else
-    {
-        return "Pinch an object to rotate.\nOr say 'computer cancel'";
-    }
+    return "Rotate by moving your hand around the object, then release pinch.\nOr say 'computer cancel'";
 }

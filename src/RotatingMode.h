@@ -36,9 +36,9 @@ private:
     ofQuaternion originalOrientation;
     
     float startTime;
-    std::string completeTag    = "voice-move";
-    std::string lostTag        = "voice-move-lost";
-    std::string cancelTag      = "voice-move-cancel";
+    std::string completeTag    = "voice-rotate";
+    std::string lostTag        = "voice-rotate-lost";
+    std::string cancelTag      = "voice-rotate-cancel";
 
 };
 

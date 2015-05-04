@@ -41,7 +41,6 @@ bool GrabMovingMode::tryActivateMode(AirController* controller, HandProcessor &h
     {
         movingObject = NULL;
         hasCompleted = false;
-        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     return false;
@@ -49,6 +48,9 @@ bool GrabMovingMode::tryActivateMode(AirController* controller, HandProcessor &h
 
 void GrabMovingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    bool canceled = false;
+    bool lost = false;
+    
     std::string command = speechProcessor.getLastCommand();
     LeapHand* hand = handProcessor.getHandAtIndex(0);
     
@@ -59,7 +61,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
         if (command == "cancel")
         {
             hasCompleted = true;
-            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis());
+            canceled = true;
         }
         else
         {
@@ -71,9 +73,10 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
                     movingObject = highlightedObject;
                     originalPosition = movingObject->getPosition();
                     offset = handProcessor.getHandAtIndex(0)->getTipLocation() - originalPosition;
+                    
+                    startTime = ofGetElapsedTimeMillis();
                 }
             }
-
         }
     }
     else // is currently moving something
@@ -82,9 +85,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
         {
             movingObject->setPosition(originalPosition);
             hasCompleted = true;
-            
-            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis());
-
+            canceled = true;
         }
         else
         {
@@ -102,6 +103,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
                 {
                     // hand is lost
                     hasCompleted = true;
+                    lost = true;
                 }
             }
         }
@@ -115,7 +117,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
             controller->pushCommand(cmd);
             movingObject = NULL;
             
-            Logger::getInstance()->logToFile("grab-move", startTime, ofGetElapsedTimeMillis());
+            Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
         }
     }
 }

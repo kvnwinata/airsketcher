@@ -36,6 +36,9 @@ private:
     ofVec3f offset;
     
     float startTime;
+    std::string completeTag    = "grab-move";
+    std::string lostTag        = "grab-move-lost";
+    std::string cancelTag      = "grab-move-cancel";
 };
 
 #endif /* defined(__airsketcher__GrabMovingMode__) */

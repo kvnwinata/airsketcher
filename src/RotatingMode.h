@@ -34,6 +34,12 @@ private:
     ofVec3f      currentVector;
     ofVec3f      originalVector;
     ofQuaternion originalOrientation;
+    
+    float startTime;
+    std::string completeTag    = "voice-move";
+    std::string lostTag        = "voice-move-lost";
+    std::string cancelTag      = "voice-move-cancel";
+
 };
 
 

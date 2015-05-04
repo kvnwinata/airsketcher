@@ -59,6 +59,9 @@ bool GrabResizingMode::tryActivateMode(AirController* controller, HandProcessor 
 
 void GrabResizingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    bool canceled = false;
+    bool lost = false;
+
     std::string command = speechProcessor.getLastCommand();
     
     if (resizingObject == NULL)
@@ -73,6 +76,7 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
             resizingObject->setScale(originalScale);
         }
         hasCompleted = true;
+        canceled = true;
     }
     else
     {
@@ -93,6 +97,7 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
             {
                 // hand is lost
                 hasCompleted = true;
+                lost = true;
             }
         }
         else if (hand->getIsPinching())
@@ -112,6 +117,7 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
                 originalDistance = ofPoint(relativePosition.x, relativePosition.z).length();
                 
                 hasCompleted = false;
+                startTime = ofGetElapsedTimeMillis();
             }
         }
     }
@@ -121,7 +127,9 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
             AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, resizingObject->getScale());
             controller->pushCommand(cmd);
             resizingObject = NULL;
+            
         }
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

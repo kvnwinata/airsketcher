@@ -85,6 +85,8 @@ ofColor ColoringMode::getColorFromString(std::string colorString)
 
 bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
+    startTime = ofGetElapsedTimeMillis();
+    
     std::string commandString = lastCommand.substr(0,10);
     if (commandString == "color this")
     {
@@ -112,6 +114,7 @@ bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &han
         }
     }
     hasCompleted = true;
+    Logger::getInstance()->logToFile(completeTag, startTime, ofGetElapsedTimeMillis());
     return false;
 }
 

@@ -34,6 +34,11 @@ private:
     
     ofPoint originalPosition;
     ofVec3f offset;
+    
+    float startTime;
+    std::string completeTag    = "voice-move";
+    std::string lostTag        = "voice-move-lost";
+    std::string cancelTag      = "voice-move-cancel";
 };
 
 #endif /* defined(__airsketcher__MovingMode__) */

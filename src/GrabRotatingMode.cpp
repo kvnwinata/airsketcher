@@ -84,6 +84,9 @@ bool GrabRotatingMode::tryActivateMode(AirController* controller, HandProcessor 
 
 void GrabRotatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    bool canceled = false;
+    bool lost = false;
+
     std::string command = speechProcessor.getLastCommand();
     LeapHand* hand = handProcessor.getHandAtIndex(0);
     
@@ -94,6 +97,7 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
         if (command == "cancel")
         {
             hasCompleted = true;
+            canceled = true;
         }
         else
         {
@@ -110,6 +114,7 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
                     currentVector = originalVector;
                     
                     hasCompleted = false;
+                    startTime = ofGetElapsedTimeMillis();
                     return true;
                 }
             }
@@ -122,6 +127,7 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
         {
             rotatingObject->setOrientation(originalOrientation);
             hasCompleted = true;
+            canceled = true;
         }
         else
         {
@@ -149,6 +155,7 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
                 {
                     // hand is lost
                     hasCompleted = true;
+                    lost = true;
                 }
             }
         }
@@ -162,6 +169,9 @@ void GrabRotatingMode::update(AirController* controller, HandProcessor &handProc
             controller->pushCommand(cmd);
             rotatingObject = NULL;
         }
+        
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+
     }
 }
 

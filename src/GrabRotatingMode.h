@@ -34,6 +34,11 @@ private:
     ofVec3f      currentVector;
     ofVec3f      originalVector;
     ofQuaternion originalOrientation;
+    
+    float startTime;
+    std::string completeTag    = "grab-rotate";
+    std::string lostTag        = "grab-rotate-lost";
+    std::string cancelTag      = "grab-rotate-cancel";
 };
 
 

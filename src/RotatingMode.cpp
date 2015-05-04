@@ -89,6 +89,7 @@ bool RotatingMode::tryActivateMode(AirController* controller, HandProcessor &han
             currentVector = originalVector;
             
             hasCompleted = false;
+            startTime = ofGetElapsedTimeMillis();
             return true;
         }
         else
@@ -103,6 +104,9 @@ bool RotatingMode::tryActivateMode(AirController* controller, HandProcessor &han
 
 void RotatingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    bool canceled = false;
+    bool lost = false;
+
     std::string command = speechProcessor.getLastCommand();
     
     if (command == "done")
@@ -113,6 +117,7 @@ void RotatingMode::update(AirController* controller, HandProcessor &handProcesso
     {
         rotatingObject->setOrientation(originalOrientation);
         hasCompleted = true;
+        canceled = true;
     }
     else
     {
@@ -136,12 +141,16 @@ void RotatingMode::update(AirController* controller, HandProcessor &handProcesso
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     if (hasCompleted) {
         AirCommandRotating* cmd = new AirCommandRotating(rotatingObject, originalOrientation, rotatingObject->getOrientation());
         controller->pushCommand(cmd);
         rotatingObject = NULL;
+        
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+
     }
 }
 

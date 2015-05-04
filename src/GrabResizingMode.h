@@ -37,6 +37,11 @@ private:
         
     float originalScale;
     float originalDistance;
+    
+    float startTime;
+    std::string completeTag    = "grab-resize";
+    std::string lostTag        = "grab-resize-lost";
+    std::string cancelTag      = "grab-resize-cancel";
 };
 
 #endif /* defined(__airsketcher__GrabResizingMode__) */

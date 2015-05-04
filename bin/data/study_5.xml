@@ -1,11 +1,11 @@
 <settings>
     
-    <user>0</user>
+    <user>5</user>
     
     <system>1</system><!-- 1 for grab, 2 for voice-->
     
     <task1>1</task1><!-- task = 1 | 2 | 3 | 4 (1/2/3: practice tasks, 4: final task)-->
-    <task2>2</task2>
-    <task3>3</task3>
+    <task2>3</task2>
+    <task3>2</task3>
     
 </settings>

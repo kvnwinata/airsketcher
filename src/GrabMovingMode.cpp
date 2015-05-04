@@ -59,7 +59,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
         if (command == "cancel")
         {
             hasCompleted = true;
-            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis(), ofGetElapsedTimeMillis() - startTime);
+            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis());
         }
         else
         {
@@ -83,7 +83,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
             movingObject->setPosition(originalPosition);
             hasCompleted = true;
             
-            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis(), ofGetElapsedTimeMillis() - startTime);
+            Logger::getInstance()->logToFile("grab-move-canceled", startTime, ofGetElapsedTimeMillis());
 
         }
         else
@@ -115,7 +115,7 @@ void GrabMovingMode::update(AirController* controller, HandProcessor &handProces
             controller->pushCommand(cmd);
             movingObject = NULL;
             
-            Logger::getInstance()->logToFile("grab-move", startTime, ofGetElapsedTimeMillis(), ofGetElapsedTimeMillis() - startTime);
+            Logger::getInstance()->logToFile("grab-move", startTime, ofGetElapsedTimeMillis());
         }
     }
 }

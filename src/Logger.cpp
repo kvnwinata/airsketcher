@@ -134,11 +134,11 @@ void Logger::nextTask()
     logFile.open(filename, ofFile::WriteOnly);
 }
 
-void Logger::logToFile(std::string mode, float startTime, float endTime, float interval)
+void Logger::logToFile(std::string mode, float startTime, float endTime)
 {
     if (current_task > 0)
     {
-        logFile << mode << " " << startTime << " " << endTime << " " << interval << std::endl;
+        logFile << mode << " " << startTime << " " << endTime << std::endl;
     }
 }
 

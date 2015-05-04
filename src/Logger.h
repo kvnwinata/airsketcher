@@ -22,7 +22,7 @@ public:
     static Logger* getInstance();
     
     void temporaryLog(std::string message);
-    void logToFile(std::string mode, float startTime, float endTime, float interval);
+    void logToFile(std::string mode, float startTime, float endTime);
     void log(std::string message);
     void print();
     

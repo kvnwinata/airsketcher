@@ -29,12 +29,11 @@
 #include "GrabCylinderCreatingMode.h"
 #include "GrabSphereCreatingMode.h"
 #include "GrabRotatingMode.h"
+#include "Logger.h"
 
 AirController::AirController() : currentMode(NULL)
 {
-    bool grabSystem = true;
-    
-    if (grabSystem)
+    if (Logger::getInstance()->getIsSystemGrab())
     {
         modes.push_back(new GrabMovingMode());
         modes.push_back(new GrabResizingMode());

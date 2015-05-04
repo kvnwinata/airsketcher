@@ -136,7 +136,10 @@ void Logger::nextTask()
 
 void Logger::logToFile(std::string mode, float startTime, float endTime, float interval)
 {
-    logFile << mode << " " << startTime << " " << endTime << " " << interval << std::endl;
+    if (current_task > 0)
+    {
+        logFile << mode << " " << startTime << " " << endTime << " " << interval << std::endl;
+    }
 }
 
 bool Logger::getIsSystemGrab()

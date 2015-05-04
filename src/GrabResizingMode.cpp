@@ -95,7 +95,7 @@ void GrabResizingMode::update(AirController* controller, HandProcessor &handProc
                 hasCompleted = true;
             }
         }
-        else if (hand->getIsPinching() && objectManager.getHighlightedObject() != NULL)
+        else if (hand->getIsPinching())
         {
             AirObject * highlightedObject = objectManager.getHighlightedObject();
             

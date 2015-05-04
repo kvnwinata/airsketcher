@@ -37,6 +37,7 @@
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB0193931AC091FE0012001C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0193921AC091FE0012001C /* Carbon.framework */; };
 		CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */; };
+		CB1B2F321AF723DA00792E6C /* GrabRotatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F311AF723DA00792E6C /* GrabRotatingMode.cpp */; };
 		CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */; };
 		CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2F1ACF2B92004FF7D6 /* AirCylinder.cpp */; };
 		CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D321ACF2BA2004FF7D6 /* AirLine.cpp */; };
@@ -168,6 +169,8 @@
 		CB0193921AC091FE0012001C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CB145A081AF15F4E00B5CF1A /* GrabResizingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabResizingMode.h; sourceTree = "<group>"; };
 		CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabResizingMode.cpp; sourceTree = "<group>"; };
+		CB1B2F301AF723DA00792E6C /* GrabRotatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabRotatingMode.h; sourceTree = "<group>"; };
+		CB1B2F311AF723DA00792E6C /* GrabRotatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabRotatingMode.cpp; sourceTree = "<group>"; };
 		CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirBox.cpp; sourceTree = "<group>"; };
 		CB2F0D2D1ACF2B86004FF7D6 /* AirBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirBox.h; sourceTree = "<group>"; };
 		CB2F0D2F1ACF2B92004FF7D6 /* AirCylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCylinder.cpp; sourceTree = "<group>"; };
@@ -352,6 +355,130 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
+		CB1B2F331AF723E800792E6C /* Moving */ = {
+			isa = PBXGroup;
+			children = (
+				CB823FD71AEFD46000D99F48 /* GrabMovingMode.h */,
+				CB823FD81AEFD46000D99F48 /* GrabMovingMode.cpp */,
+				CB84050F1ABFB46500EB202C /* MovingMode.cpp */,
+				CB8405101ABFB46500EB202C /* MovingMode.h */,
+			);
+			name = Moving;
+			sourceTree = "<group>";
+		};
+		CB1B2F341AF723FF00792E6C /* Copying */ = {
+			isa = PBXGroup;
+			children = (
+				0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */,
+				0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */,
+				0B22DDFB1AF4359500D4D233 /* GrabCopyingMode.cpp */,
+				0B22DDFC1AF4359500D4D233 /* GrabCopyingMode.h */,
+			);
+			name = Copying;
+			sourceTree = "<group>";
+		};
+		CB1B2F351AF7240C00792E6C /* Coloring */ = {
+			isa = PBXGroup;
+			children = (
+				CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */,
+				CBD709841AC0B48900EF0DC2 /* ColoringMode.h */,
+			);
+			name = Coloring;
+			sourceTree = "<group>";
+		};
+		CB1B2F361AF7241400792E6C /* Erasing */ = {
+			isa = PBXGroup;
+			children = (
+				0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */,
+				0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */,
+				0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */,
+				0B7BFC761ACAF01100A83042 /* ErasingMode.h */,
+			);
+			name = Erasing;
+			sourceTree = "<group>";
+		};
+		CB1B2F371AF7242000792E6C /* Cylinder */ = {
+			isa = PBXGroup;
+			children = (
+				0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */,
+				0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */,
+				0B22DDF51AF4356800D4D233 /* GrabCylinderCreatingMode.cpp */,
+				0B22DDF61AF4356800D4D233 /* GrabCylinderCreatingMode.h */,
+			);
+			name = Cylinder;
+			sourceTree = "<group>";
+		};
+		CB1B2F381AF7242D00792E6C /* Sphere */ = {
+			isa = PBXGroup;
+			children = (
+				0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */,
+				0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */,
+				0B22DDF81AF4357F00D4D233 /* GrabSphereCreatingMode.cpp */,
+				0B22DDF91AF4357F00D4D233 /* GrabSphereCreatingMode.h */,
+			);
+			name = Sphere;
+			sourceTree = "<group>";
+		};
+		CB1B2F391AF7243F00792E6C /* Rotating */ = {
+			isa = PBXGroup;
+			children = (
+				CB2F0D3F1ACF684E004FF7D6 /* RotatingMode.cpp */,
+				CB2F0D401ACF684E004FF7D6 /* RotatingMode.h */,
+				CB1B2F301AF723DA00792E6C /* GrabRotatingMode.h */,
+				CB1B2F311AF723DA00792E6C /* GrabRotatingMode.cpp */,
+			);
+			name = Rotating;
+			sourceTree = "<group>";
+		};
+		CB1B2F3A1AF7245200792E6C /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */,
+				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
+				B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */,
+				B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */,
+			);
+			name = Line;
+			sourceTree = "<group>";
+		};
+		CB1B2F3B1AF7245900792E6C /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */,
+				B71019811AD269C400FD53F7 /* BoxCreatingMode.h */,
+			);
+			name = Box;
+			sourceTree = "<group>";
+		};
+		CB1B2F3C1AF7245E00792E6C /* Resizing */ = {
+			isa = PBXGroup;
+			children = (
+				CB2F0D371ACF3E3A004FF7D6 /* ResizingMode.cpp */,
+				CB2F0D381ACF3E3A004FF7D6 /* ResizingMode.h */,
+				CB145A081AF15F4E00B5CF1A /* GrabResizingMode.h */,
+				CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */,
+			);
+			name = Resizing;
+			sourceTree = "<group>";
+		};
+		CB1B2F3D1AF724E400792E6C /* UndoRedo */ = {
+			isa = PBXGroup;
+			children = (
+				0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */,
+				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
+			);
+			name = UndoRedo;
+			sourceTree = "<group>";
+		};
+		CB1B2F3E1AF724EC00792E6C /* SpaceRotating */ = {
+			isa = PBXGroup;
+			children = (
+				CB2F0D441AD1E825004FF7D6 /* SpaceRotatingMode.cpp */,
+				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
+			);
+			name = SpaceRotating;
+			sourceTree = "<group>";
+		};
 		CB7997BB1ABB7DBE00253491 /* LeapSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,44 +526,18 @@
 			children = (
 				CB6071481ABCA7D9001E03EF /* AirController.cpp */,
 				CB6071491ABCA7D9001E03EF /* AirController.h */,
-				CB2F0D441AD1E825004FF7D6 /* SpaceRotatingMode.cpp */,
-				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
-				CB823FD71AEFD46000D99F48 /* GrabMovingMode.h */,
-				CB823FD81AEFD46000D99F48 /* GrabMovingMode.cpp */,
-				CB84050F1ABFB46500EB202C /* MovingMode.cpp */,
-				CB8405101ABFB46500EB202C /* MovingMode.h */,
-				CBD709851AC0B48900EF0DC2 /* ColoringMode.cpp */,
-				CBD709841AC0B48900EF0DC2 /* ColoringMode.h */,
-				0B7BFC721ACAEE9B00A83042 /* CopyingMode.cpp */,
-				0B7BFC731ACAEE9C00A83042 /* CopyingMode.h */,
-				0B7BFC751ACAF01100A83042 /* ErasingMode.cpp */,
-				0B7BFC761ACAF01100A83042 /* ErasingMode.h */,
-				0B7BFC781ACAF14D00A83042 /* CylinderCreatingMode.cpp */,
-				0B7BFC791ACAF14D00A83042 /* CylinderCreatingMode.h */,
-				0B7BFC7B1ACAF1B400A83042 /* SphereCreatingMode.cpp */,
-				0B7BFC7C1ACAF1B400A83042 /* SphereCreatingMode.h */,
-				CB2F0D371ACF3E3A004FF7D6 /* ResizingMode.cpp */,
-				CB2F0D381ACF3E3A004FF7D6 /* ResizingMode.h */,
-				CB145A081AF15F4E00B5CF1A /* GrabResizingMode.h */,
-				CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */,
-				CB2F0D3F1ACF684E004FF7D6 /* RotatingMode.cpp */,
-				CB2F0D401ACF684E004FF7D6 /* RotatingMode.h */,
-				B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */,
-				B71019811AD269C400FD53F7 /* BoxCreatingMode.h */,
-				B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */,
-				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
-				0BD974671ADDA474000D3D1A /* UndoRedoMode.cpp */,
-				0BD974681ADDA474000D3D1A /* UndoRedoMode.h */,
-				0B33A71E1AEED4D300F368D5 /* EraseAllMode.cpp */,
-				0B33A71F1AEED4D400F368D5 /* EraseAllMode.h */,
-				B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */,
-				B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */,
-				0B22DDF51AF4356800D4D233 /* GrabCylinderCreatingMode.cpp */,
-				0B22DDF61AF4356800D4D233 /* GrabCylinderCreatingMode.h */,
-				0B22DDF81AF4357F00D4D233 /* GrabSphereCreatingMode.cpp */,
-				0B22DDF91AF4357F00D4D233 /* GrabSphereCreatingMode.h */,
-				0B22DDFB1AF4359500D4D233 /* GrabCopyingMode.cpp */,
-				0B22DDFC1AF4359500D4D233 /* GrabCopyingMode.h */,
+				CB1B2F331AF723E800792E6C /* Moving */,
+				CB1B2F351AF7240C00792E6C /* Coloring */,
+				CB1B2F341AF723FF00792E6C /* Copying */,
+				CB1B2F361AF7241400792E6C /* Erasing */,
+				CB1B2F3C1AF7245E00792E6C /* Resizing */,
+				CB1B2F391AF7243F00792E6C /* Rotating */,
+				CB1B2F371AF7242000792E6C /* Cylinder */,
+				CB1B2F381AF7242D00792E6C /* Sphere */,
+				CB1B2F3B1AF7245900792E6C /* Box */,
+				CB1B2F3A1AF7245200792E6C /* Line */,
+				CB1B2F3D1AF724E400792E6C /* UndoRedo */,
+				CB1B2F3E1AF724EC00792E6C /* SpaceRotating */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -702,6 +803,7 @@
 				CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */,
 				0BD974761ADE1419000D3D1A /* AirCommandSphere.cpp in Sources */,
 				0BD974821ADE1449000D3D1A /* AirCommandMoving.cpp in Sources */,
+				CB1B2F321AF723DA00792E6C /* GrabRotatingMode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

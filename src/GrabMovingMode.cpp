@@ -15,6 +15,8 @@
 std::vector<std::string> GrabMovingMode::getCommands()
 {
     std::vector<std::string> commands;
+    commands.push_back("computer move");
+    commands.push_back("computer cancel");
     return commands;
 }
 
@@ -35,53 +37,79 @@ void GrabMovingMode::drawMode()
 
 bool GrabMovingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
-    
-    AirObject * highlightedObject = objectManager.getHighlightedObject();
-    LeapHand * hand = handProcessor.getHandAtIndex(0);
-    
-    if (highlightedObject && hand->getIsPinching())
+    if (lastCommand == "move")
     {
-        movingObject = highlightedObject;
-        originalPosition = movingObject->getPosition();
-        offset = hand->getTipLocation() - originalPosition;
-        
+        movingObject = NULL;
         hasCompleted = false;
         return true;
     }
-    else if (highlightedObject == NULL)
-    {
-        //Logger::getInstance()->temporaryLog("Pinch an object to move");
-        hasCompleted = true;
-        return false;
-    }
-    hasCompleted = true;
     return false;
 }
 
 void GrabMovingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    std::string command = speechProcessor.getLastCommand();
     LeapHand* hand = handProcessor.getHandAtIndex(0);
-    if (!hand->getIsPinching())
+    
+    if (movingObject == NULL)
     {
-        hasCompleted = true;
-    }
-    else
-    {
-        if (hand->getIsActive())
+        objectManager.updateHighlight(hand->getTipLocation());
+        
+        if (command == "cancel")
         {
-            movingObject->setPosition(hand->getTipLocation()-offset);
+            hasCompleted = true;
         }
         else
         {
-            // hand is lost
-            hasCompleted = true;
+            if (hand->getIsPinching())
+            {
+                AirObject * highlightedObject = objectManager.getHighlightedObject();
+                if (highlightedObject)
+                {
+                    movingObject = highlightedObject;
+                    originalPosition = movingObject->getPosition();
+                    offset = handProcessor.getHandAtIndex(0)->getTipLocation() - originalPosition;
+                }
+            }
+
         }
     }
+    else // is currently moving something
+    {
+        if (command == "cancel")
+        {
+            movingObject->setPosition(originalPosition);
+            hasCompleted = true;
+        }
+        else
+        {
+            if (!hand->getIsPinching())
+            {
+                hasCompleted = true;
+            }
+            else
+            {
+                if (hand->getIsActive())
+                {
+                    movingObject->setPosition(hand->getTipLocation()-offset);
+                }
+                else
+                {
+                    // hand is lost
+                    hasCompleted = true;
+                }
+            }
+        }
+    }
+    
     if (hasCompleted)
     {
-        AirCommandMoving* cmd = new AirCommandMoving(movingObject, originalPosition, movingObject->getPosition());
-        controller->pushCommand(cmd);
-        movingObject = NULL;
+        if (movingObject)
+        {
+            AirCommandMoving* cmd = new AirCommandMoving(movingObject, originalPosition, movingObject->getPosition());
+            controller->pushCommand(cmd);
+            movingObject = NULL;
+        }
     }
 }
 
@@ -94,7 +122,7 @@ std::string GrabMovingMode::getStatusMessage()
         msg << movingObject->getDescription();
         return msg.str();
     }
-    return "";
+    return "MOVE: Pinch to move object";
 }
 
 std::string GrabMovingMode::getHelpMessage()

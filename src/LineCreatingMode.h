@@ -2,7 +2,7 @@
 //  LineCreatingMode.h
 //  airsketcher
 //
-//  Created by Pramod Kandel on 4/6/15.
+//  Created by Pramod Kandel on 5/4/15.
 //
 //
 
@@ -10,6 +10,7 @@
 #define __airsketcher__LineCreatingMode__
 
 #include <stdio.h>
+
 
 #include "AirController.h"
 
@@ -29,18 +30,11 @@ public:
     std::string getHelpMessage() override;
     
 private:
-    enum DRAWING_MODE {
-        DRAW = 0,
-        DONE,
-        NONE
-    };
-    
     AirLine* line;
     std::string drawCommand = "draw line";
     
     std::vector<ofPoint> traces;
     
-    DRAWING_MODE drawLineMode;
     
     bool createLine(AirController* controller, AirObjectManager &objectManager);
     
@@ -63,6 +57,5 @@ private:
     }
     
 };
-
 
 #endif /* defined(__airsketcher__LineCreatingMode__) */

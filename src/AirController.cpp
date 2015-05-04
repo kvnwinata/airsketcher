@@ -29,6 +29,9 @@
 #include "GrabCylinderCreatingMode.h"
 #include "GrabSphereCreatingMode.h"
 #include "GrabRotatingMode.h"
+#include "GrabBoxCreatingMode.h"
+#include "GrabLineCreatingMode.h"
+#include "GrabSnapObjectsMode.h"
 #include "Logger.h"
 
 AirController::AirController() : currentMode(NULL)
@@ -43,7 +46,9 @@ AirController::AirController() : currentMode(NULL)
         modes.push_back(new GrabCylinderCreatingMode());
         modes.push_back(new GrabSphereCreatingMode());
         
-        // TODO: grab for line and box
+        modes.push_back(new GrabLineCreatingMode());
+        modes.push_back(new GrabSnapObjectsMode());
+        modes.push_back(new GrabBoxCreatingMode());
     }
     else
     {

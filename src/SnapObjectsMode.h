@@ -1,3 +1,11 @@
+//
+//  SnapObjectsMode.h
+//  airsketcher
+//
+//  Created by Pramod Kandel on 5/4/15.
+//
+//
+
 #ifndef __airsketcher__SnapObjectsMode__
 #define __airsketcher__SnapObjectsMode__
 
@@ -20,18 +28,13 @@ public:
     std::string getHelpMessage() override;
     
 private:
-    enum DRAWING_MODE {
-        DRAW = 0,
-        DONE,
-        NONE
-    };
+
     
     AirLine* line;
     std::string drawCommand = "snap line";
     
     std::vector<ofPoint> traces;
     
-    DRAWING_MODE drawLineMode;
     
     bool createLine(AirController* controller, AirObjectManager &objectManager);
     

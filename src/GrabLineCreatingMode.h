@@ -1,39 +1,48 @@
 //
-//  BoxCreatingMode.h
+//  GrabLineCreatingMode.h
 //  airsketcher
 //
-//  Created by Pramod Kandel on 5/4/15.
+//  Created by Pramod Kandel on 4/6/15.
 //
 //
 
-#ifndef __airsketcher__BoxCreatingMode__
-#define __airsketcher__BoxCreatingMode__
+#ifndef __airsketcher__GrabLineCreatingMode__
+#define __airsketcher__GrabLineCreatingMode__
 
 #include <stdio.h>
+
 #include "AirController.h"
 
-class BoxCreatingMode : public AirControlMode
+class GrabLineCreatingMode : public AirControlMode
 {
 public:
     
-    BoxCreatingMode();
-    ~BoxCreatingMode();
+    GrabLineCreatingMode();
+    ~GrabLineCreatingMode();
     
     bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
     void drawMode() override;
     std::vector<std::string> getCommands();
+    
     std::string getStatusMessage() override;
     std::string getHelpMessage() override;
     
 private:
-
+    enum DRAWING_MODE {
+        DRAW = 0,
+        DONE,
+        NONE
+    };
     
-    AirBox* box;
-    std::string drawCommand = "draw box";
+    AirLine* line;
+    std::string drawCommand = "draw line";
+    
     std::vector<ofPoint> traces;
     
-    bool createBox(AirController* controller, AirObjectManager &objectManager);
+    DRAWING_MODE drawLineMode;
+    
+    bool createLine(AirController* controller, AirObjectManager &objectManager);
     
     inline ofPoint getStartPoint()
     {
@@ -53,24 +62,7 @@ private:
         return endPoint;
     }
     
-    inline ofVec3f getSize()
-    {
-        ofVec3f size_xyz;
-        ofPoint startPoint = getStartPoint();
-        ofPoint endPoint = getEndPoint();
-        float width = abs(startPoint.x - endPoint.x);
-        float height = abs(startPoint.y - endPoint.y);
-        float depth = abs(startPoint.z - endPoint.z);
-        size_xyz.set(width, height, depth);
-        return size_xyz;
-    }
-    
-    inline ofPoint getCenterPosition()
-    {
-        return (getEndPoint()+getStartPoint())*0.5;
-    }
-    
 };
 
 
-#endif /* defined(__airsketcher__BoxCreatingMode__) */
+#endif /* defined(__airsketcher__GrabLineCreatingMode__) */

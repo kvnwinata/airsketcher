@@ -2,10 +2,10 @@
 //  LineCreatingMode.cpp
 //  airsketcher
 //
-//  Created by Pramod Kandel on 4/6/15.
-//  Last update by Patricia Suriana on 4/14/15.
+//  Created by Pramod Kandel on 5/4/15.
 //
 //
+
 
 #include "LineCreatingMode.h"
 
@@ -19,25 +19,25 @@ std::vector<std::string> LineCreatingMode::getCommands()
 {
     std::vector<std::string> commands;
     commands.push_back("computer " + drawCommand);
+    commands.push_back("computer done");
+    commands.push_back("computer cancel");
     return commands;
 }
 
-LineCreatingMode::LineCreatingMode() : AirControlMode(), line(NULL), drawLineMode(NONE)
+LineCreatingMode::LineCreatingMode() : AirControlMode(), line(NULL)
 {
     traces.resize(2, ofPoint());
 }
 
 LineCreatingMode::~LineCreatingMode()
 {
-
+    
 }
 
 void LineCreatingMode::drawMode()
 {
-    if (drawLineMode == DRAW)
-    {
-        line -> updateEndPoints(getStartPoint(), getEndPoint());
-    }
+    line -> updateEndPoints(getStartPoint(), getEndPoint());
+
 }
 
 
@@ -45,6 +45,16 @@ bool LineCreatingMode::tryActivateMode(AirController* controller, HandProcessor 
 {
     if (lastCommand == drawCommand)
     {
+        LeapHand* hand = handProcessor.getHandAtIndex(0);
+        traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+        traces[1] = hand-> getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
+        if (!createLine(controller, objectManager))
+        {
+            Logger::getInstance()->temporaryLog("Drawing line FAILED; cannot allocate new copy");
+            hasCompleted = true;
+            return false;
+        }
+        
         hasCompleted = false;
         return true;
     }
@@ -56,6 +66,13 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    
+    
+    if (command == "done")
+    {
+        hasCompleted = true;
+    }
+    
     if (command == "cancel")
     {
         hasCompleted = true;
@@ -70,33 +87,8 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             // need to update higlighted object for snapping
             ofPoint tipLocation = hand->getTipLocation();
             objectManager.updateHighlight(tipLocation, line);
-
-            if (hand->getIsPinching())
-            {
-                switch (drawLineMode) {
-                    case DRAW:
-                        traces[1] = hand->getTipLocation();
-                        line -> updateEndPoints(getStartPoint(), getEndPoint());
-                        break;
-                    case NONE:
-                        traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
-                        traces[1] = hand-> getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
-                        if (!createLine(controller, objectManager))
-                        {
-                            Logger::getInstance()->temporaryLog("Drawing line FAILED; cannot allocate new copy");
-                            hasCompleted = true;
-                        }
-                        drawLineMode = DRAW;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (drawLineMode == DRAW)
-            {
-                drawLineMode = DONE;
-                hasCompleted = true;
-            }
+            traces[1] = hand->getTipLocation();
+            line -> updateEndPoints(getStartPoint(), getEndPoint());
         }
         else
         {
@@ -112,7 +104,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             controller->popCommand();
         }
         
-        drawLineMode = NONE;
+        line = NULL;
         traces.resize(2, ofPoint());
     }
     
@@ -141,38 +133,23 @@ bool LineCreatingMode::createLine(AirController* controller, AirObjectManager &o
 
 std::string LineCreatingMode::getStatusMessage()
 {
-    switch (drawLineMode) {
-        case DRAW:
-        {
-            std::stringstream msg;
-            msg << "Drawing Line ";
-            msg << line->getDescription();
-            msg << "\n at ";
-            msg << line->getPosition();
-            msg << "\n with length";
-            msg << line -> getLength();
-        }
-        case DONE:
-            return "Drawing Line: done";
-        default:
-            return "Drawing Line: release pinch when done";
+    if (NULL != line)
+    {
+        std::stringstream msg;
+        msg << "Drawing Line ";
+        msg << line->getDescription();
+        msg << "\n at ";
+        msg << line->getPosition();
+        msg << "\n with length";
+        msg << line -> getLength();
     }
+        return "Drawing Line: move finger/hand to resize";
 }
 
 
 std::string LineCreatingMode::getHelpMessage()
 {
-    std::string msg = "";
-    switch (drawLineMode){
-        case DRAW:
-            msg ="When finished, slowly release your pinch \n";
-            break;
-        case NONE:
-            msg = "Pinch your all fingers together to start then pull your line. \n";
-            break;
-        case DONE:
-            msg = "You're done!";
-            break;
-    }
+    std::string msg ="When finished, say 'computer done' or to cancel, say 'computer cancel' \n";
+
     return msg;
 }

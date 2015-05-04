@@ -31,9 +31,12 @@
 		0BD974981ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BD974961ADE1FB9000D3D1A /* AirCommandSpaceRotating.cpp */; };
 		22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */; };
 		677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D19CED97996678A2439982CF /* ofxSpeechRecognizer.cpp */; };
-		B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */; };
-		B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */; };
-		B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */; };
+		B71019821AD269C400FD53F7 /* GrabBoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019801AD269C400FD53F7 /* GrabBoxCreatingMode.cpp */; };
+		B71019851AD269DE00FD53F7 /* GrabLineCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71019831AD269DE00FD53F7 /* GrabLineCreatingMode.cpp */; };
+		B71E14B01AF1AAD0003E695A /* GrabSnapObjectsMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14AE1AF1AAD0003E695A /* GrabSnapObjectsMode.cpp */; };
+		B71E14B71AF78691003E695A /* LineCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14B51AF78691003E695A /* LineCreatingMode.cpp */; };
+		B71E14BA1AF786A5003E695A /* SnapObjectsMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14B81AF786A5003E695A /* SnapObjectsMode.cpp */; };
+		B71E14BD1AF79B7E003E695A /* BoxCreatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B71E14BB1AF79B7E003E695A /* BoxCreatingMode.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CB0193931AC091FE0012001C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0193921AC091FE0012001C /* Carbon.framework */; };
 		CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */; };
@@ -163,12 +166,18 @@
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
-		B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCreatingMode.cpp; sourceTree = "<group>"; };
-		B71019811AD269C400FD53F7 /* BoxCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxCreatingMode.h; sourceTree = "<group>"; };
-		B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineCreatingMode.cpp; sourceTree = "<group>"; };
-		B71019841AD269DE00FD53F7 /* LineCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCreatingMode.h; sourceTree = "<group>"; };
-		B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SnapObjectsMode.cpp; sourceTree = "<group>"; };
-		B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapObjectsMode.h; sourceTree = "<group>"; };
+		B71019801AD269C400FD53F7 /* GrabBoxCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabBoxCreatingMode.cpp; sourceTree = "<group>"; };
+		B71019811AD269C400FD53F7 /* GrabBoxCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabBoxCreatingMode.h; sourceTree = "<group>"; };
+		B71019831AD269DE00FD53F7 /* GrabLineCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabLineCreatingMode.cpp; sourceTree = "<group>"; };
+		B71019841AD269DE00FD53F7 /* GrabLineCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabLineCreatingMode.h; sourceTree = "<group>"; };
+		B71E14AE1AF1AAD0003E695A /* GrabSnapObjectsMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabSnapObjectsMode.cpp; sourceTree = "<group>"; };
+		B71E14AF1AF1AAD0003E695A /* GrabSnapObjectsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabSnapObjectsMode.h; sourceTree = "<group>"; };
+		B71E14B51AF78691003E695A /* LineCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineCreatingMode.cpp; sourceTree = "<group>"; };
+		B71E14B61AF78691003E695A /* LineCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineCreatingMode.h; sourceTree = "<group>"; };
+		B71E14B81AF786A5003E695A /* SnapObjectsMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SnapObjectsMode.cpp; sourceTree = "<group>"; };
+		B71E14B91AF786A5003E695A /* SnapObjectsMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapObjectsMode.h; sourceTree = "<group>"; };
+		B71E14BB1AF79B7E003E695A /* BoxCreatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCreatingMode.cpp; sourceTree = "<group>"; };
+		B71E14BC1AF79B7E003E695A /* BoxCreatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxCreatingMode.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CB0193921AC091FE0012001C /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CB145A081AF15F4E00B5CF1A /* GrabResizingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabResizingMode.h; sourceTree = "<group>"; };
@@ -444,10 +453,14 @@
 		CB1B2F3A1AF7245200792E6C /* Line */ = {
 			isa = PBXGroup;
 			children = (
-				B71019831AD269DE00FD53F7 /* LineCreatingMode.cpp */,
-				B71019841AD269DE00FD53F7 /* LineCreatingMode.h */,
-				B71E14AE1AF1AAD0003E695A /* SnapObjectsMode.cpp */,
-				B71E14AF1AF1AAD0003E695A /* SnapObjectsMode.h */,
+				B71019831AD269DE00FD53F7 /* GrabLineCreatingMode.cpp */,
+				B71019841AD269DE00FD53F7 /* GrabLineCreatingMode.h */,
+				B71E14AE1AF1AAD0003E695A /* GrabSnapObjectsMode.cpp */,
+				B71E14AF1AF1AAD0003E695A /* GrabSnapObjectsMode.h */,
+				B71E14B51AF78691003E695A /* LineCreatingMode.cpp */,
+				B71E14B61AF78691003E695A /* LineCreatingMode.h */,
+				B71E14B81AF786A5003E695A /* SnapObjectsMode.cpp */,
+				B71E14B91AF786A5003E695A /* SnapObjectsMode.h */,
 			);
 			name = Line;
 			sourceTree = "<group>";
@@ -455,8 +468,10 @@
 		CB1B2F3B1AF7245900792E6C /* Box */ = {
 			isa = PBXGroup;
 			children = (
-				B71019801AD269C400FD53F7 /* BoxCreatingMode.cpp */,
-				B71019811AD269C400FD53F7 /* BoxCreatingMode.h */,
+				B71019801AD269C400FD53F7 /* GrabBoxCreatingMode.cpp */,
+				B71019811AD269C400FD53F7 /* GrabBoxCreatingMode.h */,
+				B71E14BB1AF79B7E003E695A /* BoxCreatingMode.cpp */,
+				B71E14BC1AF79B7E003E695A /* BoxCreatingMode.h */,
 			);
 			name = Box;
 			sourceTree = "<group>";
@@ -803,16 +818,18 @@
 				0BD974791ADE1425000D3D1A /* AirCommandCylinder.cpp in Sources */,
 				0BD974851ADE1464000D3D1A /* AirCommandResizing.cpp in Sources */,
 				CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */,
-				B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */,
+				B71019851AD269DE00FD53F7 /* GrabLineCreatingMode.cpp in Sources */,
 				CB1B2F4A1AF72A1F00792E6C /* tinyxmlparser.cpp in Sources */,
 				CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */,
 				CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */,
 				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
-				B71019821AD269C400FD53F7 /* BoxCreatingMode.cpp in Sources */,
+				B71019821AD269C400FD53F7 /* GrabBoxCreatingMode.cpp in Sources */,
+				B71E14B71AF78691003E695A /* LineCreatingMode.cpp in Sources */,
 				0B22DDFD1AF4359500D4D233 /* GrabCopyingMode.cpp in Sources */,
 				0BD9747C1ADE1431000D3D1A /* AirCommandLine.cpp in Sources */,
 				CB2F0D411ACF684E004FF7D6 /* RotatingMode.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				B71E14BA1AF786A5003E695A /* SnapObjectsMode.cpp in Sources */,
 				0B33A7231AEED53500F368D5 /* AirCommandEraseAll.cpp in Sources */,
 				CB6071441ABCA3F5001E03EF /* AirObjectManager.cpp in Sources */,
 				0B33A7201AEED4D400F368D5 /* EraseAllMode.cpp in Sources */,
@@ -829,6 +846,7 @@
 				CB6071501ABCA84E001E03EF /* HandProcessor.cpp in Sources */,
 				CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */,
 				0BD9747F1ADE143E000D3D1A /* AirCommandCopying.cpp in Sources */,
+				B71E14BD1AF79B7E003E695A /* BoxCreatingMode.cpp in Sources */,
 				CB8405111ABFB46500EB202C /* MovingMode.cpp in Sources */,
 				22F3098B8ABCE1E009C7D611 /* ofxSpeechSynthesizer.cpp in Sources */,
 				CB7997CD1ABB7DBE00253491 /* LeapUtilGL.cpp in Sources */,
@@ -839,7 +857,7 @@
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
 				CB1B2F491AF72A1F00792E6C /* tinyxmlerror.cpp in Sources */,
-				B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */,
+				B71E14B01AF1AAD0003E695A /* GrabSnapObjectsMode.cpp in Sources */,
 				CB2F0D461AD1E825004FF7D6 /* SpaceRotatingMode.cpp in Sources */,
 				CB2F0D391ACF3E3A004FF7D6 /* ResizingMode.cpp in Sources */,
 				CB1B2F481AF72A1F00792E6C /* tinyxml.cpp in Sources */,

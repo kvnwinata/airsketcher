@@ -1,23 +1,24 @@
 //
-//  BoxCreatingMode.h
+//  GrabBoxCreatingMode.h
 //  airsketcher
 //
-//  Created by Pramod Kandel on 5/4/15.
+//  Created by Pramod Kandel on 4/6/15.
 //
 //
 
-#ifndef __airsketcher__BoxCreatingMode__
-#define __airsketcher__BoxCreatingMode__
+#ifndef __airsketcher__GrabBoxCreatingMode__
+#define __airsketcher__GrabBoxCreatingMode__
 
 #include <stdio.h>
+
 #include "AirController.h"
 
-class BoxCreatingMode : public AirControlMode
+class GrabBoxCreatingMode : public AirControlMode
 {
 public:
     
-    BoxCreatingMode();
-    ~BoxCreatingMode();
+    GrabBoxCreatingMode();
+    ~GrabBoxCreatingMode();
     
     bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) override;
     void update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager) override;
@@ -27,11 +28,16 @@ public:
     std::string getHelpMessage() override;
     
 private:
-
+    enum DRAWING_MODE {
+        DRAW = 0,
+        DONE,
+        NONE
+    };
     
     AirBox* box;
     std::string drawCommand = "draw box";
     std::vector<ofPoint> traces;
+    DRAWING_MODE drawBoxMode;
     
     bool createBox(AirController* controller, AirObjectManager &objectManager);
     
@@ -73,4 +79,4 @@ private:
 };
 
 
-#endif /* defined(__airsketcher__BoxCreatingMode__) */
+#endif /* defined(__airsketcher__GrabBoxCreatingMode__) */

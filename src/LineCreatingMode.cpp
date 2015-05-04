@@ -36,7 +36,6 @@ LineCreatingMode::~LineCreatingMode()
 
 void LineCreatingMode::drawMode()
 {
-    line -> updateEndPoints(getStartPoint(), getEndPoint());
 
 }
 
@@ -73,7 +72,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
         hasCompleted = true;
     }
     
-    if (command == "cancel")
+    else if (command == "cancel")
     {
         hasCompleted = true;
         isCancelled = true;
@@ -88,6 +87,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
             ofPoint tipLocation = hand->getTipLocation();
             objectManager.updateHighlight(tipLocation, line);
             traces[1] = hand->getTipLocation();
+            Logger::getInstance()->temporaryLog("Came inside hand active.");
             line -> updateEndPoints(getStartPoint(), getEndPoint());
         }
         else

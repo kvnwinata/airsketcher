@@ -36,7 +36,6 @@ SnapObjectsMode::~SnapObjectsMode()
 
 void SnapObjectsMode::drawMode()
 {
-    line -> updateEndPoints(getStartPoint(), getEndPoint());
 }
 
 
@@ -70,7 +69,7 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
         hasCompleted = true;
     }
     
-    if (command == "cancel")
+    else if (command == "cancel")
     {
         hasCompleted = true;
         isCancelled = true;

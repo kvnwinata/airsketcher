@@ -11,6 +11,8 @@
 
 #include "ofMain.h"
 
+#include "ofxXmlSettings.h"
+
 class Logger
 {
 public:
@@ -20,8 +22,12 @@ public:
     static Logger* getInstance();
     
     void temporaryLog(std::string message);
+    void logToFile(std::string mode, float startTime, float endTime, float interval);
     void log(std::string message);
     void print();
+    
+    void nextTask();
+    bool getIsSystemGrab();
     
     std::string getTempMessage();
     
@@ -40,6 +46,16 @@ private:
     
     static Logger* singleton;
     
+    ofFile          logFile;
+    ofxXmlSettings  settings;
+    
+    int user;
+    int task1;
+    int task2;
+    int task3;
+    int system;
+    
+    int current_task;
 };
 
 

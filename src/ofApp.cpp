@@ -126,6 +126,12 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    
+    if (key == 'n')
+    {
+        Logger::getInstance()->nextTask();
+    }
+    
     if (key == 'c')
     {
         AirSphere * sphere = new AirSphere();

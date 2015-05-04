@@ -34,6 +34,8 @@ private:
     
     ofPoint originalPosition;
     ofVec3f offset;
+    
+    float startTime;
 };
 
 #endif /* defined(__airsketcher__GrabMovingMode__) */

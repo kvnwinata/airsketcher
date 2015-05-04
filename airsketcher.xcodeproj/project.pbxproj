@@ -38,6 +38,10 @@
 		CB0193931AC091FE0012001C /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0193921AC091FE0012001C /* Carbon.framework */; };
 		CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */; };
 		CB1B2F321AF723DA00792E6C /* GrabRotatingMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F311AF723DA00792E6C /* GrabRotatingMode.cpp */; };
+		CB1B2F481AF72A1F00792E6C /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F411AF72A1F00792E6C /* tinyxml.cpp */; };
+		CB1B2F491AF72A1F00792E6C /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F431AF72A1F00792E6C /* tinyxmlerror.cpp */; };
+		CB1B2F4A1AF72A1F00792E6C /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F441AF72A1F00792E6C /* tinyxmlparser.cpp */; };
+		CB1B2F4B1AF72A1F00792E6C /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB1B2F461AF72A1F00792E6C /* ofxXmlSettings.cpp */; };
 		CB2F0D2E1ACF2B86004FF7D6 /* AirBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */; };
 		CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D2F1ACF2B92004FF7D6 /* AirCylinder.cpp */; };
 		CB2F0D341ACF2BA2004FF7D6 /* AirLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB2F0D321ACF2BA2004FF7D6 /* AirLine.cpp */; };
@@ -171,6 +175,12 @@
 		CB145A091AF15F4E00B5CF1A /* GrabResizingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabResizingMode.cpp; sourceTree = "<group>"; };
 		CB1B2F301AF723DA00792E6C /* GrabRotatingMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrabRotatingMode.h; sourceTree = "<group>"; };
 		CB1B2F311AF723DA00792E6C /* GrabRotatingMode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GrabRotatingMode.cpp; sourceTree = "<group>"; };
+		CB1B2F411AF72A1F00792E6C /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		CB1B2F421AF72A1F00792E6C /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		CB1B2F431AF72A1F00792E6C /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		CB1B2F441AF72A1F00792E6C /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		CB1B2F461AF72A1F00792E6C /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		CB1B2F471AF72A1F00792E6C /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		CB2F0D2C1ACF2B86004FF7D6 /* AirBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirBox.cpp; sourceTree = "<group>"; };
 		CB2F0D2D1ACF2B86004FF7D6 /* AirBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirBox.h; sourceTree = "<group>"; };
 		CB2F0D2F1ACF2B92004FF7D6 /* AirCylinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AirCylinder.cpp; sourceTree = "<group>"; };
@@ -321,6 +331,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				CB1B2F3F1AF72A1F00792E6C /* ofxXmlSettings */,
 				DE5E452D5BAF9A711FE2E60A /* ofxSpeech */,
 			);
 			name = addons;
@@ -477,6 +488,36 @@
 				CB2F0D451AD1E825004FF7D6 /* SpaceRotatingMode.h */,
 			);
 			name = SpaceRotating;
+			sourceTree = "<group>";
+		};
+		CB1B2F3F1AF72A1F00792E6C /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CB1B2F401AF72A1F00792E6C /* libs */,
+				CB1B2F451AF72A1F00792E6C /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		CB1B2F401AF72A1F00792E6C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				CB1B2F411AF72A1F00792E6C /* tinyxml.cpp */,
+				CB1B2F421AF72A1F00792E6C /* tinyxml.h */,
+				CB1B2F431AF72A1F00792E6C /* tinyxmlerror.cpp */,
+				CB1B2F441AF72A1F00792E6C /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		CB1B2F451AF72A1F00792E6C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CB1B2F461AF72A1F00792E6C /* ofxXmlSettings.cpp */,
+				CB1B2F471AF72A1F00792E6C /* ofxXmlSettings.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		CB7997BB1ABB7DBE00253491 /* LeapSDK */ = {
@@ -763,6 +804,7 @@
 				0BD974851ADE1464000D3D1A /* AirCommandResizing.cpp in Sources */,
 				CB7997CC1ABB7DBE00253491 /* LeapUtil.cpp in Sources */,
 				B71019851AD269DE00FD53F7 /* LineCreatingMode.cpp in Sources */,
+				CB1B2F4A1AF72A1F00792E6C /* tinyxmlparser.cpp in Sources */,
 				CB145A0A1AF15F4E00B5CF1A /* GrabResizingMode.cpp in Sources */,
 				CB2F0D311ACF2B92004FF7D6 /* AirCylinder.cpp in Sources */,
 				0B7BFC7D1ACAF1B400A83042 /* SphereCreatingMode.cpp in Sources */,
@@ -780,6 +822,7 @@
 				CB60714A1ABCA7D9001E03EF /* AirController.cpp in Sources */,
 				0BD974731ADE140C000D3D1A /* AirCommandErasing.cpp in Sources */,
 				0BD974691ADDA474000D3D1A /* UndoRedoMode.cpp in Sources */,
+				CB1B2F4B1AF72A1F00792E6C /* ofxXmlSettings.cpp in Sources */,
 				677D2A26D33FEE69FA339767 /* ofxSpeechRecognizer.cpp in Sources */,
 				CB7997CB1ABB7DBE00253491 /* LeapScene.cpp in Sources */,
 				0BD974951ADE1FA8000D3D1A /* AirCommandBox.cpp in Sources */,
@@ -795,9 +838,11 @@
 				0B22DDF71AF4356800D4D233 /* GrabCylinderCreatingMode.cpp in Sources */,
 				CBD709861AC0B48900EF0DC2 /* ColoringMode.cpp in Sources */,
 				0B7BFC7A1ACAF14D00A83042 /* CylinderCreatingMode.cpp in Sources */,
+				CB1B2F491AF72A1F00792E6C /* tinyxmlerror.cpp in Sources */,
 				B71E14B01AF1AAD0003E695A /* SnapObjectsMode.cpp in Sources */,
 				CB2F0D461AD1E825004FF7D6 /* SpaceRotatingMode.cpp in Sources */,
 				CB2F0D391ACF3E3A004FF7D6 /* ResizingMode.cpp in Sources */,
+				CB1B2F481AF72A1F00792E6C /* tinyxml.cpp in Sources */,
 				CB60714D1ABCA83E001E03EF /* SpeechProcessor.cpp in Sources */,
 				0B7BFC771ACAF01100A83042 /* ErasingMode.cpp in Sources */,
 				CBF644A51AC072DF00CF276E /* LeapHand.cpp in Sources */,

@@ -69,7 +69,7 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
         hasCompleted = true;
     }
     
-    if (command == "cancel")
+    else if (command == "cancel")
     {
         isCancelled = true;
         hasCompleted = true;

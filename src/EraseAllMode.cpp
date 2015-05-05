@@ -22,14 +22,17 @@ std::vector<std::string> EraseAllMode::getCommands()
 }
 
 
-EraseAllMode::EraseAllMode() : AirControlMode()
+EraseAllMode::EraseAllMode() 
+: AirControlMode()
+, eraseAllCount(0)
 {
     
 }
 
 EraseAllMode::~EraseAllMode()
 {
-    
+    // TODO: might want to log to different file
+    Logger::getInstance()->logToFile("erase-all-count", eraseAllCount, 0);
 }
 
 void EraseAllMode::drawMode()
@@ -50,6 +53,7 @@ bool EraseAllMode::tryActivateMode(AirController* controller, HandProcessor &han
         
         Logger::getInstance()->temporaryLog("Erase all object SUCCEEDED");
         hasCompleted = true;
+        eraseAllCount += 1;
         return true;
     }
     hasCompleted = true;

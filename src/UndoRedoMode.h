@@ -33,6 +33,9 @@ private:
 
 	void undo(AirController* controller, int levels);
 	void redo(AirController* controller, int levels);
+
+    int undoCount;
+    int redoCount;
 };
 
 #endif /* defined(__airsketcher__UndoRedoMode__) */

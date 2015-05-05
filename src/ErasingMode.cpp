@@ -22,14 +22,17 @@ std::vector<std::string> ErasingMode::getCommands()
 }
 
 
-ErasingMode::ErasingMode() : AirControlMode()
+ErasingMode::ErasingMode() 
+: AirControlMode()
+, eraseCount(0)
 {
     
 }
 
 ErasingMode::~ErasingMode()
 {
-    
+    // TODO: might want to log to different file
+    Logger::getInstance()->logToFile("erase-count", eraseCount, 0);
 }
 
 void ErasingMode::drawMode()
@@ -57,6 +60,7 @@ bool ErasingMode::tryActivateMode(AirController* controller, HandProcessor &hand
 
             Logger::getInstance()->temporaryLog("ERASE: " + objectDescription);
             hasCompleted = true;
+            eraseCount += 1;
             return true;
         }
         else

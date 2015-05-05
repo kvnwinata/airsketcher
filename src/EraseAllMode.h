@@ -26,6 +26,8 @@ public:
     std::string getStatusMessage() override;
     std::string getHelpMessage() override;
     
+private:
+	int eraseAllCount;
 };
 
 #endif /* defined(__airsketcher__EraseAllMode__) */

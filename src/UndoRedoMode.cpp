@@ -19,14 +19,18 @@ std::vector<std::string> UndoRedoMode::getCommands()
 }
 
 
-UndoRedoMode::UndoRedoMode() : AirControlMode()
+UndoRedoMode::UndoRedoMode() 
+: AirControlMode()
+, undoCount(0)
+, redoCount(0)
 {
     
 }
 
 UndoRedoMode::~UndoRedoMode()
 {
-    
+    // TODO: might want to log to different file
+    Logger::getInstance()->logToFile("undo-redo-count", undoCount, redoCount);
 }
 
 void UndoRedoMode::drawMode()
@@ -88,11 +92,13 @@ int UndoRedoMode::getLevelsFromString(std::string stringLevels)
 void UndoRedoMode::undo(AirController* controller, int levels)
 {
     controller->undoCommands(levels);
+    undoCount += 1;
 }
 
 void UndoRedoMode::redo(AirController* controller, int levels)
 {
 	controller->redoCommands(levels);
+    redoCount += 1;
 }
 
 std::string UndoRedoMode::getStatusMessage()

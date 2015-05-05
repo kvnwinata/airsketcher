@@ -30,7 +30,8 @@ def make(dirpath):
 
         for line in file.readlines():
             #print line 
-            [mode, startTime, endTime, timeInterval] = parse_line(line)
+            [mode, startTime, endTime] = parse_line(line)
+            timeInterval = endTime - startTime
             modeToOccurenceMap[mode] = modeToOccurenceMap.get(mode, 0) + 1
             lineList = [system, user, task, taskToOccurenceMap[task], mode, modeToOccurenceMap[mode], timeInterval]
             lineStr = ', '.join(str(x) for x in lineList)
@@ -38,10 +39,10 @@ def make(dirpath):
     output.close()
 
 def parse_line(line):
-    # line = mode startTime endTime timeInterval (time in float milisecond)
+    # line = mode startTime endTime (time in float milisecond)
     tokens = line.split()
     tokens[1:] = map(float, tokens[1:])
-    return tokens # [mode, startTime, endTime, timeInterval]
+    return tokens # [mode, startTime, endTime]
 
 def get_output_filename(directory):
     # timestamp = month_day_year_hour_minute_second

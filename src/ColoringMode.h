@@ -30,6 +30,8 @@ public:
 private:
     
     ofColor getColorFromString(std::string colorString);
+    float startTime;
+    std::string completeTag    = "color";
 };
 
 #endif /* defined(__airsketcher__ColoringMode__) */

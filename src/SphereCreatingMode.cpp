@@ -75,6 +75,7 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
 
     if (command == "place" || command == "done")
     {
@@ -99,6 +100,7 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
 
@@ -108,12 +110,10 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
             if (NULL != sphere) {
                 controller->popCommand();                
             }
-            Logger::getInstance()->logToFile("voice-sphere-canceled", startTime, ofGetElapsedTimeMillis());
-        } else {
-            Logger::getInstance()->logToFile("voice-sphere", startTime, ofGetElapsedTimeMillis());
-        }
+        } 
         sphere = NULL;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

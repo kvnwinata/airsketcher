@@ -76,6 +76,7 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "place" || command == "done")
     {
@@ -105,6 +106,7 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
 
@@ -114,12 +116,10 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
             if (NULL != newCylinder) {
                 controller->popCommand();                
             }
-            Logger::getInstance()->logToFile("voice-cylinder-canceled", startTime, ofGetElapsedTimeMillis());
-        } else {
-            Logger::getInstance()->logToFile("voice-cylinder", startTime, ofGetElapsedTimeMillis());
         }
         newCylinder = NULL;
         circleTraces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

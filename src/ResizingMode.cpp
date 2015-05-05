@@ -66,6 +66,7 @@ bool ResizingMode::tryActivateMode(AirController* controller, HandProcessor &han
             originalDistance = ofPoint(relativePosition.x, relativePosition.z).length();
             
             hasCompleted = false;
+            startTime = ofGetElapsedTimeMillis();
             return true;
         }
         else
@@ -80,6 +81,10 @@ bool ResizingMode::tryActivateMode(AirController* controller, HandProcessor &han
 
 void ResizingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    
+    bool canceled = false;
+    bool lost = false;
+
     std::string command = speechProcessor.getLastCommand();
     
     if (command == "done")
@@ -90,6 +95,7 @@ void ResizingMode::update(AirController* controller, HandProcessor &handProcesso
     {
         resizingObject->setScale(originalScale);
         hasCompleted = true;
+        canceled = true;
     }
     else
     {
@@ -107,12 +113,16 @@ void ResizingMode::update(AirController* controller, HandProcessor &handProcesso
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     if (hasCompleted) {
         AirCommandResizing* cmd = new AirCommandResizing(resizingObject, originalScale, resizingObject->getScale());
         controller->pushCommand(cmd);
         resizingObject = NULL;
+        
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+
     }
 }
 

@@ -53,6 +53,7 @@ bool MovingMode::tryActivateMode(AirController* controller, HandProcessor &handP
             offset = handProcessor.getHandAtIndex(0)->getTipLocation() - originalPosition;
             
             hasCompleted = false;
+            startTime = ofGetElapsedTimeMillis();
             return true;
         }
         else
@@ -68,6 +69,9 @@ bool MovingMode::tryActivateMode(AirController* controller, HandProcessor &handP
 
 void MovingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
+    bool canceled = false;
+    bool lost = false;
+    
     std::string command = speechProcessor.getLastCommand();
     
     if (command == "place" || command == "done")
@@ -78,6 +82,7 @@ void MovingMode::update(AirController* controller, HandProcessor &handProcessor,
     {
         movingObject->setPosition(originalPosition);
         hasCompleted = true;
+        canceled = true;
     }
     else
     {
@@ -91,6 +96,7 @@ void MovingMode::update(AirController* controller, HandProcessor &handProcessor,
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     if (hasCompleted)
@@ -98,6 +104,8 @@ void MovingMode::update(AirController* controller, HandProcessor &handProcessor,
         AirCommandMoving* cmd = new AirCommandMoving(movingObject, originalPosition, movingObject->getPosition());
         controller->pushCommand(cmd);
         movingObject = NULL;
+        
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 
@@ -121,7 +129,7 @@ std::string MovingMode::getHelpMessage()
 //    "3. Move your hand to a new position while still pointing at the object. \n"
 //    "4. Then say 'computer done' to place the object. \n"
 //    "4. To cancel midway (before placing the object), say 'computer cancel'. \n";
-    "Move the object, then say 'computer done'\n"
+    "Place the object, then say 'computer done'\n"
     "\nOR say 'computer cancel' to cancel midway"
     ;
     return msg;

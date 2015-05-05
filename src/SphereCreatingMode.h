@@ -55,6 +55,10 @@ private:
         radius /= traces.size();
         return radius;
     }
+
+    std::string completeTag    = "voice-sphere";
+    std::string lostTag        = "voice-sphere-lost";
+    std::string cancelTag      = "voice-sphere-cancel";
 };
 
 #endif /* defined(__airsketcher__SphereCreatingMode__) */

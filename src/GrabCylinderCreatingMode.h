@@ -73,6 +73,10 @@ private:
         centroid[2] += height/2.0;
         return centroid;
     }
+
+    std::string completeTag    = "grab-cylinder";
+    std::string lostTag        = "grab-cylinder-lost";
+    std::string cancelTag      = "grab-cylinder-cancel";
 };
 
 #endif /* defined(__airsketcher__GrabCylinderCreatingMode__) */

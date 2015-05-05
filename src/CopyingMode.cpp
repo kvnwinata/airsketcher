@@ -78,6 +78,7 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "place" || command == "done")
     {
@@ -100,6 +101,7 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     if (hasCompleted) {
@@ -107,12 +109,10 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
             if (NULL != copiedObject) {
                 controller->popCommand();                
             }
-            Logger::getInstance()->logToFile("voice-copy-canceled", startTime, ofGetElapsedTimeMillis());
-        } else {
-            Logger::getInstance()->logToFile("voice-copy", startTime, ofGetElapsedTimeMillis());
-        }
+        } 
         copiedObject = NULL;
         objectCopy = NULL;
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

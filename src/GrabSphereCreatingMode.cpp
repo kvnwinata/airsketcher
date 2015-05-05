@@ -68,6 +68,7 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "cancel")
     {
@@ -114,6 +115,7 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }        
     }
     
@@ -123,13 +125,11 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
             if (NULL != sphere) {
                 controller->popCommand();                
             }
-            Logger::getInstance()->logToFile("grab-sphere-canceled", startTime, ofGetElapsedTimeMillis());
-        } else {
-            Logger::getInstance()->logToFile("grab-sphere", startTime, ofGetElapsedTimeMillis());
         }
         sphere = NULL;
         drawCircleMode = NONE;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

@@ -38,6 +38,10 @@ private:
     DRAWING_MODE copyingMode;    
     AirObject* objectCopy;
     AirObject* copiedObject;
+
+    std::string completeTag    = "grab-copy";
+    std::string lostTag        = "grab-copy-lost";
+    std::string cancelTag      = "grab-copy-cancel";
 };
 
 #endif /* defined(__airsketcher__GrabCopyingMode__) */

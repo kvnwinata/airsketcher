@@ -62,6 +62,10 @@ private:
         radius /= traces.size();
         return radius;
     }
+
+    std::string completeTag    = "grab-sphere";
+    std::string lostTag        = "grab-sphere-lost";
+    std::string cancelTag      = "grab-sphere-cancel";
 };
 
 #endif /* defined(__airsketcher__GrabGrabSphereCreatingMode__) */

@@ -66,6 +66,10 @@ private:
         centroid[2] += height/2.0;
         return centroid;
     }
+
+    std::string completeTag    = "voice-cylinder";
+    std::string lostTag        = "voice-cylinder-lost";
+    std::string cancelTag      = "voice-cylinder-cancel";
 };
 
 #endif /* defined(__airsketcher__CylinderCreatingMode__) */

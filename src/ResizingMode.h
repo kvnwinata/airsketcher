@@ -37,6 +37,12 @@ private:
         
     float originalScale;
     float originalDistance;
+    
+    float startTime;
+    std::string completeTag    = "voice-resize";
+    std::string lostTag        = "voice-resize-lost";
+    std::string cancelTag      = "voice-resize-cancel";
+
 };
 
 #endif /* defined(__airsketcher__ResizingMode__) */

@@ -31,6 +31,10 @@ private:
     
     AirObject* objectCopy;
     AirObject* copiedObject;
+
+    std::string completeTag    = "voice-copy";
+    std::string lostTag        = "voice-copy-lost";
+    std::string cancelTag      = "voice-copy-cancel";
 };
 
 #endif /* defined(__airsketcher__CopyingMode__) */

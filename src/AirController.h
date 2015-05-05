@@ -61,7 +61,7 @@ class AirControlMode
 {
 public:
     
-    AirControlMode() : hasCompleted(true) {}
+    AirControlMode() : hasCompleted(true), startTime(0) {}
     virtual ~AirControlMode() {}
     
     virtual bool tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager) = 0;
@@ -76,6 +76,7 @@ public:
     
 protected:
     bool hasCompleted;
+    float startTime;
 };
 
 #endif /* defined(__airsketcher__AirController__) */

@@ -57,6 +57,7 @@ bool GrabSphereCreatingMode::tryActivateMode(AirController* controller, HandProc
     if (lastCommand == "draw sphere")
     {
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -118,9 +119,13 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != sphere) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("grab-sphere-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("grab-sphere", startTime, ofGetElapsedTimeMillis());
         }
         sphere = NULL;
         drawCircleMode = NONE;

@@ -65,6 +65,7 @@ bool CylinderCreatingMode::tryActivateMode(AirController* controller, HandProces
             return false;
         }
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -109,9 +110,13 @@ void CylinderCreatingMode::update(AirController* controller, HandProcessor &hand
 
     if (hasCompleted)
     {
-        if (isCancelled && (NULL != newCylinder))
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != newCylinder) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("voice-cylinder-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("voice-cylinder", startTime, ofGetElapsedTimeMillis());
         }
         newCylinder = NULL;
         circleTraces.resize(2, ofPoint());

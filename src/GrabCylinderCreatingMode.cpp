@@ -57,6 +57,7 @@ bool GrabCylinderCreatingMode::tryActivateMode(AirController* controller, HandPr
     if (lastCommand == "draw cylinder")
     {
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -67,7 +68,7 @@ void GrabCylinderCreatingMode::update(AirController* controller, HandProcessor &
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
-    
+
     if (command == "cancel")
     {
         isCancelled = true;
@@ -131,9 +132,13 @@ void GrabCylinderCreatingMode::update(AirController* controller, HandProcessor &
     
     if (hasCompleted)
     {
-        if (isCancelled && (NULL != newCylinder))
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != newCylinder) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("voice-cylinder-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("voice-cylinder", startTime, ofGetElapsedTimeMillis());
         }
         newCylinder = NULL;
         drawCylinderMode = NONE;

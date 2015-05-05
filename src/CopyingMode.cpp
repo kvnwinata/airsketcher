@@ -60,6 +60,7 @@ bool CopyingMode::tryActivateMode(AirController* controller, HandProcessor &hand
             objectCopy = cmd->getObjectCopy();
             
             hasCompleted = false;
+            startTime = ofGetElapsedTimeMillis();
             return true;
         }
         else
@@ -103,7 +104,12 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
     }
     if (hasCompleted) {
         if (isCancelled) {
-            controller->popCommand();
+            if (NULL != copiedObject) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("voice-copy-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("voice-copy", startTime, ofGetElapsedTimeMillis());
         }
         copiedObject = NULL;
         objectCopy = NULL;

@@ -34,8 +34,7 @@ BoxCreatingMode::~BoxCreatingMode()
 
 void BoxCreatingMode::drawMode()
 {
-
-        ofLine(getStartPoint(), getEndPoint());
+    ofLine(getStartPoint(), getEndPoint());
     
 }
 
@@ -94,9 +93,10 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller -> popCommand();
+        if (isCancelled) {
+            if (NULL != box) {
+                controller->popCommand();                
+            }
         }
         box = NULL;
         traces.resize(2, ofPoint());

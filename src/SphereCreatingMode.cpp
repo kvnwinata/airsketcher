@@ -64,6 +64,7 @@ bool SphereCreatingMode::tryActivateMode(AirController* controller, HandProcesso
             return false;
         }
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -103,9 +104,13 @@ void SphereCreatingMode::update(AirController* controller, HandProcessor &handPr
 
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != sphere) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("voice-sphere-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("voice-sphere", startTime, ofGetElapsedTimeMillis());
         }
         sphere = NULL;
         traces.resize(2, ofPoint());

@@ -99,11 +99,11 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
-        }
-        
+        if (isCancelled) {
+            if (NULL != line) {
+                controller->popCommand();                
+            }
+        } 
         line = NULL;
         traces.resize(2, ofPoint());
     }

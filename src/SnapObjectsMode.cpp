@@ -30,8 +30,7 @@ SnapObjectsMode::SnapObjectsMode() : AirControlMode(), line(NULL)
 }
 
 SnapObjectsMode::~SnapObjectsMode()
-{
-    
+{   
 }
 
 void SnapObjectsMode::drawMode()
@@ -68,7 +67,6 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
     {
         hasCompleted = true;
     }
-    
     else if (command == "cancel")
     {
         hasCompleted = true;
@@ -87,7 +85,6 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
             AirObject* highlightedObject = objectManager.getHighlightedObject();
             ofPoint highlightPosition;
             std::string objDescr;
-            
 
             traces[1] = hand->getTipLocation();
             // if object is highlighted
@@ -96,21 +93,21 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
                 highlightPosition = highlightedObject->getPosition();
                 objDescr = highlightedObject->getDescription();
                 if (!snapped)
-                    {
-                        std::string snapDescr = "snapped with "+ objDescr;
-                        Logger::getInstance()->temporaryLog(snapDescr);
-                        traces[0] = highlightPosition;
-                        snappedFirstObj = objDescr;
-                        snapped = true;
-                    }
+                {
+                    std::string snapDescr = "snapped with "+ objDescr;
+                    Logger::getInstance()->temporaryLog(snapDescr);
+                    traces[0] = highlightPosition;
+                    snappedFirstObj = objDescr;
+                    snapped = true;
+                }
                 else
+                {
+                    if (objDescr.compare(lineObjDescr) != 0 && objDescr.compare(snappedFirstObj) != 0)
                     {
-                        if (objDescr.compare(lineObjDescr) != 0 && objDescr.compare(snappedFirstObj) != 0)
-                        {
-                            traces[1] = highlightPosition;
-                        }
-                                
+                        traces[1] = highlightPosition;
                     }
+                            
+                }
                         
                 line->updateEndPoints(getStartPoint(), getEndPoint());
                 lineObjDescr = line->getDescription();
@@ -125,16 +122,17 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != line) {
+                controller->popCommand();                
+            }
         }
         line = NULL;
         traces.resize(2, ofPoint());
         startPoint = ofPoint();
         endPoint = ofPoint();
-        snappedFirstObj="";
-        lineObjDescr= "";
+        snappedFirstObj = "";
+        lineObjDescr = "";
         snapped = false;
     }
 }
@@ -153,7 +151,7 @@ bool SnapObjectsMode::createLine(AirController* controller, AirObjectManager &ob
         {
             return false;
         }
-        line = cmd -> getObject();
+        line = cmd->getObject();
         return true;
     }
     
@@ -173,7 +171,7 @@ std::string SnapObjectsMode::getStatusMessage()
         msg << "\n with length";
         msg << line -> getLength();
     }
-        return "Drawing Line: Move finger to another object";
+    return "Drawing Line: Move finger to another object";
 }
 
 

@@ -136,17 +136,18 @@ void GrabSnapObjectsMode::update(AirController* controller, HandProcessor &handP
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != line) {
+                controller->popCommand();                
+            }
         }
+        line = NULL;
         drawLineMode = NONE;
         traces.resize(2, ofPoint());
-        AirObject * newObject;
         startPoint = ofPoint();
         endPoint = ofPoint();
-        snappedFirstObj="";
-        lineObjDescr= "";
+        snappedFirstObj = "";
+        lineObjDescr = "";
         snapped = false;
     }
 }
@@ -165,10 +166,9 @@ bool GrabSnapObjectsMode::createLine(AirController* controller, AirObjectManager
         {
             return false;
         }
-        line = cmd -> getObject();
+        line = cmd->getObject();
         return true;
     }
-    
     return false;
 }
 

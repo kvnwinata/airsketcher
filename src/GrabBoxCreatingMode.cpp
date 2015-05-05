@@ -108,9 +108,10 @@ void GrabBoxCreatingMode::update(AirController* controller, HandProcessor &handP
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller -> popCommand();
+        if (isCancelled) {
+            if (NULL != box) {
+                controller->popCommand();                
+            }
         }
         box = NULL;
         drawBoxMode = NONE;

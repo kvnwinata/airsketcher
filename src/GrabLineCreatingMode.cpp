@@ -34,12 +34,8 @@ GrabLineCreatingMode::~GrabLineCreatingMode()
 
 void GrabLineCreatingMode::drawMode()
 {
-    if (drawLineMode == DRAW)
-    {
-        line -> updateEndPoints(getStartPoint(), getEndPoint());
-    }
-}
 
+}
 
 bool GrabLineCreatingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
@@ -76,7 +72,7 @@ void GrabLineCreatingMode::update(AirController* controller, HandProcessor &hand
                 switch (drawLineMode) {
                     case DRAW:
                         traces[1] = hand->getTipLocation();
-                        line -> updateEndPoints(getStartPoint(), getEndPoint());
+                        line->updateEndPoints(getStartPoint(), getEndPoint());
                         break;
                     case NONE:
                         traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
@@ -107,11 +103,12 @@ void GrabLineCreatingMode::update(AirController* controller, HandProcessor &hand
     
     if (hasCompleted)
     {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != line) {
+                controller->popCommand();                
+            }
         }
-        
+        line = NULL;
         drawLineMode = NONE;
         traces.resize(2, ofPoint());
     }
@@ -132,7 +129,7 @@ bool GrabLineCreatingMode::createLine(AirController* controller, AirObjectManage
         {
             return false;
         }
-        line = cmd -> getObject();
+        line = cmd->getObject();
         return true;
     }
     return false;

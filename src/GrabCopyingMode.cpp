@@ -14,7 +14,7 @@
 std::vector<std::string> GrabCopyingMode::getCommands()
 {
     std::vector<std::string> commands;    
-    commands.push_back("computer copy this");
+    commands.push_back("computer copy");
     return commands;
 }
 
@@ -40,22 +40,11 @@ void GrabCopyingMode::drawMode()
 
 bool GrabCopyingMode::tryActivateMode(AirController* controller, HandProcessor &handProcessor, std::string lastCommand, AirObjectManager &objectManager)
 {
-    if (lastCommand == "copy this")
+    if (lastCommand == "copy")
     {
-        // Try activate
-        AirObject* highlightedObject = objectManager.getHighlightedObject();
-        if (highlightedObject)
-        {
-            copiedObject = highlightedObject;
-            hasCompleted = false;
-            return true;
-        }
-        else
-        {
-            Logger::getInstance()->temporaryLog("No object selected; select object then say 'COPY THIS'");
-            hasCompleted = true;
-            return false;
-        }
+        hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
+        return true;
     }
     hasCompleted = true;
     return false;
@@ -66,6 +55,11 @@ void GrabCopyingMode::update(AirController* controller, HandProcessor &handProce
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
     
+    if (copyingMode == NONE)
+    {
+        objectManager.updateHighlight(hand->getTipLocation());
+    }
+
     if (command == "cancel")
     {
         isCancelled = true;
@@ -85,13 +79,19 @@ void GrabCopyingMode::update(AirController* controller, HandProcessor &handProce
                         break;
                     case NONE:
                     {
-                        AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
-                        if (!controller->pushCommand(cmd))
+                         // Try activate
+                        AirObject* highlightedObject = objectManager.getHighlightedObject();
+                        if (highlightedObject)
                         {
-                            Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
+                            copiedObject = highlightedObject;
+                            AirCommandCopying* cmd = new AirCommandCopying(objectManager, copiedObject);
+                            if (!controller->pushCommand(cmd))
+                            {
+                                Logger::getInstance()->temporaryLog("COPYing object " + copiedObject->getDescription() + "failed; cannot allocate new copy");
+                            }
+                            objectCopy = cmd->getObjectCopy();
+                            copyingMode = DRAW;
                         }
-                        objectCopy = cmd->getObjectCopy();
-                        copyingMode = DRAW;
                         break;
                     }
                     default:
@@ -111,9 +111,13 @@ void GrabCopyingMode::update(AirController* controller, HandProcessor &handProce
         }
     }
     if (hasCompleted) {
-        if (isCancelled)
-        {
-            controller->popCommand();
+        if (isCancelled) {
+            if (NULL != copiedObject) {
+                controller->popCommand();                
+            }
+            Logger::getInstance()->logToFile("grab-copy-canceled", startTime, ofGetElapsedTimeMillis());
+        } else {
+            Logger::getInstance()->logToFile("grab-copy", startTime, ofGetElapsedTimeMillis());
         }
         copyingMode = NONE;
         copiedObject = NULL;

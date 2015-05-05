@@ -52,6 +52,7 @@ bool SnapObjectsMode::tryActivateMode(AirController* controller, HandProcessor &
             return false;
         }
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -62,6 +63,7 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "done")
     {
@@ -116,6 +118,7 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
         else
         {
             // hand is lost
+            lost = true;
             hasCompleted = true;
         }
     }
@@ -134,6 +137,7 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
         snappedFirstObj = "";
         lineObjDescr = "";
         snapped = false;
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

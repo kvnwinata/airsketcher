@@ -70,6 +70,10 @@ private:
         return (getEndPoint()+getStartPoint())*0.5;
     }
     
+    std::string completeTag    = "voice-box";
+    std::string lostTag        = "voice-box-lost";
+    std::string cancelTag      = "voice-box-cancel";
+    
 };
 
 

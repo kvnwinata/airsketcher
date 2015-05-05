@@ -76,6 +76,10 @@ private:
         return (getEndPoint()+getStartPoint())*0.5;
     }
     
+    std::string completeTag    = "grab-box";
+    std::string lostTag        = "grab-box-lost";
+    std::string cancelTag      = "grab-box-cancel";
+    
 };
 
 

@@ -62,6 +62,9 @@ private:
         }
         return endPoint;
     }
+    std::string completeTag    = "voice-snapline";
+    std::string lostTag        = "voice-snapline-lost";
+    std::string cancelTag      = "voice-snapline-cancel";
     
 };
 

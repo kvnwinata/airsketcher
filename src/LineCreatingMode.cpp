@@ -55,6 +55,7 @@ bool LineCreatingMode::tryActivateMode(AirController* controller, HandProcessor 
         }
         
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -65,7 +66,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
-    
+    bool lost = false;
     
     if (command == "done")
     {
@@ -93,6 +94,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
         else
         {
             // hand is lost
+            lost = true;
             hasCompleted = true;
         }
     }
@@ -106,6 +108,7 @@ void LineCreatingMode::update(AirController* controller, HandProcessor &handProc
         } 
         line = NULL;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
     
 }

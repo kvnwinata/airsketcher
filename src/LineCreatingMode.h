@@ -55,6 +55,9 @@ private:
         }
         return endPoint;
     }
+    std::string completeTag    = "voice-line";
+    std::string lostTag        = "voice-line-lost";
+    std::string cancelTag      = "voice-line-cancel";
     
 };
 

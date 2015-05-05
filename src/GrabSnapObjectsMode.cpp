@@ -46,6 +46,7 @@ bool GrabSnapObjectsMode::tryActivateMode(AirController* controller, HandProcess
     if (lastCommand == drawCommand)
     {
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -56,6 +57,8 @@ void GrabSnapObjectsMode::update(AirController* controller, HandProcessor &handP
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
+    
     if (command == "cancel")
     {
         hasCompleted = true;
@@ -130,6 +133,7 @@ void GrabSnapObjectsMode::update(AirController* controller, HandProcessor &handP
         else
         {
             // hand is lost
+            lost = true;
             hasCompleted = true;
         }
     }
@@ -149,6 +153,7 @@ void GrabSnapObjectsMode::update(AirController* controller, HandProcessor &handP
         snappedFirstObj = "";
         lineObjDescr = "";
         snapped = false;
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

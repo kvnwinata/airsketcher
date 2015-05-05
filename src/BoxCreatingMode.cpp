@@ -52,6 +52,7 @@ bool BoxCreatingMode::tryActivateMode(AirController* controller, HandProcessor &
             return false;
         }
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -62,6 +63,7 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "done")
     {
@@ -88,6 +90,7 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     
@@ -100,6 +103,7 @@ void BoxCreatingMode::update(AirController* controller, HandProcessor &handProce
         }
         box = NULL;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

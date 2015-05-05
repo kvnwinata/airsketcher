@@ -42,6 +42,7 @@ bool GrabLineCreatingMode::tryActivateMode(AirController* controller, HandProces
     if (lastCommand == drawCommand)
     {
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -52,6 +53,8 @@ void GrabLineCreatingMode::update(AirController* controller, HandProcessor &hand
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
+    
     if (command == "cancel")
     {
         hasCompleted = true;
@@ -97,6 +100,7 @@ void GrabLineCreatingMode::update(AirController* controller, HandProcessor &hand
         else
         {
             // hand is lost
+            lost = true;
             hasCompleted = true;
         }
     }
@@ -111,6 +115,7 @@ void GrabLineCreatingMode::update(AirController* controller, HandProcessor &hand
         line = NULL;
         drawLineMode = NONE;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
     
 }

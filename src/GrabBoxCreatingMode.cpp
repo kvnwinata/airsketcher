@@ -37,7 +37,6 @@ void GrabBoxCreatingMode::drawMode()
     {
         ofLine(getStartPoint(), getEndPoint());
         
-        //TODO: also draw the pseudo box while they're drawing
     }
     
 }
@@ -47,6 +46,7 @@ bool GrabBoxCreatingMode::tryActivateMode(AirController* controller, HandProcess
     if (lastCommand == drawCommand)
     {
         hasCompleted = false;
+        startTime = ofGetElapsedTimeMillis();
         return true;
     }
     hasCompleted = true;
@@ -57,6 +57,7 @@ void GrabBoxCreatingMode::update(AirController* controller, HandProcessor &handP
 {
     std::string command = speechProcessor.getLastCommand();
     bool isCancelled = false;
+    bool lost = false;
     
     if (command == "cancel")
     {
@@ -103,6 +104,7 @@ void GrabBoxCreatingMode::update(AirController* controller, HandProcessor &handP
         {
             // hand is lost
             hasCompleted = true;
+            lost = true;
         }
     }
     
@@ -116,6 +118,7 @@ void GrabBoxCreatingMode::update(AirController* controller, HandProcessor &handP
         box = NULL;
         drawBoxMode = NONE;
         traces.resize(2, ofPoint());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

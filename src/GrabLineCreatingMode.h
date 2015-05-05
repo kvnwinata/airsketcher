@@ -61,6 +61,9 @@ private:
         }
         return endPoint;
     }
+    std::string completeTag    = "grab-line-box";
+    std::string lostTag        = "grab-line-lost";
+    std::string cancelTag      = "grab-line-cancel";
     
 };
 

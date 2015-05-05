@@ -59,6 +59,9 @@ private:
         }
         return endPoint;
     }
+    std::string completeTag    = "grab-snapline-box";
+    std::string lostTag        = "grab-snapline-lost";
+    std::string cancelTag      = "grab-snapline-cancel";
     
 };
 

@@ -129,7 +129,7 @@ void GrabSphereCreatingMode::update(AirController* controller, HandProcessor &ha
         sphere = NULL;
         drawCircleMode = NONE;
         traces.resize(2, ofPoint());
-        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

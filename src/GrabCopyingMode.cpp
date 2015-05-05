@@ -53,6 +53,8 @@ bool GrabCopyingMode::tryActivateMode(AirController* controller, HandProcessor &
 void GrabCopyingMode::update(AirController* controller, HandProcessor &handProcessor, SpeechProcessor &speechProcessor, AirObjectManager &objectManager)
 {
     std::string command = speechProcessor.getLastCommand();
+    LeapHand* hand = handProcessor.getHandAtIndex(0);
+    
     bool isCancelled = false;
     bool lost = false;
     
@@ -117,14 +119,11 @@ void GrabCopyingMode::update(AirController* controller, HandProcessor &handProce
             if (NULL != copiedObject) {
                 controller->popCommand();                
             }
-            Logger::getInstance()->logToFile("grab-copy-canceled", startTime, ofGetElapsedTimeMillis());
-        } else {
-            Logger::getInstance()->logToFile("grab-copy", startTime, ofGetElapsedTimeMillis());
         }
         copyingMode = NONE;
         copiedObject = NULL;
         objectCopy = NULL;
-        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

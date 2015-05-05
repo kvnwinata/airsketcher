@@ -112,7 +112,7 @@ void CopyingMode::update(AirController* controller, HandProcessor &handProcessor
         } 
         copiedObject = NULL;
         objectCopy = NULL;
-        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

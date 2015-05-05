@@ -142,7 +142,7 @@ void GrabCylinderCreatingMode::update(AirController* controller, HandProcessor &
         newCylinder = NULL;
         drawCylinderMode = NONE;
         circleTraces.resize(2, ofPoint());
-        Logger::getInstance()->logToFile(canceled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
+        Logger::getInstance()->logToFile(isCancelled ? cancelTag : (lost ? lostTag : completeTag), startTime, ofGetElapsedTimeMillis());
     }
 }
 

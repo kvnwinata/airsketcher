@@ -1,0 +1,16 @@
+grab-cylinder 6816 15746
+grab-resize-lost 22246 31581
+color 41179 41179
+grab-copy 49379 58849
+grab-resize-lost 63017 64413
+grab-move 76315 80146
+color 85347 85347
+grab-copy 93016 95349
+grab-move 106312 111445
+grab-copy 117947 121079
+grab-resize-lost 133915 135646
+grab-resize-lost 139813 140613
+grab-resize-lost 144645 147713
+color 158146 158146
+grab-rotate 164879 174583
+grab-move 194014 198478

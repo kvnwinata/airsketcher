@@ -1,0 +1,15 @@
+grab-cylinder-lost 1.12788e+06 1.13392e+06
+grab-copy 1.13815e+06 1.14075e+06
+grab-copy 1.14782e+06 1.14969e+06
+grab-rotate 1.17814e+06 1.17827e+06
+grab-rotate 1.18927e+06 1.19027e+06
+grab-rotate 1.20084e+06 1.2024e+06
+grab-rotate 1.21814e+06 1.22064e+06
+color 1.28321e+06 1.28321e+06
+color 1.28674e+06 1.28674e+06
+color 1.29038e+06 1.29038e+06
+grab-snapline-box 1.35798e+06 1.38395e+06
+grab-move 1.43139e+06 1.44503e+06
+grab-move 1.46023e+06 1.46786e+06
+grab-resize-lost 1.51602e+06 1.51882e+06
+grab-resize-lost 1.52659e+06 1.52736e+06

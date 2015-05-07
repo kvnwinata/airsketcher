@@ -1,0 +1,16 @@
+grab-sphere-lost 1.55684e+06 1.55931e+06
+grab-move 1.57384e+06 1.57681e+06
+grab-move 1.61666e+06 1.62202e+06
+grab-copy 1.62556e+06 1.63026e+06
+grab-copy 1.63732e+06 1.64007e+06
+grab-snapline-lost 1.64749e+06 1.64752e+06
+grab-snapline-box 1.65338e+06 1.65686e+06
+grab-snapline-box 1.66122e+06 1.66473e+06
+grab-snapline-box 1.67308e+06 1.67587e+06
+grab-snapline-box 1.68007e+06 1.68549e+06
+grab-sphere 1.70145e+06 1.70368e+06
+color 1.72167e+06 1.72167e+06
+color 1.7255e+06 1.7255e+06
+color 1.729e+06 1.729e+06
+color 1.73594e+06 1.73594e+06
+color 1.74097e+06 1.74097e+06

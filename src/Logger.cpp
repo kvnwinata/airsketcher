@@ -138,7 +138,7 @@ void Logger::logToFile(std::string mode, float startTime, float endTime)
 {
     if (current_task > 0)
     {
-        logFile << mode << " " << startTime << " " << endTime << std::endl;
+        logFile << mode << " " << startTime << " " << endTime << "\n";
     }
 }
 

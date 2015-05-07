@@ -168,11 +168,11 @@
 		0BE459851AF85099003BE999 /* study_0.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_0.xml; sourceTree = "<group>"; };
 		0BE459861AF85099003BE999 /* study_1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_1.xml; sourceTree = "<group>"; };
 		0BE459871AF85099003BE999 /* study_2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_2.xml; sourceTree = "<group>"; };
-		0BE459881AF85099003BE999 /* study_3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_3.xml; sourceTree = "<group>"; };
+		0BE459881AF85099003BE999 /* study.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study.xml; sourceTree = "<group>"; };
 		0BE459891AF85099003BE999 /* study_4.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_4.xml; sourceTree = "<group>"; };
 		0BE4598A1AF85099003BE999 /* study_5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_5.xml; sourceTree = "<group>"; };
 		0BE4598B1AF85099003BE999 /* study_6.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_6.xml; sourceTree = "<group>"; };
-		0BE4598C1AF85099003BE999 /* study.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study.xml; sourceTree = "<group>"; };
+		0BE4598C1AF85099003BE999 /* study_default.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = study_default.xml; sourceTree = "<group>"; };
 		4B672395F39C78DB74490F12 /* ofxSpeechRecognizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechRecognizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechRecognizer.h; sourceTree = SOURCE_ROOT; };
 		6D09F4B304922FD318F3EDE1 /* ofxSpeechSynthesizer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSpeechSynthesizer.cpp; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.cpp; sourceTree = SOURCE_ROOT; };
 		8A84B471B5E8F45BB2B9CC6E /* ofxSpeechSynthesizer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSpeechSynthesizer.h; path = ../../../addons/ofxSpeech/src/ofxSpeechSynthesizer.h; sourceTree = SOURCE_ROOT; };
@@ -667,11 +667,11 @@
 				0BE459851AF85099003BE999 /* study_0.xml */,
 				0BE459861AF85099003BE999 /* study_1.xml */,
 				0BE459871AF85099003BE999 /* study_2.xml */,
-				0BE459881AF85099003BE999 /* study_3.xml */,
+				0BE459881AF85099003BE999 /* study.xml */,
 				0BE459891AF85099003BE999 /* study_4.xml */,
 				0BE4598A1AF85099003BE999 /* study_5.xml */,
 				0BE4598B1AF85099003BE999 /* study_6.xml */,
-				0BE4598C1AF85099003BE999 /* study.xml */,
+				0BE4598C1AF85099003BE999 /* study_default.xml */,
 				CBD709811AC0A54800EF0DC2 /* .gitkeep */,
 				CBD709831AC0A54800EF0DC2 /* leap.png */,
 			);

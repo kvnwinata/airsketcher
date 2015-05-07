@@ -162,23 +162,29 @@ void ofApp::displayHelpMessage()
     if(!displayHelp) return;
     std::stringstream msg;
     
-    msg << "[ HELP ]\n\nPress 'h' again to hide.\n";
-    msg << "\n";
+    //msg << "[ HELP ]\n\nPress 'h' again to hide.\n";
+    //msg << "\n";
+    msg << "[ HELP ] Press 'h' again to hide.\n";
     msg << "To undo             : say 'computer undo'\n";
     msg << "To redo             : say 'computer redo'\n";
     
-
+    msg << "\n";
+    msg << "To select an object    : take your index finger to the object \n";
+    
     msg << "\n";
     msg << "To draw a sphere    : say 'computer draw sphere'\n";
     msg << "To draw a cylinder  : say 'computer draw cylinder'\n";
+    msg << "To draw a box       : say 'computer draw box'\n";
     msg << "To draw a line      : say 'computer draw line'\n";
+    msg << "To draw a line attached to an object : select object + say \n 'computer snap line'\n";
     msg << "\n";
+    msg << "To copy     : select object + say 'computer copy this'\n";
     msg << "To move     : select object + say 'computer move this'\n";
     msg << "To resize   : select object + say 'computer resize this'\n";
     msg << "To rotate   : select object + say 'computer rotate this'\n";
     msg << "To erase    : select object + say 'computer erase this'\n";
     msg << "To color    : select object + say 'computer color this [color]'\n";
-    msg << "\n";
+    //msg << "\n";
     msg << "To change point of view: pinch using both hands";
 
     ofPushMatrix();

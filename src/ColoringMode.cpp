@@ -103,6 +103,7 @@ bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &han
             controller->pushCommand(cmd);
 
             Logger::getInstance()->temporaryLog("COLORED TO: " + colorString);
+            Logger::getInstance()->logToFile(completeTag, startTime, ofGetElapsedTimeMillis());
             hasCompleted = true;
             return true;
         }
@@ -114,7 +115,6 @@ bool ColoringMode::tryActivateMode(AirController* controller, HandProcessor &han
         }
     }
     hasCompleted = true;
-    Logger::getInstance()->logToFile(completeTag, startTime, ofGetElapsedTimeMillis());
     return false;
 }
 

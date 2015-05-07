@@ -146,13 +146,15 @@ std::string LineCreatingMode::getStatusMessage()
         msg << "\n with length";
         msg << line -> getLength();
     }
-        return "Drawing Line: move finger/hand to resize";
+        return "Drawing Line..";
 }
 
 
 std::string LineCreatingMode::getHelpMessage()
 {
-    std::string msg ="When finished, say 'computer done' or to cancel, say 'computer cancel' \n";
-
+    std::string msg =
+    "Move outwards or inwards to resize.\n"
+    "When finished, say 'computer done'\n"
+    "OR to cancel midway, say 'computer cancel'\n";
     return msg;
 }

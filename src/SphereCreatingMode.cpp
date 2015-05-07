@@ -145,14 +145,14 @@ std::string SphereCreatingMode::getStatusMessage()
         msg << "\n with radius ";
         msg << sphere->getRadius();
     }
-    return "Drawing SPHERE: do nothing";
+    return "Drawing SPHERE..";
 }
 
 std::string SphereCreatingMode::getHelpMessage()
 {
     std::string msg =
         "Move outwards or inwards to resize.\n"
-        "When finished, say 'computer cancel'\n"
+        "When finished, say 'computer done'\n"
         "OR to cancel midway, say 'computer cancel'\n";
     return msg;
 }

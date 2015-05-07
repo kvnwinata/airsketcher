@@ -149,16 +149,13 @@ std::string GrabBoxCreatingMode::getStatusMessage()
     switch (drawBoxMode) {
         case DRAW:
         {
-            std::stringstream msg;
-            msg << "Drawing SPHERE ";
-            msg << box->getDescription();
-            msg << "\n at ";
-            msg << box->getPosition();
+            return "BOX: Drawing";
         }
         case DONE:
-            return "Drawing BOX: done";
+            return "BOX: done";
+            
         default:
-            return "Drawing BOX: release pinch when done";
+            return "BOX: Pinch to draw.";
     }
 }
 

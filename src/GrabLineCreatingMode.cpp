@@ -146,18 +146,12 @@ std::string GrabLineCreatingMode::getStatusMessage()
     switch (drawLineMode) {
         case DRAW:
         {
-            std::stringstream msg;
-            msg << "Drawing Line ";
-            msg << line->getDescription();
-            msg << "\n at ";
-            msg << line->getPosition();
-            msg << "\n with length";
-            msg << line -> getLength();
+            return "LINE: Drawing";
         }
         case DONE:
-            return "Drawing Line: done";
+            return "LINE: done";
         default:
-            return "Drawing Line: release pinch when done";
+            return "LINE: Pinch to draw.";
     }
 }
 

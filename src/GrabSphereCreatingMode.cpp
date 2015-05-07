@@ -155,18 +155,12 @@ std::string GrabSphereCreatingMode::getStatusMessage()
     switch (drawCircleMode) {
         case DRAW:
         {
-            std::stringstream msg;
-            msg << "Drawing SPHERE ";
-            msg << sphere->getDescription();
-            msg << "\n at ";
-            msg << sphere->getPosition();
-            msg << "\n with radius ";
-            msg << sphere->getRadius();
+            return "SPHERE: Drawing";
         }
         case DONE:
-            return "Drawing SPHERE: done";
+            return "SPHERE: done";
         default:
-            return "Drawing SPHERE: do nothing";
+            return "SPHERE: Pinch to draw.";
     }
 }
 

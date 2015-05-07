@@ -178,15 +178,12 @@ std::string GrabCylinderCreatingMode::getStatusMessage()
     switch (drawCylinderMode) {
         case DRAW:
         {
-            std::stringstream msg;
-            msg << "Drawing CYLINDER: current radius ";
-            msg << newCylinder->getRadius();
-            return msg.str();
+            return "CYLINDER: Drawing";
         }
         case DONE:
-            return "Drawing CYLINDER: done";
+            return "CYLINDER: done";
         default:
-            return "Drawing CYLINDER: do nothing";
+            return "CYLINDER: Pinch to draw.";
     }
 }
 

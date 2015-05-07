@@ -97,10 +97,6 @@ void GrabSnapObjectsMode::update(AirController* controller, HandProcessor &handP
                             }
                             else
                             {
-                                //std::string descr = "highlighted: " + objDescr + "line: "+lineObjDescr + "first: "+snappedFirstObj;
-                                //Logger::getInstance() -> temporaryLog(descr);
-                                
-                                // if the highlighted object is not the line or the first object
                                 if (objDescr.compare(lineObjDescr) != 0 && objDescr.compare(snappedFirstObj) != 0){
                                     traces[1] = highlightPosition;
                                 }
@@ -183,18 +179,12 @@ std::string GrabSnapObjectsMode::getStatusMessage()
     switch (drawLineMode) {
         case DRAW:
         {
-            std::stringstream msg;
-            msg << "Snapping ";
-            msg << line->getDescription();
-            msg << "\n at ";
-            msg << line->getPosition();
-            msg << "\n with length";
-            msg << line -> getLength();
+            return "SNAP LINE: Drawing";
         }
         case DONE:
-            return "Drawing Line: done";
+            return "SNAP LINE: done";
         default:
-            return "Drawing Line: release pinch when done";
+            return "SNAP LINE: Pinch to draw.";
     }
 }
 
@@ -204,7 +194,7 @@ std::string GrabSnapObjectsMode::getHelpMessage()
     std::string msg = "";
     switch (drawLineMode){
         case DRAW:
-            msg ="Object snapped. Select another, and release pinch slowly. \n";
+            msg ="Object snapped. Release pinch slowly when done. \n";
             break;
         case NONE:
             msg = "Select an object to start then pull your line. \n";

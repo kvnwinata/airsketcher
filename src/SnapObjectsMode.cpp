@@ -42,6 +42,7 @@ bool SnapObjectsMode::tryActivateMode(AirController* controller, HandProcessor &
 {
     if (lastCommand == drawCommand)
     {
+        Logger::getInstance()->temporaryLog("Came inside the try activate.");
         LeapHand* hand = handProcessor.getHandAtIndex(0);
         traces[0] = hand-> getTipLocation() - ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
         traces[1] = hand-> getTipLocation() + ofPoint(DEFAULT_LENGTH, DEFAULT_LENGTH, DEFAULT_LENGTH);
@@ -110,10 +111,10 @@ void SnapObjectsMode::update(AirController* controller, HandProcessor &handProce
                     }
                             
                 }
-                        
-                line->updateEndPoints(getStartPoint(), getEndPoint());
-                lineObjDescr = line->getDescription();
+                
             }
+            line->updateEndPoints(getStartPoint(), getEndPoint());
+            lineObjDescr = line->getDescription();
         }
         else
         {
@@ -175,12 +176,15 @@ std::string SnapObjectsMode::getStatusMessage()
         msg << "\n with length";
         msg << line -> getLength();
     }
-    return "Drawing Line: Move finger to another object";
+    return "Drawing Snap Line..";
 }
 
 
 std::string SnapObjectsMode::getHelpMessage()
 {
-    std::string msg = "Object snapped. Select another, and say 'computer done'. \n";
+    std::string msg =
+    "Move outwards or inwards to resize.\n"
+    "When finished, say 'computer done'\n"
+    "OR to cancel midway, say 'computer cancel'\n";
     return msg;
 }

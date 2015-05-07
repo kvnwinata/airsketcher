@@ -139,13 +139,16 @@ std::string BoxCreatingMode::getStatusMessage()
         msg << "\n at ";
         msg << box->getPosition();
     }
-    return "Drawing BOX: release pinch when done";
+    return "Drawing BOX..";
 }
 
 
 std::string BoxCreatingMode::getHelpMessage()
 {
-    std::string msg ="When finished, say 'computer done'. To cancel, say 'computer cancel'\n";
+    std::string msg =
+    "Move outwards or inwards to resize.\n"
+    "When finished, say 'computer done'\n"
+    "OR to cancel midway, say 'computer cancel'\n";
     return msg;
 }
 

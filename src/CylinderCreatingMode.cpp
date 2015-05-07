@@ -160,14 +160,14 @@ std::string CylinderCreatingMode::getStatusMessage()
         msg << newCylinder->getHeight();
         return msg.str();
     }
-    return "Drawing CYLINDER: do nothing";
+    return "Drawing CYLINDER..";
 }
 
 std::string CylinderCreatingMode::getHelpMessage()
 {
     std::string msg =
     "Move outwards or inwards to resize.\n"
-    "When finished, say 'computer cancel'\n"
+    "When finished, say 'computer done'\n"
     "OR to cancel midway, say 'computer cancel'\n";
     return msg;
 }

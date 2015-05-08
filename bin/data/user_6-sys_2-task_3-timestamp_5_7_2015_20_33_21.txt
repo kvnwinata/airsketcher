@@ -1,0 +1,8 @@
+voice-box 854677 862841
+voice-rotate 869539 873539
+voice-copy 876674 880842
+color 884441 884441
+color 888743 888743
+voice-sphere-cancel 892974 899010
+voice-snapline 902041 905908
+color 909742 909742

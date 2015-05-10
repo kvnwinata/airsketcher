@@ -184,7 +184,7 @@ void ofApp::displayHelpMessage()
     msg << "To rotate   : select object + say 'computer rotate this'\n";
     msg << "To erase    : select object + say 'computer erase this'\n";
     msg << "To color    : select object + say 'computer color this [color]'\n";
-    //msg << "\n";
+    msg << "To erase all: say 'computer erase all'\n";
     msg << "To change point of view: pinch using both hands";
 
     ofPushMatrix();

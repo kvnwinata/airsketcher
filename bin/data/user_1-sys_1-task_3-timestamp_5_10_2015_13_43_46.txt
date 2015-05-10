@@ -1,0 +1,12 @@
+grab-box 711035 716735
+grab-resize-lost 723697 725301
+grab-rotate 740199 744000
+grab-copy 753434 755030
+grab-move 763063 768330
+grab-resize-lost 779863 781066
+grab-resize-lost 784596 788299
+color 797866 797866
+color 828996 828996
+grab-resize-lost 835429 839362
+grab-snapline-lost 850762 855765
+color 865530 865530

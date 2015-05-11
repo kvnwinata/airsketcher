@@ -27,6 +27,9 @@ public:
     
     std::string getStatusMessage() override;
     std::string getHelpMessage() override;
+
+    int getUndoCount const { return undoCount; };
+    int getRedoCount const { return redoCount; };
     
 private:
 	int getLevelsFromString(std::string stringLevels);

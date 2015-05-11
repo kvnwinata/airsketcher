@@ -24,8 +24,11 @@ def make(dirpath):
         print ('Parsing %s') % (filename)
         file = open(filename, 'r')
         
-        (user, system, task, month, date, year, hour, minute, second) = get_file_params(filename)
-        system = sysToString(system)
+        params = get_file_params(filename)
+        if (len(params) == 0):
+            continue
+        (user, system, task, month, date, year, hour, minute, second) = params
+        system = sysToString[system]
         taskToOccurenceMap[task] += 1
 
         for line in file.readlines():
@@ -58,7 +61,7 @@ def get_file_params(full_file_path):
     # (e.g. user_1-sys_2-task_3-timestamp_05_03_2015_12_03_22.txt)
     m = re.match(".*user_\D*(\d+)-sys_\D*(\d+)-task_\D*(\d+)-timestamp_\D*(\d+)_\D*(\d+)_\D*(\d+)_\D*(\d+)_\D*(\d+)_\D*(\d+)\.txt", 
         full_file_path)
-    params = None
+    params = []
     if m:
         # (user, system, task, month, date, year, hour, minute, second)
         for i in range(1, 10):

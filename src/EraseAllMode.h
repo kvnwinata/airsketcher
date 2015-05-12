@@ -26,7 +26,7 @@ public:
     std::string getStatusMessage() override;
     std::string getHelpMessage() override;
     
-	int getEraseAllCount const { return eraseAllCount; };
+	int getEraseAllCount() const { return eraseAllCount; };
 
 private:
 	int eraseAllCount;
